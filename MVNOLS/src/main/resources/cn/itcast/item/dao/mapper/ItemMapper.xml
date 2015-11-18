@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itcast.item.dao.mapper.ItemMapper" >
+  <resultMap id="BaseResultMap" type="cn.itcast.item.bean.Item" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="item_price" property="itemPrice" jdbcType="REAL" />
+    <result column="item_place_of_manufacture" property="itemPlaceOfManufacture" jdbcType="VARCHAR" />
+    <result column="item_image" property="itemImage" jdbcType="VARCHAR" />
+    <result column="item_state" property="itemState" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.itcast.item.bean.Item" extends="BaseResultMap" >
+    <result column="item_detail" property="itemDetail" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, item_name, item_price, item_place_of_manufacture, item_image, item_state
+  </sql>
+  <sql id="Blob_Column_List" >
+    item_detail
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.itcast.item.bean.ItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.itcast.item.bean.ItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.itcast.item.bean.ItemExample" >
+    delete from item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.item.bean.Item" >
+    insert into item (id, item_name, item_price, 
+      item_place_of_manufacture, item_image, item_state, 
+      item_detail)
+    values (#{id,jdbcType=INTEGER}, #{itemName,jdbcType=VARCHAR}, #{itemPrice,jdbcType=REAL}, 
+      #{itemPlaceOfManufacture,jdbcType=VARCHAR}, #{itemImage,jdbcType=VARCHAR}, #{itemState,jdbcType=VARCHAR}, 
+      #{itemDetail,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.item.bean.Item" >
+    insert into item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="itemPrice != null" >
+        item_price,
+      </if>
+      <if test="itemPlaceOfManufacture != null" >
+        item_place_of_manufacture,
+      </if>
+      <if test="itemImage != null" >
+        item_image,
+      </if>
+      <if test="itemState != null" >
+        item_state,
+      </if>
+      <if test="itemDetail != null" >
+        item_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemPrice != null" >
+        #{itemPrice,jdbcType=REAL},
+      </if>
+      <if test="itemPlaceOfManufacture != null" >
+        #{itemPlaceOfManufacture,jdbcType=VARCHAR},
+      </if>
+      <if test="itemImage != null" >
+        #{itemImage,jdbcType=VARCHAR},
+      </if>
+      <if test="itemState != null" >
+        #{itemState,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDetail != null" >
+        #{itemDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.itcast.item.bean.ItemExample" resultType="java.lang.Integer" >
+    select count(*) from item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update item
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.itemName != null" >
+        item_name = #{record.itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemPrice != null" >
+        item_price = #{record.itemPrice,jdbcType=REAL},
+      </if>
+      <if test="record.itemPlaceOfManufacture != null" >
+        item_place_of_manufacture = #{record.itemPlaceOfManufacture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemImage != null" >
+        item_image = #{record.itemImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemState != null" >
+        item_state = #{record.itemState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemDetail != null" >
+        item_detail = #{record.itemDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update item
+    set id = #{record.id,jdbcType=INTEGER},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      item_price = #{record.itemPrice,jdbcType=REAL},
+      item_place_of_manufacture = #{record.itemPlaceOfManufacture,jdbcType=VARCHAR},
+      item_image = #{record.itemImage,jdbcType=VARCHAR},
+      item_state = #{record.itemState,jdbcType=VARCHAR},
+      item_detail = #{record.itemDetail,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update item
+    set id = #{record.id,jdbcType=INTEGER},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      item_price = #{record.itemPrice,jdbcType=REAL},
+      item_place_of_manufacture = #{record.itemPlaceOfManufacture,jdbcType=VARCHAR},
+      item_image = #{record.itemImage,jdbcType=VARCHAR},
+      item_state = #{record.itemState,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.item.bean.Item" >
+    update item
+    <set >
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemPrice != null" >
+        item_price = #{itemPrice,jdbcType=REAL},
+      </if>
+      <if test="itemPlaceOfManufacture != null" >
+        item_place_of_manufacture = #{itemPlaceOfManufacture,jdbcType=VARCHAR},
+      </if>
+      <if test="itemImage != null" >
+        item_image = #{itemImage,jdbcType=VARCHAR},
+      </if>
+      <if test="itemState != null" >
+        item_state = #{itemState,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDetail != null" >
+        item_detail = #{itemDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.itcast.item.bean.Item" >
+    update item
+    set item_name = #{itemName,jdbcType=VARCHAR},
+      item_price = #{itemPrice,jdbcType=REAL},
+      item_place_of_manufacture = #{itemPlaceOfManufacture,jdbcType=VARCHAR},
+      item_image = #{itemImage,jdbcType=VARCHAR},
+      item_state = #{itemState,jdbcType=VARCHAR},
+      item_detail = #{itemDetail,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.item.bean.Item" >
+    update item
+    set item_name = #{itemName,jdbcType=VARCHAR},
+      item_price = #{itemPrice,jdbcType=REAL},
+      item_place_of_manufacture = #{itemPlaceOfManufacture,jdbcType=VARCHAR},
+      item_image = #{itemImage,jdbcType=VARCHAR},
+      item_state = #{itemState,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="queryTotalItemsByCriteria" parameterType="PageItemBean" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM item
+  	<where>
+  		<if test = "itemName != null">
+  			AND item_name LIKE "%"#{itemName}"%"		<!-- "%"#{itemName}"%" == '%${itemName}%' -->
+  		</if>
+  		<if test = "itemPriceInterval == 'low'">
+  			AND item_price BETWEEN 0 and 100
+  		</if>
+  		<if test = "itemPriceInterval == 'mid'">
+  			AND item_price BETWEEN 100 and 1000
+  		</if>
+   		<if test = "itemPriceInterval == 'high'">
+  			AND item_price > 1000
+  		</if>
+  		<if test = "itemState != null">
+			AND item_state = #{itemState}
+		</if>
+  	</where>	
+  </select>
+  <select id="queryItemListByCriteria" parameterType="PageItemBean" resultMap="ResultMapWithBLOBs">
+  	SELECT * FROM item
+  	<where>
+  		<if test = "itemName != null">
+  			AND item_name LIKE "%"#{itemName}"%"		<!-- "%"#{itemName}"%" == '%${itemName}%' -->
+  		</if>
+  		<if test = "itemPriceInterval == 'low'">
+  			AND item_price BETWEEN 0 and 100
+  		</if>
+  		<if test = "itemPriceInterval == 'mid'">
+  			AND item_price BETWEEN 100 and 1000
+  		</if>
+   		<if test = "itemPriceInterval == 'high'">
+  			AND item_price > 1000
+  		</if>
+   		<if test = "itemState != null">
+			AND item_state = #{itemState}
+		</if>
+  	</where>	
+  	LIMIT #{startingQueryIndex}, #{pageSize}	
+  </select>
+	  
+</mapper>

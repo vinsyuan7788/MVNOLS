@@ -1,0 +1,24 @@
+CMS: stands for "Content Management System", which is a module for static page generation in particular
+
+When the web site scale is large, it is necessary to customize the static web page for large amount of modules, such as:
+	-- item
+	-- order
+	-- brand
+	-- etc.
+Hence this module will be complicated & need to be developed exclusively
+
+Application scenario: take "item" as an example
+1. In service system (i.e. front-end), when customs click "view item detail" on a specific item, customers will be redirected to corresponding item detail 
+   page, which is a static page (in a certain file in server, e.g. "html/items/xxx.html)
+2. In administration system (i.e. back-end), when administrator|seller publishes|updates a new item, the request will sent to an action method, in which will invoke
+   the method in "StaticPageGenerationService" to generate a corresponding static page (in a certain file in server, e.g. "html/items/xxx.html)
+In this scenario, all the information regarding item detail will not go through the server, which reduce the burden of the server
+
+Comparison between static page generation & caching
+1. Static page generation is used for those relatively fixed page (i.e. home page, item detail page, advertisement, etc.)
+   -- Definitely reduce the burden of the server & database for the situation that there are no frequent access to database
+   -- If the data needs to be updated occasionally or even frequently, then static page is less considerable while caching is more considerable
+2. Caching is used in the situation that needs to visit|trace the data relatively frequently (i.e. news, statistics results, etc.)
+   -- Proper caching will reduce the burden of the server & database when occasional or frequent access to database is necessary
+   -- Front-end cache (e.g. page cache) saves the most workload, while the data may be the most inaccurate
+   -- Back-end cache (e.g. secondary-level cache) saves the least workload, while the data may be the relatively most precise

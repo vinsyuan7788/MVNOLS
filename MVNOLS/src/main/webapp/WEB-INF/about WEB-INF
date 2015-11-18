@@ -1,0 +1,14 @@
+Any view in WEB-INF can be reached through request:
+1. In JavaWeb:
+-- request.getDispatcher("/WEB-INF/...");
+   -- e.g. refers to "cn.itcast.global.interceptor.ParameterValidator.java"
+2. In SpringMVC:
+-- return "..." or return "forward:..."
+
+but CANNOT be explicitly jumped to through:
+1. In JavaWeb:
+   -- response.sendredirect("/WEB-INF/...);
+2. In SpringMVC:
+   -- return "redirect:/WEB-INF/..."
+3. In JSP:
+   -- <c:url value = '/WEB-INF/...'/>

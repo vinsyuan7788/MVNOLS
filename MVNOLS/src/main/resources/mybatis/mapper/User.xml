@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+	namespace: 
+	1. If using dynamic proxy, then need to configure the path of mapper interface 
+	2. If not using dynamic proxy, then namespace serves as parent path
+-->
+<mapper namespace="user">
+	<!-- E.g. select one record from DB according to ID -->
+	<!-- 
+		<select>:
+		1. Tags such as <select> can be called a statement 
+		2. #{} is a place-holder: to accept value for precise query
+		3. ${} is a pasting operator: to accept value for vague query
+		<parameterType>: the data type of pass-in parameter (i.e. the place-holder #{}) 
+		1. Can be basic data type & its corresponding wrapper
+		2. Can be JavaBean: can specify the JavaBean fieldname to accept the value
+		<resultType>: the java object corresponding to one record returned|queried from DB 
+			*** Recommend: the field name of java bean = the field name in SELECT statement = the property name in table
+		
+		To accept the value of parameter:
+		1. #{value}: value is the pass-in value, which can be represented by other names
+		   *** e.g. in this case: use "id"
+		2. ${value}: value CANNOT be changed since ${} accepts vague value
+	-->
+	<select id="queryUserById" parameterType="java.lang.Integer" resultType="User">
+		SELECT * FROM user WHERE id = #{id}
+	</select>
+	<select id="queryAllUsersByUsername" parameterType="java.lang.String" resultType="User">
+		SELECT * FROM USER WHERE username LIKE '%${value}%'
+	</select>
+	<select id="queryUsernameAndGenderById" parameterType="java.lang.Integer" resultType="User">
+		SELECT username, gender FROM user WHERE id = #{id}
+	</select>
+	<select id="queryAllGenderAndDetailByUsername" parameterType="java.lang.String" resultType="User">
+		SELECT gender, detail FROM user WHERE username LIKE '%${value}%'
+	</select>
+	
+	<!-- 
+		for <selectKey>:
+		1. keyProperty: the property that will be the primary key in JavaBean
+		2. order: whe the key is generated relative to the sql execution
+		   *** automatic increasing key: generated AFTER sql is executed to DB.
+		   *** uuid: generated BEFORE sql is executed to DB.
+		3. resultType: the data type of keyProperty
+		4. SELECT LAST_INSERT_ID(): return the ID, which is last inserted to DB, to JavaBean
+	 -->
+	<insert id="insertUser" parameterType="User">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+			SELECT LAST_INSERT_ID() FROM DUAL
+			<!-- For uuid: SELECT uuid() (FROM DUAL) -->
+			<!-- For Oracle sequence-generated id: SELECT SEQUENCE_NAME.next.val FROM DUAL -->
+		</selectKey>
+		INSERT INTO user(username, birthday, detail, score) VALUES (#{username}, #{birthday}, #{detail}, #{score})
+	</insert>
+	
+	<delete id="deleteUserById" parameterType="java.lang.Integer">
+		DELETE FROM user WHERE id = #{id}
+	</delete>
+	
+	<update id="updateUserById" parameterType="User">
+		UPDATE user SET score = #{score}, birthday = #{birthday}, detail = #{detail} WHERE id = #{id}
+	</update>
+</mapper>

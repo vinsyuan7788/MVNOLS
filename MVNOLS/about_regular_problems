@@ -1,0 +1,5 @@
+1. In Maven web project, if the configuraiton in Spring is correct, but it always says that "ClassIsNotFound"
+	-- Check "classes" folder in current project under "webapps" folder, see if there is any compilation .class file
+		-- Usually is no, hence needs to re-compile the java file, refers to "BookMarks" - "Software Engineering" - "MyEclipse"
+		
+2. Check "cn.itcast.cms.service.impl.StaticPageGenerationServiceImpl" for more support

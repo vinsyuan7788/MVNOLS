@@ -1,0 +1,87 @@
+To launch this project:
+1. Run the server in MyEclipse
+2. Run other servers for upload file storage
+   -- D:\apache-tomcat-7.0.42-2\bin\startup.bat
+   -- D:\apache-tomcat-7.0.42-3\bin\startup.bat
+
+This project is a MVNOLS (Maven On-Line System) that contains 
+1. Service system: 
+   -- user sign-up & log-in module
+   -- user center module
+   -- item purchase module
+   -- shopping cart module
+   -- etc.
+2. Administration system: 
+   -- user management module
+   -- user role & privilege management module
+   -- item management module
+   -- order management module
+   -- etc.
+3*. Super management system:
+   -- administrator management module
+   -- etc.
+   
+Techniques adopted in this project includes:
+   -- Use SpringMVC, Spring, MyBatis as project architecture
+   -- Caching technique:
+      -- OSCache for web page
+      -- Memcached for distributed caching
+   -- Use FreeMarker for stationary page
+   -- Use multiple server for different functions
+      -- Process customer requests
+      -- Upload file storage 
+   -- Use LVS + Keepalived (in CentOS6) for load balance to resolve high concurrency for server
+      -- Adopt VS/DR strategy for load balancing
+   -- Use database distributed deployment for database high concurrency
+      -- Proxy & Master/Slave
+   
+About high concurrency resolution:
+1. Application layer:
+   -- Static page generation: FreeMarker, velocity
+   -- Image|Upload file separation (using servers solely for images|upload files)
+   -- Caching
+      -- Database cache: the first-level cache; the secondary-level cache
+      -- Page cache: OSCache
+      -- Distributed cache: Memcached
+   -- Mirror (for download)
+2. Server layer:
+   -- Load balancing
+      -- Hardware: NetScalar, F5, RadWare, Array
+         -- But they are expensive, hence software resolution is more widely-used comparatively
+      -- Software: NGINX, LVS (Linux Virtual Server), apache+JK
+         -- NGINX: work in the application layer 
+         -- LVS: work in the transport layer for request dispatching, without costing extra CPU & memory
+                 has backup machine strategy
+            -- IPVS :(incorporated in LVS) is most efficient
+               -- Load balancing stategies: VS/NAT, VS/TUN, VS/DR(the best one)
+3. Database layer:
+   -- Master/slave model
+   -- Proxy for read|write separation
+   -- Sharding
+   
+About network:
+1. Load balancing
+2. Network|Broadcast radiation: 
+3. Seven layers: 
+   -- application: App (Skype, etc.)
+      -- protocol: HTTP/DNS
+      -- software: OS (Operating System)
+      -- hardware: laptop, desktop, server
+   -- representation: ASCII
+      -- software: OS
+      -- hardware: laptop, desktop, server
+   -- session: SQL, RPC; 
+      -- software: MySQL, Oracle, OS
+      -- hardware: laptop, desktop, server
+   -- transport: LVS 
+      -- protocol: TCP/UDP 
+      -- software: OS
+      -- hardware: laptop, desktop, server
+   -- network: IP 
+      -- protocol: IPv4, IPv6
+      -- hardware: router
+   -- data link: MAC address 
+      -- protocol: ARP (in IPv4); NDP (in IPv6)
+      -- hardware: switch, NIC(Network Interface Controller)
+   -- physical: binary bit stream
+      -- hardware: coaxial cable, fiber, NIC

@@ -1,0 +1,379 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cn.itcast</groupId>
+  <artifactId>mvnols</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>Maven OLS Web Application</name>
+  <url>http://maven.apache.org</url>
+  <description/>
+  
+  <!-- Properties for version control of Jar files -->
+   <properties>
+  	<java-version>1.7</java-version>
+  	<junit-version>4.8.2</junit-version>
+  	<org.springframework-version>3.2.4.RELEASE</org.springframework-version>
+  	<jackson-mapper-asl-version>1.9.12</jackson-mapper-asl-version>
+  	<jackson-core-asl-version>1.9.12</jackson-core-asl-version>
+  	<mysql-connector-java-version>5.1.8</mysql-connector-java-version>
+  	<org.mybatis-version>3.2.7</org.mybatis-version>
+  	<org.mybatis-spring-version>1.2.2</org.mybatis-spring-version>
+  	<opensymphony-version>2.4.2</opensymphony-version>
+  	<freemarker-version>2.3.20</freemarker-version>
+	<c3p0-version>0.9.1.2</c3p0-version>
+	<commons-collections-version>1.0</commons-collections-version>
+	<commons-fileupload-version>1.2.2</commons-fileupload-version>
+	<org.apache.commons-version>3.1</org.apache.commons-version>
+	<commons-codec-version>1.6</commons-codec-version>
+	<dom4j-version>1.6.1</dom4j-version>
+	<javax.servlet-version>1.2</javax.servlet-version>
+	<aspectjweaver-version>1.6.6</aspectjweaver-version>
+	<slf4j-log4j12-version>1.6.6</slf4j-log4j12-version>
+	<log4j-version>1.2.16</log4j-version>
+	<javax.servlet-jsp-version>2.0</javax.servlet-jsp-version>
+	<cglib-version>2.2.2</cglib-version>
+	<slf4j-api-version>1.6.6</slf4j-api-version>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+  
+  <!-- These are the dependencies that will introduce necessary Jar files -->
+  <dependencies>
+  	  	<!-- JUnit 4.8.2 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit-version}</version>
+			<type>jar</type>
+		</dependency>
+		
+		<!-- Spring -->
+		<dependency>  
+		  <groupId>org.springframework</groupId>  
+		  <artifactId>spring-core</artifactId>  
+		  <version>${org.springframework-version}</version>  
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-instrument</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-instrument-tomcat</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
+		<!-- Springmvc to JSON -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson-mapper-asl-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>${jackson-core-asl-version}</version>
+		</dependency>
+		
+		<!-- FreeMarker-->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${freemarker-version}</version>
+		</dependency>
+		
+		<!-- Mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${org.mybatis-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${org.mybatis-spring-version}</version>
+		</dependency>
+		
+		<!-- JDBC driver -->
+         <dependency>
+         	<groupId>mysql</groupId>
+         	<artifactId>mysql-connector-java</artifactId>
+         	<version>${mysql-connector-java-version}</version>
+         </dependency>
+         
+         <!-- C3P0 Connection Pool -->
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>${c3p0-version}</version>
+		</dependency>
+		
+		<!-- Apache commons jars -->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>${commons-collections-version}</version>
+		</dependency>
+		<dependency>
+		  <groupId>commons-fileupload</groupId>
+		  <artifactId>commons-fileupload</artifactId>
+		  <version>${commons-fileupload-version}</version>
+		</dependency>
+		<dependency>
+		  <groupId>org.apache.commons</groupId>
+		  <artifactId>commons-lang3</artifactId>
+		  <version>${org.apache.commons-version}</version>
+		</dependency>
+		<dependency>
+		  <groupId>commons-codec</groupId>
+		  <artifactId>commons-codec</artifactId>
+		  <version>${commons-codec-version}</version>
+		</dependency>
+		
+		<!-- DOM4j for XML analysis -->
+		<dependency>
+		   <groupId>dom4j</groupId>
+		   <artifactId>dom4j</artifactId>
+		   <version>${dom4j-version}</version>
+		</dependency>
+		
+		<!-- Servlet -->
+		<dependency>
+		  <groupId>javax.servlet</groupId>
+		  <artifactId>jstl</artifactId>
+		  <version>${javax.servlet-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>taglibs</groupId>
+		    <artifactId>standard</artifactId>
+		    <version>1.1.2</version>
+		</dependency>
+        <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-log4j12</artifactId>
+		<version>1.6.6</version> 
+	   </dependency> 
+		<dependency>
+		  <groupId>log4j</groupId>
+		  <artifactId>log4j</artifactId>
+		  <version>1.2.17</version>
+		</dependency>		
+		<dependency>
+		     <groupId>org.slf4j</groupId>     
+		     <artifactId>slf4j-api</artifactId>     
+		     <version>1.6.6</version>
+		 </dependency>
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		 </dependency>
+
+		 <!-- Memcached -->
+		<dependency>
+		    <groupId>com.google.code.maven-play-plugin.spy</groupId>
+		    <artifactId>memcached</artifactId>
+		    <version>2.4.2</version>
+		</dependency>
+<!--  		
+		<dependency>
+		    <groupId>com.danga</groupId>
+		    <artifactId>memcached</artifactId>
+		    <version>2.0.1</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>memcached-util</groupId>
+		    <artifactId>memcached</artifactId>
+		    <version>1.1</version>
+		</dependency>
+-->	
+		
+		<dependency>
+		  <groupId>cglib</groupId>
+		  <artifactId>cglib</artifactId>
+		  <version>${cglib-version}</version>
+		</dependency>
+		
+		<!-- FCK Editor -->
+		<dependency>
+			<groupId>net.fckeditor</groupId>
+			<artifactId>java-core</artifactId>
+			<version>2.6</version>
+		</dependency>
+		
+		<!-- JSON -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20131018</version>
+		</dependency>
+		
+		<!-- OSCache -->
+		<dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>oscache</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+		
+		<!-- Jersey -->
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.18.1</version>
+		</dependency>
+		
+		<!-- Local jars -->
+		<dependency>
+			<groupId>local-jar</groupId>
+			<artifactId>DirectoryUtils</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>local-jar</groupId>
+			<artifactId>itcast-tools</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>local-jar</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>local-jar</groupId>
+			<artifactId>mybatis-ehcache</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>local-jar</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>local-jar</groupId>
+			<artifactId>ValidateCode</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<!-- Other jars -->
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectjweaver-version}</version>
+		</dependency>
+		<!-- Ehcache -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>2.6.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.3.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.17.1-GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.1.0.GA</version>
+		</dependency>
+  </dependencies>
+  
+  <!-- Here is to add the necessary plugins to integrate external components with Maven -->
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
+      	<groupId>org.apache.tomcat.maven</groupId>
+      	<artifactId>tomcat7-maven-plugin</artifactId>
+      	<version>2.2</version>
+      	<configuration>
+      		<url>http://localhost:8080/manager/text</url>
+      		<path>/</path>					<!-- Cover the webapps/ROOT directory: use "redeploy" command for hot deployment through Maven (correspondly the deployment through MyElclipse is cold deployment)  -->
+      		<server>tomcat</server>			<!-- Server name: can be any name -->
+      		<username>tomcat</username>
+      		<password>tomcat</password>
+      	</configuration>
+      </plugin>
+    </plugins>
+  </build>
+<!--   <reporting>
+  	<plugins>
+  	  <plugin>
+      	<groupId>org.apache.maven.plugins</groupId>
+      	<artifactId>maven-project-info-reports-plugin</artifactId>
+      	<version>2.8.1</version>
+      </plugin>
+  	</plugins>
+  </reporting> -->
+</project>

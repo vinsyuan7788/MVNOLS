@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.1.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
+
+	<!-- 
+		This file contains the SpringMVC global configuration, including:
+	 	1. HM (HandlerMapping) & HA (HandlerAdapter) configuration: annotation configuration is recommended
+	 	   ** <mvc:annotation-driven></mvc:annotation-driven>
+	 	2. VR configuration: XML configuration
+	 	3. Action class: annotation is recommended
+	 	   ** <context:component-scan base-package="..."></context:component-scan>
+	 	   ** @Controller on action class & @Resource|@Autowired is recommended
+	 	4. Converter configuration: XML configuration
+	 	5. Upload configuration: XML configuration
+	 	6. Global Exception Resolver: XML configuration
+	 	7. Interceptors configuration (if necessary): XML configuration
+	 	8. Validator configuration (if necessary): XML configuration
+	-->
+	
+	<!-- 
+		MVC Annotation driven: specify to drive HM and HA through annotation for configuration
+		1. Hence we do not need
+		   <bean class = "org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
+		   <bean class = "org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		2. It automatically supports JSON converter as well, hence do not need below bean as well:
+		   <bean class = "org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>
+		3. Most usually-used in real development 
+	-->
+	<mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+	
+	<!-- VR (View Resolver) Configuration: to resolve view -->
+	<!-- 
+		InternalResourceViewResolver: 
+		1. To resolve JSP view (by JSTL by default)
+		2. Requires JSTL jar
+	-->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- prefix of view -->
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<!-- suffix of view -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- Action class global scan: scan if there is @Controller on the classes under base-package  -->
+	<context:component-scan base-package="cn.itcast.**.action"></context:component-scan>
+	
+	<!-- Global conversion service configuration -->
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="cn.itcast.global.converter.DateConverter"></bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- File upload configuration: MUST configure this resolver once <form action="..." method="..." enctype="multipart/form-data"> -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- Max upload file size: 5MB -->
+		<property name="maxUploadSize" value="5242880"></property>
+	</bean>
+	
+	<!-- Global exception resolver configuration -->
+	<bean class = "cn.itcast.global.exception.CustomExceptionResolver"></bean>
+	
+	<!-- Interceptor Configuration: assigned by HM to H -->
+	<mvc:interceptors>
+ 		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class = "cn.itcast.global.interceptor.LoginValidator"></bean>
+		</mvc:interceptor> 
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class = "cn.itcast.global.interceptor.TokenValidator"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/**"/>
+			<bean class = "cn.itcast.global.interceptor.StatisticsCollector"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/queryUser.action"/>
+			<bean class = "cn.itcast.global.interceptor.ParameterValidator"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	
+	
+	<!-- HM (Handler Mapping) Configuration: to find action class|handler -->
+	<!-- 
+		RequestMappingHandlerMapping:
+	 -->
+<!--	 
+	<bean class = "org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
+-->
+	
+	<!-- HA (Handler Adapter) Configuration: to specify the rule of action class|handler & execute action class|handler -->
+	<!-- 
+		RequestMappingHandlerAdapter:
+	 -->
+<!--	 
+	<bean class = "org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>--> 	
+				<!-- Configure a JSON converter in HA --><!--
+				<bean class = "org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>--><!--
+        	</list>
+		</property>
+	</bean>
+-->
+</beans>

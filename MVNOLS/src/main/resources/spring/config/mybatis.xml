@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.1.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
+
+	<!-- 
+		This file contains the MyBatis and Spring integration configuration, including:
+		1. sessionFactory: XML configuration
+		2. mapper: MapperScannerConfigurer is recommended for configuration through XML
+	-->
+	
+	<!-- Configure the SqlSessionFactory -->
+	<bean id = "sqlSessionFactoryBean" class = "org.mybatis.spring.SqlSessionFactoryBean" scope="singleton">
+		<!-- Configure the dataSrouce -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- Configure the SqlMapConfig.xml -->
+		<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml"></property>
+	</bean>
+	
+	<!-- 
+		Mapper scanner: (recommended) to scan the mapper in batch for dynamic proxy DAO development: 
+		1. mapper interface & mapper.xml MUST have the same name & under the same path
+		2. avoid the individual configuration of mappers
+		3. the <mappers> in SqlMapConfig.xml can be ignored if the mapper scanner is configured here in Spring
+	-->
+	<bean class = "org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- Configure the SqlSessionFactory -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"></property>
+		<!-- 
+			Configure to scan the mappers under basePackages:
+			1. If there are multiple packages, use comma to separate them
+			2. When the mapper is scanned, it will be registered in Spring
+			   ** If the mapper name is "XXX.java", then the bean id is "xXX" 
+		-->
+		<property name="basePackage" value = "cn.itcast.test.dao.mapper, cn.itcast.user.dao.mapper, cn.itcast.item.dao.mapper, cn.itcast.nationality.dao.mapper"></property>
+	</bean>
+		
+</beans>

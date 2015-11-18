@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>freemarker.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    This is my HTML page. <br>
+	Here are the values of regular object:<br/>
+	${HelloWorld}<br/>
+	${HelloFreeMarker}<br/>
+	<br/>
+	
+	Here are the values of JavaBean:<br/>
+	id: ${user.id} <br/>
+	username: ${user.username} <br/>
+	<br/>
+	
+	Here are the values of List: <br/>
+	<#list names as name>
+		${name}
+	</#list>
+	
+	Here are the indexes of List (*****): <br/>
+	<#list names as name>
+		${name_index}
+	</#list>
+	
+	Here are the values of Map: <br/>
+	<!-- 1st way to get the values from a Map -->
+	<#list nameMap?keys as key>
+		${nameMap[key]}
+	</#list>
+	<!-- 2nd way to get the values from a Map -->
+	${nameMap.V1}; ${nameMap.V2}; ${nameMap.K1}
+	
+	Here are the values of List&lt;Map&gt;: <br/>
+	<!-- 1st way to get the values from a List<Map> -->
+	<#list maps as map>
+		<#list map?keys as key>
+			${map[key]}
+		</#list>
+	</#list>
+	<!-- 2nd way to get the values from a List<Map> -->
+	<#list maps as map>
+		${map.name1}; ${map.name2}
+	</#list>
+	
+	Here are value assignment in template (*****): <br/>
+	<#assign x = 100/>
+	the static integer value of x: ${x} <br/>
+	<#assign y = "hi lovelyz~"/>
+	the static string value of y: ${y} <br/>
+	<#assign z = "${HelloFreeMarker}"/>
+	the dynamic string value of z: ${z} <br/>
+	the value of a list assigned in template: <br/>
+	<#assign list>
+		<#list names as name>
+			<#if (name != "Vince") || (name_index != 0)>
+				<#if (name != "Violet") && (name_index != 1)>
+					Name: ${name}
+				<#else>
+					Name: null
+				</#if>
+			<#else>
+				Name: null
+			</#if>
+		</#list>
+	</#assign>
+	${list} <br/>
+	
+	Here are the values of date: <br/>
+	Current date: ${currentTime?date} <br/>
+	Current time: ${currentTime?time} <br/> 
+	Current datetime: ${currentTime?datetime} <br/>
+	
+	Here is the processing of key word null: <br/>
+	<!-- if word is keyword null, then convert it to null string -->
+	word: ${word!""} <br/>
+	word: ${word!} <br/>
+	
+	Here is macro definition (which can be used for front-end pagination)
+	<#macro macro_id_1 argument_arg>
+		${argument_arg}
+		</#macro>
+	<#macro macro_id_2 argument_arg>
+		${argument_arg}
+		<#nested/>
+	</#macro>	
+	the invocation result of the macro: <br/>
+	<@macro_id_1 argument_arg=8/> <br/>
+	<@macro_id_2 argument_arg=8>Hello, this is the nested output</@macro_id_2> <br/>
+	
+	To include another page:
+	<#-- <#include "aaa/bbb/ccc.html"> -->
+	<#-- --> is the comment delimiter in FreeMarker
+	
+  </body>
+</html>

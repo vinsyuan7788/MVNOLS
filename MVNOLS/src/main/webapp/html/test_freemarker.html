@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>freemarker.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    This is my HTML page. <br>
+	Here are the values of regular object:<br/>
+	hello world!<br/>
+	hello freemarker!<br/>
+	<br/>
+	
+	Here are the values of JavaBean:<br/>
+	id: 1 <br/>
+	username: Vince <br/>
+	<br/>
+	
+	Here are the values of List: <br/>
+		Vince
+		Violet
+		Kity
+	
+	Here are the indexes of List (*****): <br/>
+		0
+		1
+		2
+	
+	Here are the values of Map: <br/>
+	<!-- 1st way to get the values from a Map -->
+		Violet
+		Kity
+		Vince
+	<!-- 2nd way to get the values from a Map -->
+	Vince; Violet; Kity
+	
+	Here are the values of List&lt;Map&gt;: <br/>
+	<!-- 1st way to get the values from a List<Map> -->
+			Haha
+			Gary
+			Vince
+			Violet
+	<!-- 2nd way to get the values from a List<Map> -->
+		Haha; Gary
+		Vince; Violet
+	
+	Here are value assignment in template (*****): <br/>
+	the static integer value of x: 100 <br/>
+	the static string value of y: hi lovelyz~ <br/>
+	the dynamic string value of z: hello freemarker! <br/>
+	the value of a list assigned in template: <br/>
+					Name: null
+					Name: null
+					Name: Kity
+ <br/>
+	
+	Here are the values of date: <br/>
+	Current date: 2015-11-13 <br/>
+	Current time: 18:08:42 <br/> 
+	Current datetime: 2015-11-13 18:08:42 <br/>
+	
+	Here is the processing of key word null: <br/>
+	<!-- if word is keyword null, then convert it to null string -->
+	word:  <br/>
+	word:  <br/>
+	
+	Here is macro definition (which can be used for front-end pagination)
+	the invocation result of the macro: <br/>
+			8
+ <br/>
+			8
+Hello, this is the nested output <br/>
+	
+	To include another page:
+ is the comment delimiter in FreeMarker
+	
+  </body>
+</html>

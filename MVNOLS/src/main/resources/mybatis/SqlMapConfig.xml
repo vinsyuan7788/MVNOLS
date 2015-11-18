@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 
+	This file contains the MyBatis global configuration, which contains:
+	1. The alias of the bean classes under some packages: <typeAliases>
+	2. Specify the scanning or location of mapper.xml if necessary: <mappers>
+	3. global settings for interaction with DB: <setting>
+-->
+
+<!-- The name of this file is not fixed. This name is the recommended name -->
+<configuration>	
+
+<!--  
+	<settings>
+		Open session-level cache
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<setting name="aggressiveLazyLoading" value="false"/>
+		Open mapper-level cache
+		<setting name="cacheEnabled" value="true"/>
+	</settings>
+-->	 
+	<!-- 
+		<typeAliases>: define an alias to replace the JavaBean path (usually-used) 
+		1. MyBatis also supports many alias by default, such as the basic type wrappers, refers to the class notes
+	-->
+	<typeAliases>
+		<!-- Define one single alias -->
+		<!-- <typeAlias type="cn.itcast.user.bean.User" alias="user"/> -->
+		<!-- 
+			Define aliases for the JavaBeans under a package & its child packages
+			1. name: the name of the package
+			2. The alias is automatically the JavaBean class name (the first letter can be either upper-case or lower-case) 
+			   ** In this case, each class under "cn.itcast.user.bean" package will have alias
+			3. If there are multiple packages, then add more <package> for each package
+		-->
+		<package name = "cn.itcast.global.pagination.bean"/>
+		<package name = "cn.itcast.test.bean"/>
+		<package name = "cn.itcast.user.bean"/>
+		<package name = "cn.itcast.item.bean"/>
+		<package name = "cn.itcast.nationality.bean"/>
+	</typeAliases>
+
+	<!-- <mappers>: configure mapper.xml file -->
+	<mappers>
+		<!--
+			<mapper>: mapper scan individually
+			resource: specify the path of the mapper.xml 
+			1. In regular DAO development: MyBatis can find all necessary class through mapper.xml
+			2. In dynamic proxy development: MyBatis can find the mapper interface through mapper.xml
+			class: specify the path of the mapper interface in dynamic proxy development
+			1. This will be used occasionally: use "class", and put this mapper.xml into wherever mapper interface is
+		    url: specify the full path of the mapper.xml
+		-->
+		<mapper resource="mybatis/mapper/User.xml"/>		<!-- This XML is for testing -->
+		<!--
+			<pacakge>: mapper scan in batch: for the mapping of multiple mappers under a package
+			1. name: the name of the package 
+			2. This is most usually-used: use "class", and put this mapper.xml into wherever mapper interface is
+			   *** Same regulation as <mapper class="...">
+			In this case, each interface under "cn.itcast.user.dao" will be scanned for mappers
+			3. If there are multiple packages, then add more <package> for each package
+		-->
+		<!-- <package name="cn.itcast.user.dao.mapper"/> -->	<!-- Can be ignored since a mapper scanner is configured in "applicationContext-dao.xml" -->
+	</mappers>
+	
+	<!--
+		More configuration in SqlMapConfig.xml
+		<settings>:
+		In Mybatis, there is no such "MaximumConnection" for user to set
+		1. Such these performance settings are removed by MyBatis
+		   *** While in IBatis, these settings are still remaining
+		2. Performance are automatically adjusted by MyBatis	
+		Global settings should be very careful if we want to set them.
+		Since these settings will affect the running of MyBatis
+		
+		<typeHandlers>: Used for conversion between handle DB data type and Java data type
+		*** No need to configure since it is built in the MyBatis
+	 -->
+</configuration>
