@@ -7,7 +7,10 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * 	This is an interceptor that can collect some statistics for performance monitoring
+ * 	This is an interceptor that can collect some statistics for performance monitoring. For examples:
+ * 	1. Record the total of requests
+ * 	2. Collect the information of IPs that send the request
+ * 	3. etc.
  */
 public class StatisticsCollector implements HandlerInterceptor {
 

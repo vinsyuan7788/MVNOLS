@@ -1,0 +1,15 @@
+SLS: stands for "System-Level Service", which contains a series of functionalities that supports the entire system
+
+The SLS may include or support below functions
+-- Transaction
+-- Performance monitoring
+-- Object pool management
+-- Cache management
+-- Security service
+-- etc.
+
+These functions work as aspects in Spring, hence AOP configuration for SLS is necessary.
+
+Note:
+-- When multiple advice from different aspects serve the same target, the advice follow FILO principle
+

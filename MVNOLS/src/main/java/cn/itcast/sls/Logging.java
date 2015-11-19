@@ -1,25 +1,14 @@
-package cn.itcast.global.aspects;
+package cn.itcast.sls;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
 
 /**
- * 	This is an aspect class to get the statistics of execution time for target method
+ * 	This is an aspect class for logging
+ * 	1. AOP configuration in Spring is necessary to make the aspect class work
+ *     -- In this project the configuration is in "spring/aop.xml"
  */
-public class ExecutionTimeStatistics {
+public class Logging {
 
-	/**
-	 * This is an around advice: with argument "ProceedingJoinPoint proceedingJoinPoint"
-	 * @throws Throwable 
-	 */
-	public void computeExecutionTime (ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-		
-		long beginTime = System.nanoTime();
-		proceedingJoinPoint.proceed();
-		long endTime = System.nanoTime();
-		System.out.println("Time cost of " + proceedingJoinPoint.getSignature().getName() + " in " + proceedingJoinPoint.getTarget().getClass() + ": " + (endTime - beginTime) + "ns");
-	}
-	
 	/**
 	 * 	This is a before advice: with argument "JoinPoint joinPoint"
 	 * 	1. Executed before target method
@@ -28,8 +17,9 @@ public class ExecutionTimeStatistics {
 	 */
 	public void beforeAdvice (JoinPoint joinPoint) throws Exception {	
 		
-		System.out.println("ExecutionTimeStatistics.beforeAdvice()...");
-		
+		System.out.println("Joint point (method) name: " + joinPoint.getSignature().getName());
+		System.out.println("Target class: "  + joinPoint.getTarget().getClass());	
+		System.out.println("Logging.beforeAdvice()...");
 	}
 	
 	/**
@@ -39,26 +29,33 @@ public class ExecutionTimeStatistics {
 	 *  3. There is another argument "Object returnValue" that needs to be configured in Spring 
 	 *     -- "Object returnValue" can accept the return value of target method
 	 * @param joinPoint
+	 * @param returnValue
 	 * @throws Exception
 	 */
 	public void afterReturningAdvice (JoinPoint joinPoint, Object returnValue) throws Exception {
-		
-		System.out.println("ExecutionTimeStatistics.afterReturningAdvice()...");
-		
+
+		System.out.println("Joint point (method) name: " + joinPoint.getSignature().getName());
+		System.out.println("Target class: "  + joinPoint.getTarget().getClass());
+		System.out.println("Target method return value: " + returnValue);
+		System.out.println("Logging.afterReturningAdvice()...");
 	}
 	
 	/**
 	 * 	This is an after-throwing advice: with argument "JoinPoint joinPoint" & "Throwable throwable"
 	 * 	1. Executed if target method throws an exception
 	 * 	2. "Throwable throwable" is used to accept the thrown exception from target method
+	 * 	3. There is another argument "Throwable throwable" that needs to be configured in Spring
+	 *     -- "Throwable throwable" can accept the exception message of target method
 	 * @param joinPoint
 	 * @param throwable
 	 * @throws Exception
 	 */
 	public void afterThrowingAdvice (JoinPoint joinPoint, Throwable throwable) throws Exception {
-		
-		System.out.println("ExecutionTimeStatistics.afgterThrowingAdvice()...");
-		
+
+		System.out.println("Joint point (method) name: " + joinPoint.getSignature().getName());
+		System.out.println("Target class: "  + joinPoint.getTarget().getClass());
+		System.out.println("The exception thrown by target method: " + throwable.getMessage());	
+		System.out.println("Logging.afgterThrowingAdvice()...");
 	}
 	
 	/**
@@ -70,6 +67,6 @@ public class ExecutionTimeStatistics {
 	 */
 	public void afterFinallyAdvice () throws Exception {
 		
-		System.out.println("ExecutionTimeStatistics.afterFinallyAdvice()...");
+		System.out.println("Logging.afterFinallyAdvice()...");
 	}
 }

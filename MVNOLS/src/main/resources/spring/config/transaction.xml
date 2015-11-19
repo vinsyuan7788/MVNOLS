@@ -16,7 +16,13 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
 
-	<!-- This file contains the declarative transaction configuration in Spring -->
+	<!-- 
+		This file contains the declarative transaction configuration in Spring, which contains
+		1. Transaction Manager configuration 
+		2. Transaction declaration
+		3. Transaction AOP configuration
+	-->
+	
 	<!-- 
 		Transaction manager: to specify the transaction manager. There are various transaction managers:
 		1. JDoTransactionManager: for MyBatis & JDBC
@@ -63,4 +69,16 @@
 			<tx:method name="get*" isolation="DEFAULT" propagation="SUPPORTS" read-only="true" rollback-for="Exception"/>
 		</tx:attributes>
 	</tx:advice>
+	
+	<!-- 
+		Transaction AOP configuration for service layer
+		1. Any method regulated by the "name" attribute of <tx:method> in ServiceImpl packages is a transaction
+		   ** All the Operations|methods (that operates DB) in target methods either succeed, or fail if any operation fails (i.e. throws out a RuntimException)
+		   ** When all operations succeed, transaction commits, otherwise roll-backs.
+	-->
+	<aop:config proxy-target-class="false">
+		<aop:pointcut expression="execution(* cn.itcast.*.service.impl.*.*(..))" id="serviceImplTarget"/>
+		<aop:advisor advice-ref="tx" pointcut-ref="serviceImplTarget"/>
+	</aop:config>
+	
 </beans>

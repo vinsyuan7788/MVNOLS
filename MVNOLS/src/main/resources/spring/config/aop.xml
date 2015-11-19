@@ -16,15 +16,28 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
 
-	<!-- This file contains the AOP configuration in Spring -->
-	<!-- 
-		Transaction AOP configuration 
-		1. Any method regulated by <tx:method>name in ServiceImpl packages is a transaction
-		   ** All the Operations|methods (that operates DB) in target methods either succeed, or fail if any operation fails (i.e. throws out a RuntimException)
-		   ** When all operations succeed, transaction commits, otherwise roll-backs.
-	-->
-	<aop:config>
-		<aop:pointcut expression="execution(* cn.itcast.*.service.impl.*.*(..))" id="ServiceImplTarget"/>
-		<aop:advisor advice-ref="tx" pointcut-ref="ServiceImplTarget"/>
-	</aop:config>
+	<!-- This file contains the general AOP configuration in Spring -->
+	
+	<!-- Aspect bean configuration for AOP -->
+	<bean id = "performanceMonitoring" class = "cn.itcast.sls.PerformanceMonitoring"/>
+	<bean id = "logging" class = "cn.itcast.sls.Logging"/>
+
+	<!-- AOP configuration for all action classes in test module -->
+ 	<aop:config proxy-target-class="false">
+		<aop:pointcut expression="execution(* cn.itcast.test.service.impl.*.*(..))" id="testActionTarget"/>
+		<aop:aspect ref="performanceMonitoring">
+			<aop:around method="computeRunningTime" pointcut-ref="testActionTarget"/>
+			<aop:before method="beforeAdvice" pointcut-ref="testActionTarget"/>
+			<aop:after-returning method="afterReturningAdvice" pointcut-ref="testActionTarget" returning="returnValue"/>
+			<aop:after-throwing method="afterThrowingAdvice" pointcut-ref="testActionTarget" throwing="throwable"/>
+			<aop:after method="afterFinallyAdvice" pointcut-ref="testActionTarget"/>
+		</aop:aspect>
+		<aop:aspect ref="logging">
+			<aop:before method="beforeAdvice" pointcut-ref="testActionTarget"/> 
+			<aop:after-returning method="afterReturningAdvice" pointcut-ref="testActionTarget" returning="returnValue"/>
+			<aop:after-throwing method="afterThrowingAdvice" pointcut-ref="testActionTarget" throwing="throwable"/>
+			<aop:after method="afterFinallyAdvice" pointcut-ref="testActionTarget"/>
+		</aop:aspect>
+	</aop:config> 
+	
 </beans>
