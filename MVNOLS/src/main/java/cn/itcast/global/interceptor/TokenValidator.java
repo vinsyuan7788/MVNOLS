@@ -1,22 +1,35 @@
 package cn.itcast.global.interceptor;
 
+import java.lang.reflect.Method;
+import java.util.UUID;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import cn.itcast.global.annotation.Token;
 import cn.itcast.global.configuration.BusinessConstants;
 import cn.itcast.global.exception.CustomException;
+import cn.itcast.global.session.SessionProvider;
 
 /**
  * 	This is an interceptor that to avoid duplicate submission
- *  1. This interceptor will do the duplication submission processing for all necessary requests
- *     -- (1) Those URLs that need to token validation are specified in "token_url.properties"
- *     -- (2) The rest of URLs will be directly released
+ * 	1. The 1st way: interceptor + annotation
+ *     -- (1) Develop the annotation (i.e. Token in this case) to specify token save & validation
+ *     -- (2) In the interceptor (i.e. this TokenVlidator class), parse the annotation for those specified URLs (i.e. TOKEN_URL)
+ *     -- (3) If the method is annotated to save token, then save a token to session scope
+ *     -- (4) If the method is annotated to validate token, then validate the token for duplicate submission check 
+ *     -- (5) The rest of URLs & situations will be released
+ *  1. The 2nd way: only use interceptor: 
+ *     -- (1) Hard-code to save a token in the methods that will return or go to the JSP with forms that needs to perform duplicate submission check
+ *        -- Hard-coding here is a big disadvantage, negatively affecting the system flexibility & scalability
+ *     -- (2) For those specified URLs (i.e. TOKEN_URL), do the duplicate submission check
+ *     -- (3) The rest of URLs will be directly released
  *     -- This is the most universal way
- *  2. Another method refers to "cn.itcast.global.annotation.Token.java".
- *     -- This is the method in the midst of universal & specific
  *  3. The 3rd way to do the duplication submission processing:
  *     -- (1) In each action method that is necessary to be token validated (i.e. avoid the duplicate submission):
  *        -- save the token if the request is the first time submitted as a serverToken
@@ -24,11 +37,18 @@ import cn.itcast.global.exception.CustomException;
  *           -- if yes: forward back to the original view
  *           -- if no: then go on processing the request
  *     -- (2) This is the most specific way: there is no need to configure an interceptor for duplicate submission avoidance
+ *     -- However this method is performance-sensitive. If the request is re-submitted before the server token is saved, then this request will be released, which is not desirable
  */
 public class TokenValidator implements HandlerInterceptor {
 	
+	/*	IOP: IOC & DI	*/
+	@Resource
+	private SessionProvider sessionProvider;
+	
 	/**
 	 * 	Object handler: This is the H(Handler) found by HM, which only contains 1 target method mapped by request URL
+	 *  -- This target method is namely the handler|action method that will process the request (according to the SpringMVC request processing workflow)
+	 *  -- To get this method: use ((HandlerMethod) handler).getMethod()
 	 * 	When to execute this method:
 	 *  -- Before executing the method of handler
 	 *     -- False: means intercept
@@ -47,23 +67,76 @@ public class TokenValidator implements HandlerInterceptor {
 		/*	For those specified URLs, do the token validation	*/
 		if (BusinessConstants.TOKEN_URL.contains(request.getServletPath())) {
 			
-			/*	If the request is submitted the first time: release	 */
-			if (isFirstTime(request)) {
-				return true;
-				
-			/*	Else: return to the error view by throwing out an custom exception	*/
-			} else {
-				throw new CustomException("Your request is submitted successfully. Please do not repeat submission");
-			}
-		} 
+			/*	Get the handler|action method that will process the request	 */
+			Method method = ((HandlerMethod) handler).getMethod();
+            
+			/*	If there is Token annotation applied on the method, get the annotation & parse the values of the fields  */
+            if (method.isAnnotationPresent(Token.class)) {
+            	Token token = method.getAnnotation(Token.class);
+            	
+            	/*	If saveToken() is true, then save a token into session scope	*/
+            	if (token.saveToken() == true) {
+            		sessionProvider.setAttribute("token", UUID.randomUUID().toString(), request, response);
+            	}
+            	
+            	/*	If validToken() is true, then predicate if the request is duplicate with the token	*/
+            	if (token.validateToken() == true) {
+            		
+            		/*	If the request is submitted the first time: release	 */
+        			if (isFirstTime(request)) {
+        				return true;
+    				
+    				/*	Else: return to the error view by throwing out an custom exception	*/
+        			} else {
+        				throw new CustomException("Your request is submitted successfully. Please do not repeat submission");
+        			}	
+            	}
+            }	
+		}
 		
-		/*	For the rest of URLs: release	*/
+		/*	For the rest of URLs & situations: release	*/
 		return true;
 	}
-	
-	
+
 	/**
-	 * 	This is an internal method to predicate if the request is the 1st time submitted
+	 * 	Object handler: This is the H found by HM, which only contains 1 target method mapped by request URL
+	 *  -- This target method is namely the handler|action method that will process the request (according to the SpringMVC request processing workflow)
+	 *  -- To get this method: use ((HandlerMethod) handler).getMethod()
+	 * 	When to execute this method:
+	 *  -- After executing the method of H|AC, before returning ModelAndView
+	 * 	In what situation to use:
+	 * 	-- Use ModelAndView to pass common data (e.g. username, userpoints(用户积分), etc.)
+	 *  -- Use ModelAndView to unify the view
+	 */
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse response,
+			Object handler, ModelAndView modelAndView) throws Exception {
+		
+		System.out.println("TokenValidator.postHandle()...");	
+	}
+
+	/**
+	 * 	Object handler: This is the H found by HM, which only contains 1 target method mapped by request URL
+	 *  -- This target method is namely the handler|action method that will process the request (according to the SpringMVC request processing workflow)
+	 *  -- To get this method: use ((HandlerMethod) handler).getMethod()
+	 * 	When to execute this method:
+	 *  -- After completing execution of method in H (already returning ModelAndView)
+	 * 	In what situation to use:
+	 * 	-- Exception processing
+	 *  -- Action method monitoring
+	 *  -- Do system logging
+	 */
+	@Override
+	public void afterCompletion(HttpServletRequest request,
+			HttpServletResponse response, Object handler, Exception exception)
+			throws Exception {
+		
+		System.out.println("TokenValidator.afterCompletion()...");
+	}
+
+	//-------------------------------------------------------------------------------------------
+	/**
+	 * 	This is an internal method to predicate if the request is the 1st time submitted with the token
 	 * @param request
 	 * @return
 	 */
@@ -81,38 +154,6 @@ public class TokenValidator implements HandlerInterceptor {
 		} else {
 			return false;
 		}
-	}
-
-	/**
-	 * 	Object handler: This is the H found by HM, which only contains 1 target method mapped by request URL
-	 * 	When to execute this method:
-	 *  -- After executing the method of H|AC, before returning ModelAndView
-	 * 	In what situation to use:
-	 * 	-- Use ModelAndView to pass common data (e.g. username, userpoints(用户积分), etc.)
-	 *  -- Use ModelAndView to unify the view
-	 */
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response,
-			Object handler, ModelAndView modelAndView) throws Exception {
-		
-		System.out.println("TokenValidator.postHandle()...");	
-	}
-
-	/**
-	 * 	Object handler: This is the H found by HM, which only contains 1 target method mapped by request URL
-	 * 	When to execute this method:
-	 *  -- After completing execution of method in H (already returning ModelAndView)
-	 * 	In what situation to use:
-	 * 	-- Exception processing
-	 *  -- Action method monitoring
-	 *  -- Do system logging
-	 */
-	@Override
-	public void afterCompletion(HttpServletRequest request,
-			HttpServletResponse response, Object handler, Exception exception)
-			throws Exception {
-		
-		System.out.println("TokenValidator.afterCompletion()...");
 	}
 
 }

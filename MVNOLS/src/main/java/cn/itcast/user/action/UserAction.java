@@ -5,13 +5,15 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import cn.itcast.global.annotation.Token;
+import cn.itcast.global.session.SessionProvider;
 import cn.itcast.user.action.utils.SendEmail;
 import cn.itcast.user.bean.User;
 import cn.itcast.user.bean.Userupload;
@@ -30,6 +32,8 @@ import cn.itcast.user.service.UserService;
 public class UserAction {
 
 	/*	IOP: IOC & DI	*/
+	@Resource
+	private SessionProvider sessionProvider;
 	@Resource
 	private UserService userService;
 	
@@ -65,7 +69,8 @@ public class UserAction {
 	 * @throws Exception
 	 */
 	@RequestMapping("/updateUser")
-	public String updateUser (User user, MultipartFile uploadFile, String uploadFilePath, Model model, HttpSession httpSession) throws Exception {
+	@Token(validateToken=true)
+	public String updateUser (User user, MultipartFile uploadFile, String uploadFilePath, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		/*	Create a new UploadFile instance	*/
 		Userupload userupload = new Userupload();
@@ -79,7 +84,7 @@ public class UserAction {
 		
 		/*	Obtain the latest user information & return	*/
 		User latestUser = userService.queryUserById(user.getId());
-		httpSession.setAttribute("user", latestUser);
+		sessionProvider.setAttribute("user", latestUser, request, response);
 		return "forward:/redirection/success.action";
 	}
 	
@@ -93,6 +98,7 @@ public class UserAction {
 	 * @throws Exception
 	 */
 	@RequestMapping("/deleteUsers")
+	@Token(validateToken=true)
 	public String deleteUsers (Integer[] checkedId, Model model) throws Exception {
 		
 		/*	Transform the array to List	 */
@@ -116,6 +122,7 @@ public class UserAction {
 	 * @throws Exception
 	 */
 	@RequestMapping("/recoverUsers")
+	@Token(validateToken=true)
 	public String recoverUsers (Integer[] checkedId, Model model) throws Exception {
 		
 		/*	Transform the array to List	 */
@@ -151,14 +158,14 @@ public class UserAction {
 	 * @throws Exception
 	 */
 	@RequestMapping("/userLogin")
-	public String userLogin (User user, String returnURL, HttpSession httpSession) throws Exception {
+	public String userLogin (User user, String returnURL, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		/*	Query the existing user according to login information	*/
 		List<User> existingUsers = userService.queryUserByLoginInfo(user);
 		User existingUser = existingUsers.get(0);
 		
 		/*	Save the user information into session scope & return	*/
-		httpSession.setAttribute("user", existingUser);
+		sessionProvider.setAttribute("user", existingUser, request, response);
 		if (returnURL == null || returnURL.trim().length() == 0) {
 			return "redirect:/home.jsp";
 		} else {
@@ -172,9 +179,9 @@ public class UserAction {
 	 * @throws Exception
 	 */
 	@RequestMapping("/userLogout")
-	public String userLogout (HttpSession session) throws Exception {
+	public String userLogout (HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		session.invalidate();
+		sessionProvider.invalidate(request, response);
 		return "redirect:/home.jsp";
 	}
 	

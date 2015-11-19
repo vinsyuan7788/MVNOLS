@@ -3,11 +3,14 @@ package cn.itcast.item.action;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import cn.itcast.global.session.SessionProvider;
 import cn.itcast.item.action.utils.PageItemBeanUtils;
 import cn.itcast.item.bean.Item;
 import cn.itcast.item.bean.wrapper.PageItemBean;
@@ -18,6 +21,8 @@ import cn.itcast.item.service.ItemService;
 public class ItemPaginationAction {
 
 	/*	IOP: IOC & DI	*/
+	@Resource
+	SessionProvider sessionProvider;
 	@Resource
 	private ItemService itemService;
 	@Resource
@@ -35,7 +40,7 @@ public class ItemPaginationAction {
 	 * @throws Exception
 	 */
 	@RequestMapping("/queryItemListByCriteria")
-	public String queryItemListByCriteria (PageItemBean pageItemBean, HttpSession httpSession) throws Exception {
+	public String queryItemListByCriteria (PageItemBean pageItemBean, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		/*	Process the criteria & set the currentPageCode	*/
 		pageItemBeanUtils.ProcessFieldsForQuery(pageItemBean);
@@ -52,12 +57,12 @@ public class ItemPaginationAction {
 		pageItemBean.setBeanListForCurrentPage(items);
 		
 		/*	Save the pageBean into session scope & return  */
-		httpSession.setAttribute("pageItemBean", pageItemBean);
+		sessionProvider.setAttribute("pageItemBean", pageItemBean, request, response);
 		return "item/itemList";
 	}
 	
 	@RequestMapping("/queryItemListByAdminCriteria")
-	public String queryItemListByAdminCriteria (PageItemBean pageItemBean, HttpSession httpSession) throws Exception {
+	public String queryItemListByAdminCriteria (PageItemBean pageItemBean, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		/*	Process the criteria & set the currentPageCode	*/
 		pageItemBeanUtils.ProcessFieldsForAdminQuery(pageItemBean);
@@ -75,15 +80,15 @@ public class ItemPaginationAction {
 		
 		/*	Set a flag to specify which button is displayed in JSP view	*/
 		if (pageItemBean.getItemState() != null && pageItemBean.getItemState().equalsIgnoreCase("active")) {
-			httpSession.setAttribute("buttonFlag", "putOnSale");
+			sessionProvider.setAttribute("buttonFlag", "putOnSale", request, response);
 		} else if (pageItemBean.getItemState() != null && pageItemBean.getItemState().equalsIgnoreCase("unactive")) {
-			httpSession.setAttribute("buttonFlag", "putOffSale");
+			sessionProvider.setAttribute("buttonFlag", "putOffSale", request, response);
 		} else {
-			httpSession.removeAttribute("buttonFlag");
+			sessionProvider.removeAttribute("buttonFlag", request, response);
 		}
 		
 		/*	Save the pageBean into session scope & return  */
-		httpSession.setAttribute("pageItemBean", pageItemBean);
+		sessionProvider.setAttribute("pageItemBean", pageItemBean, request, response);
 		return "redirect:/redirection/itemAdminList.action";
 	}
 }

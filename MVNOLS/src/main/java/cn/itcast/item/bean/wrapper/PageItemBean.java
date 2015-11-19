@@ -1,12 +1,14 @@
 package cn.itcast.item.bean.wrapper;
 
+import java.io.Serializable;
+
 import cn.itcast.global.pagination.bean.PageBean;
 import cn.itcast.item.bean.Item;
 
 /**
  * 	This is a JavaBean for comprehensive query of items
  */
-public class PageItemBean extends PageBean<Item> {
+public class PageItemBean extends PageBean<Item> implements Serializable {
 	
 	private String itemName;
     private String itemPriceInterval;

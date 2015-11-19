@@ -1,0 +1,1 @@
+Interceptors needs to be configured in SpringMVC, which is shown in "src/main/resources/springmvc/springmvc.xml"

@@ -30,13 +30,14 @@ public interface BusinessConstants {
 	public static final int USER_OFFSET_POSITION = 3;
 	
 	/*	Public URL	*/
-	public static final String PUBLIC_URL = "/user/userLogin.action, /user/userLogout.action, /user/userRegister.action, /user/userActivate.action, " +
-			"/redirection/success.action, /redirection/login.action, /redirection/itemCriteria.action, redirect:/redirection/itemList.action, " +
+	public static final String PUBLIC_URL = "/redirection/success.action, /redirection/login.action, /redirection/itemCriteria.action, /redirection/itemList.action, " +
 			"/captchaAjax/captchaValidation.action, " +
+			"/user/userLogin.action, /user/userLogout.action, /user/userRegister.action, /user/userActivate.action, " +
 			"/userAjax/duplicationValidation.action, /userAjax/existenceValidation.action, /userAjax/updateValidation.action, " +
 			"/nationalityAjax/queryNationality.action, " +
 			"/itemPagination/queryItemListByCriteria.action";
 	
 	/*	Token URL	*/
-	public static final String TOKEN_URL = "/user/updateUser.action, /user/deleteUsers.action, /user/recoverUsers.action";
+	public static final String TOKEN_URL = "/redirection/userAccount.action, /redirection/userAdminList.action, " +
+			"/user/updateUser.action, /user/deleteUsers.action, /user/recoverUsers.action";
 }

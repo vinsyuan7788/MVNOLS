@@ -1,13 +1,14 @@
 package cn.itcast.global.redirection.action;
 
-import java.util.UUID;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cn.itcast.global.session.impl.HttpSessionProvider;
+import cn.itcast.global.annotation.Token;
+import cn.itcast.global.session.SessionProvider;
 import cn.itcast.item.action.utils.PageItemBeanUtils;
 import cn.itcast.item.bean.wrapper.PageItemBean;
 
@@ -23,7 +24,7 @@ public class RedirectionAction {
 	
 	/*	IOP: IOC & DI	*/
 	@Resource
-	private HttpSessionProvider sessionProvider;
+	private SessionProvider sessionProvider;
 	@Resource
 	private PageItemBeanUtils pageItemBeanUtils;
 	
@@ -62,7 +63,7 @@ public class RedirectionAction {
 	 * @throws Exception
 	 */
 	@RequestMapping("/login")
-	public String login (PageItemBean pageItemBean, String host, String pathname, HttpServletRequest request) throws Exception {
+	public String login (PageItemBean pageItemBean, String host, String pathname, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		/*	Process the criteria & set the currentPageCode	*/
 		pageItemBeanUtils.ProcessFieldsForQuery(pageItemBean);
@@ -72,7 +73,7 @@ public class RedirectionAction {
 				"?currentPageCode=" + pageItemBean.getCurrentPageCode() + 
 				"&itemName=" + pageItemBean.getItemName() + 
 				"&itemPriceInterval=" + pageItemBean.getItemPriceInterval();
-		sessionProvider.setAttribute("returnURL", returnURL, request);
+		sessionProvider.setAttribute("returnURL", returnURL, request, response);
 		
 		/*	Redirect to "login.jsp" view	*/
 		return "redirect:/login.jsp";
@@ -86,9 +87,8 @@ public class RedirectionAction {
 	 * @throws Exception
 	 */
 	@RequestMapping("/userAccount")
+	@Token(saveToken=true)
 	public String userAccount (HttpServletRequest request) throws Exception {
-		
-		sessionProvider.setAttribute("token", UUID.randomUUID().toString(), request);
 		return "user/userAccount";
 	}
 	
@@ -100,9 +100,8 @@ public class RedirectionAction {
 	 * @throws Exception
 	 */
 	@RequestMapping("/userAdminList")
+	@Token(saveToken=true)
 	public String userAdminList (HttpServletRequest request) throws Exception {
-		
-		sessionProvider.setAttribute("token", UUID.randomUUID().toString(), request);
 		return "admin/user/userList";
 	}
 	

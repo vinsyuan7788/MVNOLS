@@ -13,7 +13,7 @@ import cn.itcast.user.bean.User;
  * 	1. This class contains the fields for comprehensive query of user, extending PageBean<User> class
  *  2. If there are query conditions, then corresponding action method & mapper.xml should be modified
  */
-public class PageUserBean extends PageBean<User> {
+public class PageUserBean extends PageBean<User> implements Serializable {
 	
     private String username;
     private String gender;

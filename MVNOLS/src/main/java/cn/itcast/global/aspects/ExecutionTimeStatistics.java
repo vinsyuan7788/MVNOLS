@@ -4,15 +4,15 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 
 /**
- * 	This is an aspect to get the statistics of execution time for target method
+ * 	This is an aspect class to get the statistics of execution time for target method
  */
 public class ExecutionTimeStatistics {
 
 	/**
-	 * This is an around advice:
+	 * This is an around advice: with argument "ProceedingJoinPoint proceedingJoinPoint"
 	 * @throws Throwable 
 	 */
-	public void saveToken (ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+	public void computeExecutionTime (ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 		
 		long beginTime = System.nanoTime();
 		proceedingJoinPoint.proceed();
@@ -21,7 +21,7 @@ public class ExecutionTimeStatistics {
 	}
 	
 	/**
-	 * 	This is a before advice:
+	 * 	This is a before advice: with argument "JoinPoint joinPoint"
 	 * 	1. Executed before target method
 	 * @param joinPoint
 	 * @throws Exception
@@ -33,7 +33,7 @@ public class ExecutionTimeStatistics {
 	}
 	
 	/**
-	 * 	This is an after-returning advice
+	 * 	This is an after-returning advice: with argument "JoinPoint joinPoint" & "Object returnValue" (not required, but commonly-used)
 	 *  1. Executed after target method, if target method is executed normally
 	 *  2. When target method throws an exception, after return advice will NOT be executed
 	 *  3. There is another argument "Object returnValue" that needs to be configured in Spring 
@@ -41,14 +41,14 @@ public class ExecutionTimeStatistics {
 	 * @param joinPoint
 	 * @throws Exception
 	 */
-	public void afterReturningAdvice (JoinPoint joinPoint) throws Exception {
+	public void afterReturningAdvice (JoinPoint joinPoint, Object returnValue) throws Exception {
 		
 		System.out.println("ExecutionTimeStatistics.afterReturningAdvice()...");
 		
 	}
 	
 	/**
-	 * 	This is an after-throwing advice
+	 * 	This is an after-throwing advice: with argument "JoinPoint joinPoint" & "Throwable throwable"
 	 * 	1. Executed if target method throws an exception
 	 * 	2. "Throwable throwable" is used to accept the thrown exception from target method
 	 * @param joinPoint
@@ -62,7 +62,7 @@ public class ExecutionTimeStatistics {
 	}
 	
 	/**
-	 * 	This is an after finally advice:
+	 * 	This is an after finally advice: with no argument
 	 *  1. Executed no matter if there is an exception when target method is executed
 	 *  2. If target method is not executed, then finally advice is NOT executed as well
 	 *     -- e.g. target method is prohibited by around advice
