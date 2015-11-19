@@ -20,5 +20,4 @@ import java.lang.annotation.Target;
 public @interface Token {
 
 	boolean saveToken() default false;
-	boolean removeToken() default false;
 }
