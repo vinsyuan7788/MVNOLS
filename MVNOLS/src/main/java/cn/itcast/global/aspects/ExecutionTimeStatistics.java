@@ -4,7 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 
 /**
- * 	This is an aspect to get the statistics of execution time of target method or target class
+ * 	This is an aspect to get the statistics of execution time for target method
  */
 public class ExecutionTimeStatistics {
 
@@ -12,12 +12,12 @@ public class ExecutionTimeStatistics {
 	 * This is an around advice:
 	 * @throws Throwable 
 	 */
-	public void saveToken (ProceedingJoinPoint joinPoint) throws Throwable {
+	public void saveToken (ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 		
 		long beginTime = System.nanoTime();
-		joinPoint.proceed();
+		proceedingJoinPoint.proceed();
 		long endTime = System.nanoTime();
-		System.out.println("Time cost of " + joinPoint.getSignature().getName() + " in " + joinPoint.getTarget().getClass() + ": " + (endTime - beginTime) + "ns");
+		System.out.println("Time cost of " + proceedingJoinPoint.getSignature().getName() + " in " + proceedingJoinPoint.getTarget().getClass() + ": " + (endTime - beginTime) + "ns");
 	}
 	
 	/**
