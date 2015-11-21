@@ -1,4 +1,4 @@
-package cn.itcast.user.bean.wrapper;
+package cn.itcast.temporary.bean.wrapper;
 
 import java.io.Serializable;
 

@@ -5,8 +5,6 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -89,6 +87,6 @@ public class ItemPaginationAction {
 		
 		/*	Save the pageBean into session scope & return  */
 		sessionProvider.setAttribute("pageItemBean", pageItemBean, request, response);
-		return "redirect:/redirection/itemAdminList.action";
+		return "admin/item/itemList";
 	}
 }

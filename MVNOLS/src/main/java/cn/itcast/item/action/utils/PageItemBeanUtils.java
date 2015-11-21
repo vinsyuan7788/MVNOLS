@@ -24,6 +24,9 @@ public class PageItemBeanUtils extends PageBeanFieldSetter<PageItemBean> impleme
 		if (pageItemBean.getItemPriceInterval() == null || pageItemBean.getItemPriceInterval().equalsIgnoreCase("null") || pageItemBean.getItemPriceInterval().trim().length() == 0 || pageItemBean.getItemPriceInterval().equalsIgnoreCase("all")) {
 			pageItemBean.setItemPriceInterval(null);
 		}
+		if (pageItemBean.getItemPriceRanking() == null || pageItemBean.getItemPriceRanking().equalsIgnoreCase("null") || pageItemBean.getItemPriceRanking().trim().length() == 0) {
+			pageItemBean.setItemPriceRanking(null);
+		}
 		if (pageItemBean.getItemState() == null || pageItemBean.getItemState().equalsIgnoreCase("null") || pageItemBean.getItemState().trim().length() == 0) {
 			pageItemBean.setItemState("active");
 		}
@@ -56,6 +59,9 @@ public class PageItemBeanUtils extends PageBeanFieldSetter<PageItemBean> impleme
 		}
 		if (pageItemBean.getItemPriceInterval() == null || pageItemBean.getItemPriceInterval().equalsIgnoreCase("null") || pageItemBean.getItemPriceInterval().trim().length() == 0 || pageItemBean.getItemPriceInterval().equalsIgnoreCase("all")) {
 			pageItemBean.setItemPriceInterval(null);
+		}
+		if (pageItemBean.getItemPriceRanking() == null || pageItemBean.getItemPriceRanking().equalsIgnoreCase("null") || pageItemBean.getItemPriceRanking().trim().length() == 0) {
+			pageItemBean.setItemPriceRanking(null);
 		}
 		if (pageItemBean.getItemState() == null || pageItemBean.getItemState().equalsIgnoreCase("null") || pageItemBean.getItemState().trim().length() == 0 || pageItemBean.getItemState().equalsIgnoreCase("all")) {
 			pageItemBean.setItemState(null);

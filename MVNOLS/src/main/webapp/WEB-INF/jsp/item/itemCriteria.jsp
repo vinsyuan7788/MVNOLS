@@ -31,14 +31,17 @@ $().ready(function () {
 });
 </script>
   <body>
-    <h4>Welcome to mvnols! Please set the criteria for comprehensive query of items. <a href = "<c:url value = '/home.jsp'/>">Home</a></h4>
+  <h4>Welcome to mvnols! Please set the criteria for comprehensive query of items. <a href = "<c:url value = '/home.jsp'/>">Home</a></h4>
   <form id = "criteriaForm" enctype="application/x-www-form-urlencoded">
   Item name: <input type = "text" id = "itemName" name = "itemName"/>
   <br/>
-  price: <input type = "radio" id = "itemPriceInterval" name = "itemPriceInterval" value = "all" checked="checked"/>All
+  price range: <input type = "radio" id = "itemPriceInterval" name = "itemPriceInterval" value = "all" checked="checked"/>All
   		 <input type = "radio" id = "itemPriceInterval" name = "itemPriceInterval" value = "low"/>low (0 - 100)
   		 <input type = "radio" id = "itemPriceInterval" name = "itemPriceInterval" value = "mid"/>mid (100 - 1000)
          <input type = "radio" id = "itemPriceInterval" name = "itemPriceInterval" value = "high"/>high (> 1000)
+  <br/>
+  price ranking: <input type = "radio" id = "itemPriceRanking" name = "itemPriceRanking" value = "ascending" checked="checked"/>From Low To High
+  		 <input type = "radio" id = "itemPriceRanking" name = "itemPriceRanking" value = "descending"/>From High to Low
   <br/>
   <input type = "hidden" name = "itemState" value = "active"/>
   <input type = "submit" id = "query" value = "Query"/>

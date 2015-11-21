@@ -41,6 +41,9 @@ $().ready(function () {
   		 <input type = "radio" id = "itemPriceInterval" name = "itemPriceInterval" value = "mid"/>mid (100 - 1000)
          <input type = "radio" id = "itemPriceInterval" name = "itemPriceInterval" value = "high"/>high (> 1000)
   <br/>
+  price ranking: <input type = "radio" id = "itemPriceRanking" name = "itemPriceRanking" value = "ascending" checked="checked"/>From Low To High
+  		 <input type = "radio" id = "itemPriceRanking" name = "itemPriceRanking" value = "descending"/>From High to Low
+  <br/>
   state: <input type = "radio" id = "itemState" name = "itemState" value = "all" checked="checked"/>All
   		 <input type = "radio" id = "itemState" name = "itemState" value = "active"/>active
   		 <input type = "radio" id = "itemState" name = "itemState" value = "unactive"/>unactive

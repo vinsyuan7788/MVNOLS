@@ -12,8 +12,15 @@ public class PageItemBean extends PageBean<Item> implements Serializable {
 	
 	private String itemName;
     private String itemPriceInterval;
+    private String itemPriceRanking;
     private String itemState;
     
+	public String getItemPriceRanking() {
+		return itemPriceRanking;
+	}
+	public void setItemPriceRanking(String itemPriceRanking) {
+		this.itemPriceRanking = itemPriceRanking;
+	}
 	public String getItemState() {
 		return itemState;
 	}

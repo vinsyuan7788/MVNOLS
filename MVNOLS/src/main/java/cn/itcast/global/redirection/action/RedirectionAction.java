@@ -72,7 +72,8 @@ public class RedirectionAction {
 		String returnURL = "http://" + host + pathname +
 				"?currentPageCode=" + pageItemBean.getCurrentPageCode() + 
 				"&itemName=" + pageItemBean.getItemName() + 
-				"&itemPriceInterval=" + pageItemBean.getItemPriceInterval();
+				"&itemPriceInterval=" + pageItemBean.getItemPriceInterval() +
+				"&itemPriceRanking=" + pageItemBean.getItemPriceRanking();
 		sessionProvider.setAttribute("returnURL", returnURL, request, response);
 		
 		/*	Redirect to "login.jsp" view	*/
@@ -124,16 +125,6 @@ public class RedirectionAction {
 	@RequestMapping("/itemCriteria")
 	public String itemCriteria () throws Exception {
 		return "item/itemCriteria";
-	}
-
-	/**
-	 * 	This is an action method to go to "admin/item/itemList.jsp"
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping("/itemAdminList")
-	public String itemAdminList () throws Exception {
-		return "admin/item/itemList";
 	}
 	
 	/**

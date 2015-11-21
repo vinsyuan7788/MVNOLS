@@ -169,9 +169,9 @@ $().ready(function() {
 <%-- This part serves for pagination in back-end --%>
 <center id = "paging">
 Page:${pageItemBean.currentPageCode}/Total:${pageItemBean.totalPages}
-<a href = "<c:url value = '/itemPagination/queryItemListByAdminCriteria.action?currentPageCode=1&itemName=${pageItemBean.itemName }&itemPriceInterval=${pageItemBean.itemPriceInterval }&itemState=${pageItemBean.itemState }'/>">First</a>
+<a href = "<c:url value = '/itemPagination/queryItemListByAdminCriteria.action?currentPageCode=1&itemName=${pageItemBean.itemName }&itemPriceInterval=${pageItemBean.itemPriceInterval }&itemPriceRanking=${pageItemBean.itemPriceRanking }&itemState=${pageItemBean.itemState }'/>">First</a>
 <c:if test="${pageItemBean.currentPageCode != 1}">
-	<a href = "<c:url value = '/itemPagination/queryItemListByAdminCriteria.action?currentPageCode=${pageItemBean.currentPageCode-1}&itemName=${pageItemBean.itemName }&itemPriceInterval=${pageItemBean.itemPriceInterval }&itemState=${pageItemBean.itemState }'/>">Previous</a>
+	<a href = "<c:url value = '/itemPagination/queryItemListByAdminCriteria.action?currentPageCode=${pageItemBean.currentPageCode-1}&itemName=${pageItemBean.itemName }&itemPriceInterval=${pageItemBean.itemPriceInterval }&itemPriceRanking=${pageItemBean.itemPriceRanking }&itemState=${pageItemBean.itemState }'/>">Previous</a>
 </c:if>
 <c:forEach items="${pageItemBean.displayPageCodes }" var="pageCode">
 	<c:choose>
@@ -179,20 +179,21 @@ Page:${pageItemBean.currentPageCode}/Total:${pageItemBean.totalPages}
 			[${pageCode}]
 		</c:when>
 		<c:otherwise>
-		    <a href = "<c:url value = '/itemPagination/queryItemListByAdminCriteria.action?currentPageCode=${pageCode}&itemName=${pageItemBean.itemName }&itemPriceInterval=${pageItemBean.itemPriceInterval }&itemState=${pageItemBean.itemState }'/>">${pageCode}</a>
+		    <a href = "<c:url value = '/itemPagination/queryItemListByAdminCriteria.action?currentPageCode=${pageCode}&itemName=${pageItemBean.itemName }&itemPriceInterval=${pageItemBean.itemPriceInterval }&itemPriceRanking=${pageItemBean.itemPriceRanking }&itemState=${pageItemBean.itemState }'/>">${pageCode}</a>
 		</c:otherwise>
 	</c:choose>
 </c:forEach>
 <c:if test="${pageItemBean.currentPageCode != pageItemBean.totalPages }">
-	<a href = "<c:url value = '/itemPagination/queryItemListByAdminCriteria.action?currentPageCode=${pageItemBean.currentPageCode+1}&itemName=${pageItemBean.itemName }&itemPriceInterval=${pageItemBean.itemPriceInterval }&itemState=${pageItemBean.itemState }'/>">Next</a>
+	<a href = "<c:url value = '/itemPagination/queryItemListByAdminCriteria.action?currentPageCode=${pageItemBean.currentPageCode+1}&itemName=${pageItemBean.itemName }&itemPriceInterval=${pageItemBean.itemPriceInterval }&itemPriceRanking=${pageItemBean.itemPriceRanking }&itemState=${pageItemBean.itemState }'/>">Next</a>
 </c:if>
-<a href = "<c:url value = '/itemPagination/queryItemListByAdminCriteria.action?currentPageCode=${pageItemBean.totalPages}&itemName=${pageItemBean.itemName }&itemPriceInterval=${pageItemBean.itemPriceInterval }&itemState=${pageItemBean.itemState }'/>">Last</a>
+<a href = "<c:url value = '/itemPagination/queryItemListByAdminCriteria.action?currentPageCode=${pageItemBean.totalPages}&itemName=${pageItemBean.itemName }&itemPriceInterval=${pageItemBean.itemPriceInterval }&itemPriceRanking=${pageItemBean.itemPriceRanking }&itemState=${pageItemBean.itemState }'/>">Last</a>
 </center><br/>
 
 <center>
 <form id="pagingQueryForm" method="get" action="<c:url value = '/itemPagination/queryItemListByAdminCriteria.action'/>">
 <input type = "hidden" name = "itemName" value = "${pageItemBean.itemName}"/>
 <input type = "hidden" name = "itemPriceInterval" value = "${pageItemBean.itemPriceInterval}"/>
+<input type = "hidden" name = "itemPriceRanking" value = "${pageItemBean.itemPriceRanking}"/>
 <input type = "hidden" name = "itemState" value = "${pageItemBean.itemState }" />
 Please enter the page that you want to go: <input type = "text" id="currentPageCode" name="currentPageCode" value = "${pageItemBean.currentPageCode}"/>
 <input type="submit" value="go"/>
@@ -203,6 +204,7 @@ Please enter the page that you want to go: <input type = "text" id="currentPageC
 <form action = "<c:url value = '/itemPagination/queryItemListByAdminCriteria.action'/>" method = "get">
 <input type = "hidden" name = "itemName" value = "${pageItemBean.itemName}"/>
 <input type = "hidden" name = "itemPriceInterval" value = "${pageItemBean.itemPriceInterval}"/>
+<input type = "hidden" name = "itemPriceRanking" value = "${pageItemBean.itemPriceRanking}"/>
 <input type = "hidden" name = "itemState" value = "${pageItemBean.itemState }" />
 Please select the page you want to go:
 <select name = "currentPageCode">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.itcast.item.dao.mapper.ItemMapper" >
+<mapper namespace="cn.itcast.item.dao.mapper.ItemMapper">
   <resultMap id="BaseResultMap" type="cn.itcast.item.bean.Item" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="item_name" property="itemName" jdbcType="VARCHAR" />
@@ -303,7 +303,7 @@
   		<if test = "itemState != null">
 			AND item_state = #{itemState}
 		</if>
-  	</where>	
+  	</where>
   </select>
   <select id="queryItemListByCriteria" parameterType="PageItemBean" resultMap="ResultMapWithBLOBs">
   	SELECT * FROM item
@@ -323,8 +323,72 @@
    		<if test = "itemState != null">
 			AND item_state = #{itemState}
 		</if>
-  	</where>	
+  	</where>
+  		<if test = "itemPriceRanking == 'ascending' || itemPriceRanking == null">
+			ORDER BY item_price ASC
+		</if>
+		<if test = "itemPriceRanking == 'descending'">
+			ORDER BY item_price DESC
+		</if>		
   	LIMIT #{startingQueryIndex}, #{pageSize}	
   </select>
-	  
+
+
+
+
+
+  <!-- 
+  	   Below is to explore & get the idea of geenral MyBatis DAO optimization ONLY for single-table query & SQL segment review, 
+       which refers to /MVNOLS/src/test/java/cn/itcast/test/others/TestQueryBean.java for more illustration
+  -->
+  <sql id="selector">
+  		SELECT
+  		<if test="queryFields != null and queryFields.size > 0">
+  		  	<foreach collection="queryFields" item="queryField" separator=",">
+  				${queryField.queryFieldName}
+  			</foreach>
+  		</if>
+  		<if test="queryFields == null or queryFields.size == 0">
+  			*
+  		</if>
+  		FROM item
+  </sql>
+  <sql id="whereConditions">
+  		<if test="conditionFields != null and conditionFields > 0">
+  			<where>
+  		  	<foreach collection="conditionFields" item="conditionFields" separator=",">
+  		  		<if test="isLike == true">
+  		  			and ${conditionFieldName} like "%"#{conditionFieldValue}"%"	
+  		  		</if>
+  		  		<if test="isLike == false">
+  		  			and ${conditionFieldName} = #{conditionFieldValue}
+  		  		</if>
+  			</foreach>
+  			</where>
+  		</if>	
+  </sql>
+  <sql id="orderBy">
+  		<if test="orderFields != null and orderFields > 0">
+  		ORDER BY
+  		<foreach collection="orderFields" item="orderField" separator=",">
+  			<if test = "isAsc == true">
+  				${orderFieldName} ASC
+  			</if>
+			<if test = "isAsc == true">
+  				${orderFieldName} DESC
+  			</if>
+  		</foreach>
+ 		</if>
+  </sql>
+  <sql id="limit">
+  		<if test="startingQueryIndex != null">
+  	  		LIMIT #{startingQueryIndex}, #{pageSize}	
+  		</if>
+  </sql>
+  <select id="queryItemListByCriteria_Test" parameterType="PageItemBean" resultMap="ResultMapWithBLOBs">
+  		<include refid="selector"></include>
+  		<include refid="whereConditions"></include>
+  		<include refid="orderBy"></include>
+  		<include refid="limit"></include>
+  </select>	  
 </mapper>

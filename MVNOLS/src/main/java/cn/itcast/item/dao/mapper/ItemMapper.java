@@ -39,4 +39,6 @@ public interface ItemMapper {
 	int queryTotalItemsByCriteria(PageItemBean pageItemBean);
 
 	List<Item> queryItemListByCriteria(PageItemBean pageItemBean);
+	
+	List<Item> queryItemListByCriteria_Test(PageItemBean pageItemBean);
 }

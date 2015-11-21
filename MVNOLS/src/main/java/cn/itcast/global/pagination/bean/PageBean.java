@@ -3,6 +3,8 @@ package cn.itcast.global.pagination.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.itcast.temporary.bean.query.bean.QueryBean;
+
 /**
  * 	This is a global generic JavaBean for back-end paging query processing
  * 	1. Can provide the getters and setters for all fields for simplicity
@@ -11,7 +13,7 @@ import java.util.List;
  * @author Xu (Vince) Yuan
  * @param <T>
  */
-public class PageBean<T> {
+public class PageBean<T> extends QueryBean {
 
 	private Integer currentPageCode;			// current page code (default is 1)
 	private Integer pageSize;					// page size
