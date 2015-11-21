@@ -1,6 +1,6 @@
 package cn.itcast.item.action.utils;
 
-import cn.itcast.global.configuration.BusinessConstants;
+import cn.itcast.global.configuration.Constants;
 import cn.itcast.global.pagination.utils.PageBeanFieldProcessor;
 import cn.itcast.global.pagination.utils.PageBeanFieldSetter;
 import cn.itcast.item.bean.wrapper.PageItemBean;
@@ -40,7 +40,7 @@ public class PageItemBeanUtils extends PageBeanFieldSetter<PageItemBean> impleme
 	public void ProcessFieldsForDisplay (PageItemBean pageItemBean) throws Exception {
 		
 		/* 	Set the page size, maximum display pages, offset position	*/
-		super.setParametersForDisplay(pageItemBean, BusinessConstants.ITEM_PAGE_SIZE, BusinessConstants.ITEM_MAXIMUM_DISPLAY_PAGES, BusinessConstants.ITEM_OFFSET_POSITION);
+		super.setParametersForDisplay(pageItemBean, Constants.ITEM_PAGE_SIZE, Constants.ITEM_MAXIMUM_DISPLAY_PAGES, Constants.ITEM_OFFSET_POSITION);
 	}
 
 	/**
@@ -73,6 +73,6 @@ public class PageItemBeanUtils extends PageBeanFieldSetter<PageItemBean> impleme
 	public void ProcessFieldsForAdminDisplay(PageItemBean pageItemBean) throws Exception {
 		
 		/* 	Set the page size, maximum display pages, offset position	*/
-		super.setParametersForDisplay(pageItemBean, BusinessConstants.ADMIN_ITEM_PAGE_SIZE, BusinessConstants.ADMIN_ITEM_MAXIMUM_DISPLAY_PAGES, BusinessConstants.ADMIN_ITEM_OFFSET_POSITION);
+		super.setParametersForDisplay(pageItemBean, Constants.ADMIN_ITEM_PAGE_SIZE, Constants.ADMIN_ITEM_MAXIMUM_DISPLAY_PAGES, Constants.ADMIN_ITEM_OFFSET_POSITION);
 	}
 }

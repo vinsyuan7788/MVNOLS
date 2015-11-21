@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.dsna.util.images.ValidateCode;
-import cn.itcast.global.configuration.BusinessConstants;
+import cn.itcast.global.configuration.Constants;
 
 /**
  * 	This is a JavaWeb servlet to obtain the captcha
@@ -29,7 +29,7 @@ public class CaptchaServlet extends HttpServlet {
 			throws ServletException, IOException {
 	
 		/*	Create a captcha   */
-		ValidateCode captcha = new ValidateCode(BusinessConstants.CAPTCHA_WIDTH, BusinessConstants.CAPTCHA_HEIGHT, BusinessConstants.CAPTCHA_CODE_COUNT, BusinessConstants.CAPTCHA_LINE_COUNT);
+		ValidateCode captcha = new ValidateCode(Constants.CAPTCHA_WIDTH, Constants.CAPTCHA_HEIGHT, Constants.CAPTCHA_CODE_COUNT, Constants.CAPTCHA_LINE_COUNT);
 		BufferedImage image = captcha.getBuffImg();
 		
 		/* Save the captcha code & Output the captcha image as stream */

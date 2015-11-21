@@ -8,7 +8,7 @@ import java.util.List;
  * 	1. Can provide the getters and setters for all fields for simplicity
  *  2. Then modify the getter of totalPages, startingQueryIndex, displayPageCodes
  *     -- See getTotalPages(), getStartingQueryIndex(), getDisplayPageCodes()
- * @author Administrator
+ * @author Xu (Vince) Yuan
  * @param <T>
  */
 public class PageBean<T> {
@@ -75,18 +75,18 @@ public class PageBean<T> {
 		/*	New a List<Integer> object to store the display page code	*/
 		displayPageCodes = new ArrayList<Integer>();
 		
-		/*	Process the beginPageCode & endPageCode	 */
-		Integer beginPageCode = currentPageCode - (offSetPosition - 1);
-		if (beginPageCode <= 0) {
-			beginPageCode = 1;
+		/*	Process the startPageCode & endPageCode	 */
+		Integer startPageCode = Math.min(currentPageCode - offSetPosition + 1, this.getTotalPages() - maximumDisplayPages + 1);
+		if (startPageCode <= 0) {
+			startPageCode = 1;
 		}
-		Integer endPageCode = currentPageCode + (maximumDisplayPages - offSetPosition);
+		Integer endPageCode = Math.max(maximumDisplayPages, currentPageCode + (maximumDisplayPages - offSetPosition));
 		if (endPageCode > this.getTotalPages()) {
 			endPageCode = this.getTotalPages();
 		}
 		
 		/*	Store the display page code & return the List<Integer>	*/
-		for (Integer pageCode = beginPageCode; pageCode <= endPageCode; pageCode++) {
+		for (Integer pageCode = startPageCode; pageCode <= endPageCode; pageCode++) {
 			displayPageCodes.add(pageCode);
 		}
 		return displayPageCodes;

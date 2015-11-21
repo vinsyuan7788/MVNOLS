@@ -1,6 +1,6 @@
 package cn.itcast.user.action.utils;
 
-import cn.itcast.global.configuration.BusinessConstants;
+import cn.itcast.global.configuration.Constants;
 import cn.itcast.global.pagination.utils.PageBeanFieldProcessor;
 import cn.itcast.global.pagination.utils.PageBeanFieldSetter;
 import cn.itcast.user.bean.wrapper.PageUserBean;
@@ -55,6 +55,6 @@ public class PageUserBeanUtils extends PageBeanFieldSetter<PageUserBean> impleme
 	public void ProcessFieldsForAdminDisplay (PageUserBean pageUserBean) throws Exception {
 		
 		/* 	Set the page size, maximum display pages, offset position	*/
-		super.setParametersForDisplay(pageUserBean, BusinessConstants.USER_PAGE_SIZE, BusinessConstants.USER_MAXIMUM_DISPLAY_PAGES, BusinessConstants.USER_OFFSET_POSITION);
+		super.setParametersForDisplay(pageUserBean, Constants.USER_PAGE_SIZE, Constants.USER_MAXIMUM_DISPLAY_PAGES, Constants.USER_OFFSET_POSITION);
 	}
 }

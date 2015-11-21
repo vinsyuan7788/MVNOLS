@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ctm" uri="/WEB-INF/tld/custom-tags.tld" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -201,7 +202,7 @@ $().ready(function() {
 		<input type = "hidden" name = "id" value = "${user.id}"/>
 		<input type = "hidden" name = "roleid" value = "${user.roleid }"/>
 		<input type = "hidden" name = "activationuuid" value = "${user.activationuuid }"/>
-		<input type = "hidden" name = "token" value = "${sessionScope.token }"/>
+		<ctm:token/>
 		<p>
 			<label for="firstname">Firstname</label>
 			<input type = "text" id="firstname" name="firstname" value="${user.firstname}"/>

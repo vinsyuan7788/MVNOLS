@@ -1,10 +1,10 @@
-This package is a global module containing universal components that serve other modules, such as:
+This package is a global module containing universal system & business components that serve other modules, such as:
 	-- Converter
 	-- Global exception resolver
 	-- Interceptors
-	-- JavaWeb components: servlet|filter|listener
+	-- JavaWeb components: servlet|filter|listener (e.g. captcha)
 	-- etc.
 
-The compoents contained in this file have the following features:
+The components contained in this file have the following features:
     -- Universal
     -- Unchangeable easily

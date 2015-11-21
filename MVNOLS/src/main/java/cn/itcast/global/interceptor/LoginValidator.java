@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.itcast.global.configuration.BusinessConstants;
+import cn.itcast.global.configuration.Constants;
 import cn.itcast.global.exception.CustomException;
 import cn.itcast.user.bean.User;
 
@@ -38,7 +38,7 @@ public class LoginValidator implements HandlerInterceptor {
 			Object handler) throws Exception {
 		
 		/*	For all request URLs: if request URL is public URL, release	*/
-		if (BusinessConstants.PUBLIC_URL.contains(request.getServletPath())) {
+		if (Constants.PUBLIC_URL.contains(request.getServletPath())) {
 			return true;
 		}
 		

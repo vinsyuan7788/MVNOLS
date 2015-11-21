@@ -12,13 +12,13 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.itcast.global.annotation.Token;
-import cn.itcast.global.configuration.BusinessConstants;
+import cn.itcast.global.configuration.Constants;
 import cn.itcast.global.exception.CustomException;
 import cn.itcast.global.session.SessionProvider;
 
 /**
  * 	This is an interceptor that to avoid duplicate submission
- * 	1. The 1st way: interceptor + annotation
+ * 	1. The 1st way: interceptor + annotation + custom tag <token/>
  *     -- (1) Develop the annotation (i.e. Token in this case) to specify token save & validation
  *     -- (2) In the interceptor (i.e. this TokenVlidator class), parse the annotation for those specified URLs (i.e. TOKEN_URL)
  *     -- (3) If the method is annotated to save token, then save a token to session scope
@@ -65,7 +65,7 @@ public class TokenValidator implements HandlerInterceptor {
 			Object handler) throws Exception {
 		
 		/*	For those specified URLs, do the token validation	*/
-		if (BusinessConstants.TOKEN_URL.contains(request.getServletPath())) {
+		if (Constants.TOKEN_URL.contains(request.getServletPath())) {
 			
 			/*	Get the handler|action method that will process the request	 */
 			Method method = ((HandlerMethod) handler).getMethod();
@@ -74,7 +74,7 @@ public class TokenValidator implements HandlerInterceptor {
             if (method.isAnnotationPresent(Token.class)) {
             	Token token = method.getAnnotation(Token.class);
             	
-            	/*	If saveToken() is true, then save a token into session scope	*/
+            	/*	If saveToken() is true, then remove the previous token & save a new token into session scope	*/
             	if (token.saveToken() == true) {
             		sessionProvider.setAttribute("token", UUID.randomUUID().toString(), request, response);
             	}
@@ -91,7 +91,11 @@ public class TokenValidator implements HandlerInterceptor {
         				throw new CustomException("Your request is submitted successfully. Please do not repeat submission");
         			}	
             	}
-            }	
+            
+            /*	If there is no Token annotation applied on the method, make sure there is no token saved in the session 	*/
+            } else {
+            	sessionProvider.removeAttribute("token", request, response);
+            }
 		}
 		
 		/*	For the rest of URLs & situations: release	*/

@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="ctm" uri="/WEB-INF/tld/custom-tags.tld" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -116,7 +116,7 @@ $().ready(function() {
   <body>
     <h4 align = "center">Hello ${sessionScope.user.username} administrator. This is the user list. <a href = "javascript:void(0)" id = "homeLink">Home</a> <a href = "javascript:void(0)" id = "searchLink">Set search conditions</a></h4>
     <form id = "userListForm" enctype="application/x-www-form-urlencoded">
-    <input type = "hidden" name = "token" value = "${sessionScope.token }"/>
+    <ctm:token/>
     <table border="1" cellspacing="0" bordercolor="pink" width = "50%" align="center">
     	<tr align = "center">
     	<c:if test="${sessionScope.buttonFlag eq 'disabled' or sessionScope.buttonFlag eq 'enabled'}">	

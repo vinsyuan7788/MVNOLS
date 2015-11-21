@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import cn.itcast.global.configuration.BusinessConstants;
+import cn.itcast.global.configuration.Constants;
 import cn.itcast.global.utils.AjaxResponseUtils;
 
 import com.sun.jersey.api.client.Client;
@@ -51,7 +51,7 @@ public class UploadAjaxAction {
 			
 			/*	Get the upload file relative path & Request URL 	*/
 			String relativePath = "/uploadFiles/Files/" + dateFormat + "_" +randomFormat + "." + extensionName;
-			String requestURL = BusinessConstants.UPLOAD_FILE_URL + relativePath;
+			String requestURL = Constants.UPLOAD_FILE_URL + relativePath;
 		
 			/*	Send the upload file to another server (e.g. tomcat)	*/
 			new Client().resource(requestURL).put(String.class, uploadFile.getBytes());	
@@ -91,7 +91,7 @@ public class UploadAjaxAction {
 			
 			/*	Get the upload file relative path & Request URL 	*/
 			String relativePath = "/uploadFiles/Files/" + dateFormat + "_" +randomFormat + "." + extensionName;
-			String requestURL = BusinessConstants.UPLOAD_IMAGE_URL + relativePath;
+			String requestURL = Constants.UPLOAD_IMAGE_URL + relativePath;
 		
 			/*	Send the upload file to another server (e.g. tomcat)	*/
 			new Client().resource(requestURL).put(String.class, uploadImage.getBytes());	

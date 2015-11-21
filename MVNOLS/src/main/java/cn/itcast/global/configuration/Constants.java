@@ -1,9 +1,9 @@
 package cn.itcast.global.configuration;
 
 /**
- * 	This is a class to store those business constants
+ * 	This is a class to store the system & business constants
  */
-public interface BusinessConstants {
+public interface Constants {
 
 	/*	Captcha parameters	*/
 	public static final int CAPTCHA_WIDTH = 150;
@@ -22,7 +22,7 @@ public interface BusinessConstants {
 	
 	public static final int ADMIN_ITEM_PAGE_SIZE = 10;
 	public static final int ADMIN_ITEM_MAXIMUM_DISPLAY_PAGES = 7;
-	public static final int ADMIN_ITEM_OFFSET_POSITION = 4;
+	public static final int ADMIN_ITEM_OFFSET_POSITION = 2;
 	
 	/*	User pagination	parameters	 */
 	public static final int USER_PAGE_SIZE = 5;

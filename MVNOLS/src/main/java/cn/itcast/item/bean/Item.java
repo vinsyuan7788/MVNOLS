@@ -1,6 +1,6 @@
 package cn.itcast.item.bean;
 
-import cn.itcast.global.configuration.BusinessConstants;
+import cn.itcast.global.configuration.Constants;
 import cn.itcast.global.upload.utils.UploadUtils;
 
 public class Item implements UploadUtils {
@@ -76,6 +76,6 @@ public class Item implements UploadUtils {
 
 	@Override
 	public String getFullUploadURL() throws Exception {
-		return BusinessConstants.UPLOAD_IMAGE_URL + itemImage;
+		return Constants.UPLOAD_IMAGE_URL + itemImage;
 	}
 }
