@@ -23,6 +23,7 @@ import org.springframework.web.context.request.WebRequest;
 import cn.itcast.cms.service.StaticPageGenerationService;
 import cn.itcast.test.service.TestService;
 import cn.itcast.user.bean.User;
+import cn.itcast.user.service.UserService;
 
 /**
  * 	This is a action class to process regular request for action testing module 
@@ -33,9 +34,27 @@ public class TestAction implements WebBindingInitializer {
 
 	/*	IOP: IOC & DI	*/
 	@Resource
+	private UserService userService;
+	@Resource
 	private TestService testService;
 	@Resource
 	private StaticPageGenerationService staticPageGenerationService;
+	
+	/**
+	 * 	This is an action method to test querying user information by id
+	 * @param id: to accept the parameter value from post|get request: request parameter binding|acquisition
+	 * @param model: to put the processed result into requestScope
+	 * @return: return to a view
+	 * @throws Exception: can be processed by an global exception resolver
+	 */
+	@RequestMapping("/queryUser")
+	public String queryUser(Integer id, Model model) throws Exception {
+		
+		User user = userService.queryUserById(id);
+		model.addAttribute("user", user);
+		
+		return "test/testUserInfo";
+	}
 	
 	/**
 	 * 	This is an action method to test the global date converter "DateConverter.java" configured in "SpringMVC.xml"

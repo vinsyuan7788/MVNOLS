@@ -38,22 +38,6 @@ public class UserAction {
 	private UserService userService;
 	
 	/**
-	 * 	This is an action method to query user by id
-	 * @param id: to accept the parameter value from post|get request: request parameter binding|acquisition
-	 * @param model: to put the processed result into requestScope
-	 * @return: return to a view
-	 * @throws Exception: can be processed by an global exception resolver
-	 */
-	@RequestMapping("/queryUser")
-	public String queryUser(Integer id, Model model) throws Exception {
-		
-		User user = userService.queryUserById(id);
-		model.addAttribute("user", user);
-		
-		return "user/queryUser";
-	}
-	
-	/**
 	 * 	This is an action method to modify user information
 	 * 	1. Format validation & update validation are both completed in JSP view
 	 * 	2. If the request comes here, it means the request passes the format & update validation

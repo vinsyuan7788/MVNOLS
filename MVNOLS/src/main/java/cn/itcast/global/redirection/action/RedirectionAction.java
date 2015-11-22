@@ -28,17 +28,7 @@ public class RedirectionAction {
 	@Resource
 	private PageItemBeanUtils pageItemBeanUtils;
 	
-	//---------	This is for global and test module ------------------------------------
-	/**
-	 * 	This is an action method to go to "testAction.jsp"
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping("/testModule")
-	public String testAction () throws Exception {
-		return "testModule";
-	}
-	
+	//---------	This is for global module ------------------------------------
 	/**
 	 * 	This is an action method to go to "success.jsp"
 	 * @return
@@ -79,6 +69,18 @@ public class RedirectionAction {
 		/*	Redirect to "login.jsp" view	*/
 		return "redirect:/login.jsp";
 	}
+	
+	//---------	This is for test module ------------------------------------
+	/**
+	 * 	This is an action method to go to "testAction.jsp"
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/testModule")
+	public String testAction () throws Exception {
+		return "test/testModule";
+	}
+	
 	//---------	This is for user module ------------------------------------
 	/**
 	 * 	This is an action method to go to "userAccount.jsp"

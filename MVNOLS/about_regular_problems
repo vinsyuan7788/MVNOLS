@@ -3,3 +3,14 @@
 		-- Usually is no, hence needs to re-compile the java file, refers to "BookMarks" - "Software Engineering" - "MyEclipse"
 		
 2. Check "cn.itcast.cms.service.impl.StaticPageGenerationServiceImpl" for more support
+
+3. Servlet JSP tag: here needs to be very careful.
+   The jars like "servlet-api" & "jsp-api" are included inside the tomcat. If user introduces the jars
+   with theese names, it will override these built-in jars & may bring some troubles when complying servlet
+   or JSP.
+   For example: the maven dependency shown as following will lead to an JSP class compilation exception
+   <dependency>
+	   <groupId>javax.servlet.jsp</groupId>
+	   <artifactId>jsp-api</artifactId>
+	   <version>2.0</version>
+   </dependency> 

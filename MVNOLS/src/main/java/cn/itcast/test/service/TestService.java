@@ -5,6 +5,7 @@ import java.util.List;
 import cn.itcast.test.bean.City;
 import cn.itcast.test.bean.Country;
 import cn.itcast.test.bean.State;
+import cn.itcast.user.bean.User;
 
 /**
  * 	This is the service interface for implementation
