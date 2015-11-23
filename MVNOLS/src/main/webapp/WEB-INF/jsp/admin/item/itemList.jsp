@@ -37,7 +37,7 @@ $().ready(function() {
 		window.location.href = "<c:url value = '/user/userLogout.action'/>";
 	});	
 	
-	/*	This is checkbox all-select and all-deselect operation	*/
+	/*	This is checkbox all-select and all-unselect operation	*/
 	$("#selectAll").click(function () {
 		$(":checkbox[name='checkedId']").attr("checked",$(this).attr("checked"));
 	});

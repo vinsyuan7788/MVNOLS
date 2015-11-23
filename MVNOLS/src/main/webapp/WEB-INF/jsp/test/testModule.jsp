@@ -22,6 +22,7 @@
   
   <script type="text/javascript">
 $().ready(function () {
+	
 	/*	This is a AJAX request to query the users & generate elements dynamically	 */
 	$.ajax ({
 		url: "<c:url value = '/testAjax/queryTotalUsers.action'/>",
@@ -109,6 +110,24 @@ $().ready(function () {
 			}		
 		});
 	});
+	 
+	/*	This is checkbox all-select and all-unselect operation	*/
+	$("#checkAll").click(function () {
+		$(":checkbox[name='hobby']").attr("checked",$(this).attr("checked"));
+	});
+	
+	/*	This is checkbox reverse-select operation	*/
+	$("#checkReverse").click(function () {
+		$(":checkbox[name='hobby']").each(function(){
+			/*	If the checkbox is checked, then unchecked	 */
+			if($(this).attr("checked")){	
+				$(this).attr("checked",false);
+			/*	If the checkbox is unchecked, then checked	 */
+			}else{							
+				$(this).attr("checked",true);
+			}
+		});
+	});
 	
 	/*	This part is to submit the form when submission button is clicked   */ 
 	$("#search").click(function () {
@@ -128,6 +147,9 @@ $().ready(function () {
 	$("#getCurrentPageURL").click(function () {
 		var queryParameters = "?parameterA=aaa&parameterB=bbb&parameterC=ccc";
 		window.location.href = "<c:url value = '/test/getCurrentPageURL.action'/>?currentPageURL=" + window.location.href + "&currentPageURLWithParameters=" + window.location.href + queryParameters;
+	});
+	$("#submit").click(function () {
+		$("#hobbyForm").attr("action", "<c:url value = '/test/processChecbox.action'/>").attr("method", "get").submit();
 	});
 	$("#generateStaticPage").click(function () {
 		window.location.href = "<c:url value = '/test/generateStaticPage.action'/>";
@@ -179,6 +201,17 @@ $().ready(function () {
 		<option value = "">Please select a city</option>
 	</select>
 	<br/><br/>
+	
+	This is a checkbox interaction: <br/>
+	Please check your hobbies: <input type = "checkbox" id = "checkAll" name = "checkAll"> All|No Check <input type = "checkbox" id = "checkReverse" name = "checkReverse"/> Reverse Check<br/>
+	<form id = "hobbyForm" enctype="application/x-www-form-urlencoded">
+		<input type = "checkbox" id = "hobby" name = "hobby" value = "Movies"/>Movies
+		<input type = "checkbox" id = "hobby" name = "hobby" value = "Musics"/>Musics
+		<input type = "checkbox" id = "hobby" name = "hobby" value = "Shopping"/>Shopping
+		<input type = "checkbox" id = "hobby" name = "hobby" value = "Learnning"/>Learnning
+		<input type = "checkbox" id = "hobby" name = "hobby" value = "Travelling"/>Travelling
+		<input type = "submit" id = "submit" value = "submit"/>
+	</form>
 	
 	This is an OSCache (page caching) test: <br/>
 	Current time: <%=new Date() %><br/> 

@@ -3,6 +3,7 @@ package cn.itcast.test.action;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.support.WebBindingInitializer;
 import org.springframework.web.context.request.WebRequest;
 
 import cn.itcast.cms.service.StaticPageGenerationService;
+import cn.itcast.global.utils.ArrayUtils;
 import cn.itcast.test.service.TestService;
 import cn.itcast.user.bean.User;
 import cn.itcast.user.service.UserService;
@@ -68,6 +70,37 @@ public class TestAction implements WebBindingInitializer {
 		System.out.println("The date is: " + date);
 		
 		model.addAttribute("successMessage", "Advanced search and date conversion succeeds! Please refer to the console to see the result!");
+		return "forward:/redirection/success.action";
+	}
+	
+	/**
+	 * 	This is an action method to test processing array parameters
+	 * @param hobby
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/processChecbox")
+	public String processChecbox (String[] hobby, Model model) throws Exception {
+		
+		/*	If there is any element in the array, process the array 	*/
+		if (hobby != null && hobby.length > 0) {
+			
+			/*	Convert the String array to one String: e.g. if hobby is a field in JavaBean	*/
+			String hobbyString = ArrayUtils.toString(hobby);
+			System.out.println("Your hobby: " + hobbyString);
+			
+			/*	Convert the String array to a String list: e.g. if hobby is used as range query  */
+			List<String> hobbyList = Arrays.asList(hobby);
+			System.out.println("Your hobby: " + hobbyList);
+		
+		/*	Else output a message	*/
+		} else {
+			System.out.println("No hobby is checked.");
+		}
+		
+		/*	Save the success mesage & return	*/
+		model.addAttribute("successMessage", "Array parameter is processed succesfully. Please refer to the console!");
 		return "forward:/redirection/success.action";
 	}
 	

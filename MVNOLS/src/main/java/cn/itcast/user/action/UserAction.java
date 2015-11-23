@@ -7,12 +7,14 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.itcast.global.annotation.Token;
+import cn.itcast.global.exception.CustomException;
 import cn.itcast.global.session.SessionProvider;
 import cn.itcast.user.action.utils.SendEmail;
 import cn.itcast.user.bean.User;
@@ -36,6 +38,7 @@ public class UserAction {
 	private SessionProvider sessionProvider;
 	@Resource
 	private UserService userService;
+	
 	
 	/**
 	 * 	This is an action method to modify user information
@@ -85,15 +88,23 @@ public class UserAction {
 	@Token(validateToken=true)
 	public String deleteUsers (Integer[] checkedId, Model model) throws Exception {
 		
-		/*	Transform the array to List	 */
-		List<Integer> ids = Arrays.asList(checkedId);
-		
-		/*	Delete the users	*/
-		userService.deleteUsersById(ids);
-		
-		/*	Save success message & return	*/
-		model.addAttribute("successMessage", "Delete users successfully");
-		return "forward:/redirection/success.action";
+		/*	If there is any checkedId, process the checkedId array	 */
+		if (checkedId != null && checkedId.length > 0) {
+			
+			/*	Transform the array to List	 */
+			List<Integer> ids = Arrays.asList(checkedId);
+			
+			/*	Delete the users	*/
+			userService.deleteUsersById(ids);
+			
+			/*	Save success message & return	*/
+			model.addAttribute("successMessage", "Delete users successfully");
+			return "forward:/redirection/success.action";
+
+		/*	Else throws a custom exception & return to error page	*/
+		} else {
+			throw new CustomException("Please select at least one user");
+		}
 	}
 	
 	/**
@@ -109,21 +120,28 @@ public class UserAction {
 	@Token(validateToken=true)
 	public String recoverUsers (Integer[] checkedId, Model model) throws Exception {
 		
-		/*	Transform the array to List	 */
-		List<Integer> ids = Arrays.asList(checkedId);
-		
-		/*	Recover the users 	*/
-		List<User> recoveredUsers = userService.recoverUsersById(ids);
-		
-		/*	Send the email	*/
-		for (User user : recoveredUsers) {
-//			this.sendEmail(user);
-			SendEmail.sendEmail(user);
+		/*	If there is any checkedId, process the checkedId array	 */
+		if (checkedId != null && checkedId.length > 0) {
+			
+			/*	Transform the array to List	 */
+			List<Integer> ids = Arrays.asList(checkedId);
+			
+			/*	Recover the users 	*/
+			List<User> recoveredUsers = userService.recoverUsersById(ids);
+			
+			/*	Send the email	*/
+			for (User user : recoveredUsers) {
+				SendEmail.sendEmail(user);
+			}
+			
+			/*	Save success message & return	*/
+			model.addAttribute("successMessage", "Recover users successfully");
+			return "forward:/redirection/success.action";
+			
+		/*	Else throws a custom exception & return to error page	*/
+		} else {
+			throw new CustomException("Please select at least one user");
 		}
-		
-		/*	Save success message & return	*/
-		model.addAttribute("successMessage", "Recover users successfully");
-		return "forward:/redirection/success.action";
 	}
 
 	/**

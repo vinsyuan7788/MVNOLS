@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.itcast.cms.service.StaticPageGenerationService;
+import cn.itcast.global.exception.CustomException;
 import cn.itcast.item.bean.Item;
 import cn.itcast.item.service.ItemService;
 
@@ -98,22 +99,30 @@ public class ItemAction {
 	@RequestMapping("/putItemsOnSale")
 	public String putItemsOnSale (Integer[] checkedId, Model model) throws Exception {
 		
-		/*	Transform the array to List	 */
-		List<Integer> ids = Arrays.asList(checkedId);
-		
-		/*	Update the state of the items & return the corresponding information of the items	*/
-		List<Item> items = itemService.putItemsOnSaleByIds(ids);
-		
-		/*	Generate the static pages for each item respectively  */
-		Map<String, Item> dataModel = new HashMap<String, Item>();
-		for (Item item : items) {
-			dataModel.put("item", item);
-			staticPageGenerationService.itemDetailPageGeneration(dataModel, item.getId());
+		/*	If there is any checkedId, process the checkedId array 	 */
+		if (checkedId != null && checkedId.length > 0) {
+			
+			/*	Transform the array to List	 */
+			List<Integer> ids = Arrays.asList(checkedId);
+			
+			/*	Update the state of the items & return the corresponding information of the items	*/
+			List<Item> items = itemService.putItemsOnSaleByIds(ids);
+			
+			/*	Generate the static pages for each item respectively  */
+			Map<String, Item> dataModel = new HashMap<String, Item>();
+			for (Item item : items) {
+				dataModel.put("item", item);
+				staticPageGenerationService.itemDetailPageGeneration(dataModel, item.getId());
+			}
+			
+			/*	Save success message & return	*/
+			model.addAttribute("successMessage", "Put the items on sale successfully");
+			return "forward:/redirection/success.action";
+			
+		/*	Else throws a custom exception & return to error page	*/
+		} else {
+			throw new CustomException("Please select at least one item");
 		}
-		
-		/*	Save success message & return	*/
-		model.addAttribute("successMessage", "Put the items on sale successfully");
-		return "forward:/redirection/success.action";
 	}
 	
 	/**
@@ -126,16 +135,24 @@ public class ItemAction {
 	 */
 	@RequestMapping("/putItemsOffSale")
 	public String putItemsOffSale (Integer[] checkedId, Model model) throws Exception {
+		
+		/*	If there is any checkedId, process the checkedId array	 */
+		if (checkedId != null && checkedId.length > 0) {
+			
+			/*	Transform the array to List	 */
+			List<Integer> ids = Arrays.asList(checkedId);
+			
+			/*	Update the state of items	*/
+			itemService.putItemsOffSaleByIds(ids);
+			
+			/*	Save success message & return	*/
+			model.addAttribute("successMessage", "Put the items off sale successfully");
+			return "forward:/redirection/success.action";
 
-		/*	Transform the array to List	 */
-		List<Integer> ids = Arrays.asList(checkedId);
-		
-		/*	Update the state of items	*/
-		itemService.putItemsOffSaleByIds(ids);
-		
-		/*	Save success message & return	*/
-		model.addAttribute("successMessage", "Put the items off sale successfully");
-		return "forward:/redirection/success.action";
+		/*	Else throws a custom exception & return to error page	*/
+		} else {
+			throw new CustomException("Please select at least one item");
+		}
 	}
 	
 	/**
