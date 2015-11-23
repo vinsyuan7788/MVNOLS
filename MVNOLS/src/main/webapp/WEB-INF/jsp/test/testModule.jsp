@@ -119,13 +119,7 @@ $().ready(function () {
 	/*	This is checkbox reverse-select operation	*/
 	$("#checkReverse").click(function () {
 		$(":checkbox[name='hobby']").each(function(){
-			/*	If the checkbox is checked, then unchecked	 */
-			if($(this).attr("checked")){	
-				$(this).attr("checked",false);
-			/*	If the checkbox is unchecked, then checked	 */
-			}else{							
-				$(this).attr("checked",true);
-			}
+			$(this).attr("checked", !$(this).attr("checked"));
 		});
 	});
 	

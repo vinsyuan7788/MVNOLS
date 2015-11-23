@@ -17,12 +17,12 @@ public class ArrayUtils {
 		/* If the String[] is not null, accept each element using StringBuffer & converts to String */
 		if (stringArray != null && stringArray.length > 0) {
 			
-			StringBuffer sb = new StringBuffer();
+			StringBuffer stringBuffer = new StringBuffer();
 			for (int i = 0; i < stringArray.length; i++) {
-				if (i > 0) sb.append(",");
-				sb.append(stringArray[i]);
+				if (i > 0) stringBuffer.append(", ");
+				stringBuffer.append(stringArray[i]);
 			}
-			return sb.toString();
+			return stringBuffer.toString();
 			
 		/* If the String[] is null, then directly return null */
 		} else {
