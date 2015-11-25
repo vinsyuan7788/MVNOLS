@@ -25,15 +25,17 @@ public class DateConverter implements Converter<String, Date> {
 		/*	If the source string is not null string or not null, then convert the String to Date	*/
 		if (source.trim().length() != 0 || source != null) {
 			
-			/*	Try to convert any String with "yyyy-MM-dd HH:mm:ss" format to Date   */
+			/*	Try to convert any String with "MM/dd/yyyy HH:mm:ss" format to Date   */
 	    	try {
-				return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(source);
+				return new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").parse(source);
 			} catch (ParseException e) {
-				/*	Try to convert any String with "yyyy-MM-dd HH:mm:ss" format to Date  */
+				
+				/*	Try to convert any String with "MM/dd/yyyy" format to Date  */
 				try {
-					return new SimpleDateFormat("yyyy-MM-dd").parse(source);
+					return new SimpleDateFormat("MM/dd/yyyy").parse(source);
 				} catch (ParseException e1) {
-					/*	For those need to be converted but unconvertable (i.e. format is neither "yyyy-MM-dd HH:mm:ss" or "yyyy-MM-dd"), return null  */
+					
+					/*	For those need to be converted but unconvertable (i.e. format is neither "MM/dd/yyyy HH:mm:ss" or "MM/dd/yyyy"), return null  */
 					return null;
 				}
 			}	

@@ -28,3 +28,6 @@ Version 1.0.5:
 
 Version 1.0.6:
 1. Updates a feature of checkbox regarding all-select, all-unselect, reverse-select, performs 2 methods to process String array parameters based on different applcation scenario with a custom ArrayUtils class, & addresses a potential defects on user & item module regarding array parameters in the back-end.
+
+Version 1.0.7:
+1. Updates the architect of JS, integrates JQuery UI & addresses a potential bug regarding Date data which may lead to a wrong predication when users try to sign up without filling the data that will be converted to Date & add a new global tility component regarding Date comparison.

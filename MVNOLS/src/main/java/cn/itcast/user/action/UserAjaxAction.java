@@ -21,7 +21,7 @@ public class UserAjaxAction {
 	private UserService userService;
 	
 	/**
-	 * 	This is an action method for duplication validation through AJAX in JSP view
+	 * 	This is an action method for duplication validation through AJAX in JSP view for registration
 	 * 	1. If there is no username duplication, then return "true" (i.e. no error message)
 	 *  2. If there is a username duplication, then return "false" (i.e. pop out error message)
 	 * @param username
@@ -40,7 +40,7 @@ public class UserAjaxAction {
 	}
 	
 	/**
-	 * 	This is an action method for existence validation through AJAX in JSP view
+	 * 	This is an action method for existence validation through AJAX in JSP view for login
 	 * 	1. If there is an existing user according to the login information, return "true" (i.e. no error message)
 	 *  2. If there is no or more than one existing user according to the login information, return "false" (i.e. pop out error message)
 	 * @return
@@ -58,7 +58,7 @@ public class UserAjaxAction {
 	}
 	
 	/**
-	 * 	This is an action method for update validation through AJAX in JSP view
+	 * 	This is an action method for update validation through AJAX in JSP view for update
 	 * 	1. If the user name remains unchanged, then return "true" (i.e. no error message)
 	 *  2. If the user name is changed, see if there is an existing user with the new user name
 	 *     -- If yes: return "false" (i.e. pop out error message)

@@ -15,10 +15,19 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<!-- JQuery EasyUI CSS -->
+	<link type="text/css" rel="stylesheet" href="<c:url value = '/css/easyui/themes/default/easyui.css'/>">
+	<link type="text/css" rel="stylesheet" href="<c:url value = '/css/easyui/themes/icon.css'/>">
 
   </head>
+  
   <!-- Load the JS library -->
-  <script type = "text/javascript" src = "<c:url value = '/js/jquery-1.4.2.js'/>"></script>
+  <script type="text/javascript" src="<c:url value = '/js/jquery/jquery-1.4.2.js'/>"></script>
+  <!-- JQuery EasyUI library -->
+  <script type="text/javascript" src="<c:url value = '/js/easyui/jquery.easyui.min.js'/>"></script>
+  <script type="text/javascript" src="<c:url value = '/js/easyui/locale/easyui-lang-en.js'/>"></script>
+
+
   
   <script type="text/javascript">
 $().ready(function () {
@@ -113,7 +122,7 @@ $().ready(function () {
 	 
 	/*	This is checkbox all-select and all-unselect operation	*/
 	$("#checkAll").click(function () {
-		$(":checkbox[name='hobby']").attr("checked",$(this).attr("checked"));
+		$(":checkbox[name='hobby']").attr("checked", $(this).attr("checked"));
 	});
 	
 	/*	This is checkbox reverse-select operation	*/
@@ -172,7 +181,7 @@ $().ready(function () {
 	<form id = "advancedSearchFormWithDateConersion" enctype="application/x-www-form-urlencoded">
 		Name: <input type = "text" name = "name"/><br/>
 		Brand: <input type = "text" name = "brand"><br/> 
-		Date: <input type = "text" name = "date"/> (The format can be regulated by JQueryUI plugin)<br/> 
+		Date: <input type = "text" class="easyui-datebox" id = "date" name = "date"/><br/> 
 		<input type = "submit" id = "search" value = "search"/>
 	</form>
     

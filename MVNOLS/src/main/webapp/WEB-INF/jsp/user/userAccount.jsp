@@ -16,12 +16,22 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<link rel="stylesheet" type="text/css" media="screen" href="<c:url value = '/css/screen.css'/>"/>
+	
+<!-- JQuery Validation CSS -->
+<link type="text/css" rel="stylesheet" href="<c:url value = '/css/validation/css/screen.css'/>" media="screen"/>
+<!-- JQuery EasyUI CSS -->
+<link type="text/css" rel="stylesheet" href="<c:url value = '/css/easyui/themes/default/easyui.css'/>">
+<link type="text/css" rel="stylesheet" href="<c:url value = '/css/easyui/themes/icon.css'/>">
 
-<script type="text/javascript" src="<c:url value = '/js/jquery-1.4.2.js'/>"></script>
-<script type="text/javascript" src="<c:url value = '/js/jquery.validate.js'/>"></script>
-<script type="text/javascript" src="<c:url value = '/js/cmxforms.js'/>"></script>
-<script type="text/javascript" src="<c:url value = '/js/jquery.form.js'/>"></script>
+<!-- Load the JS library -->
+<script type="text/javascript" src="<c:url value = '/js/jquery/jquery-1.4.2.js'/>"></script>
+<!-- JQuery Validation library -->
+<script type="text/javascript" src="<c:url value = '/js/validation/jquery.validate.js'/>"></script>
+<script type="text/javascript" src="<c:url value = '/js/validation/cmxforms.js'/>"></script>
+<script type="text/javascript" src="<c:url value = '/js/validation/jquery.form.js'/>"></script>
+<!-- JQuery EasyUI library -->
+<script type="text/javascript" src="<c:url value = '/js/easyui/jquery.easyui.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value = '/js/easyui/locale/easyui-lang-en.js'/>"></script>
 
 <script type="text/javascript">
 $().ready(function() {
@@ -110,9 +120,6 @@ $().ready(function() {
 			cellphone: {
 				digits: true
 			},
-			birthday: {
-				date: true
-			},
 			captcha: {
 				required: true,
 				remote: "<c:url value = '/captchaAjax/captchaValidation.action'/>"
@@ -139,9 +146,6 @@ $().ready(function() {
 			email: "Please enter a valid email address",
 			cellphone: {
 				digits: "Please enter a valid cellphone"
-			},
-			birthday: {
-				date: "Please enter a valide date"
 			},
 			captcha: {
 				required: "Please enter the captcha",
@@ -235,7 +239,7 @@ $().ready(function() {
 		</p>
 		<p>
 			<label>Birthday</label>
-			<input type = "text" name = "birthday" value = "<fmt:formatDate value="${user.birthday}" pattern = "yyyy-MM-dd"/>"/>
+			<input type = "text" class="easyui-datebox" id = "birthday" name = "birthday" value = "<fmt:formatDate value="${user.birthday}" pattern = "MM/dd/yyyy"/>"/>
 		</p>
 		<p>
 			<label>Nationality</label>

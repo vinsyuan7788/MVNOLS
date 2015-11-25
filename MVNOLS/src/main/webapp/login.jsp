@@ -15,11 +15,15 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<link rel="stylesheet" type="text/css" media="screen" href="<c:url value = '/css/screen.css'/>" />
+	
+<!-- JQuery Validation CSS -->	
+<link type="text/css" rel="stylesheet" href="<c:url value = '/css/validation/css/screen.css'/>" media="screen"/>
 
-<script type="text/javascript" src="<c:url value = '/js/jquery-1.4.2.js'/>"></script>
-<script type="text/javascript" src="<c:url value = '/js/jquery.validate.js'/>"></script>
-<script type="text/javascript" src="<c:url value = '/js/cmxforms.js'/>"></script>
+<!-- JQuery library -->
+<script type="text/javascript" src="<c:url value = '/js/jquery/jquery-1.4.2.js'/>"></script>
+<!-- JQuery Validation library -->
+<script type="text/javascript" src="<c:url value = '/js/validation/jquery.validate.js'/>"></script>
+<script type="text/javascript" src="<c:url value = '/js/validation/cmxforms.js'/>"></script>
 
 <script type="text/javascript">
 $().ready(function() {

@@ -58,7 +58,7 @@ public class UserAction {
 	@RequestMapping("/updateUser")
 	@Token(validateToken=true)
 	public String updateUser (User user, MultipartFile uploadFile, String uploadFilePath, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+			
 		/*	Create a new UploadFile instance	*/
 		Userupload userupload = new Userupload();
 		

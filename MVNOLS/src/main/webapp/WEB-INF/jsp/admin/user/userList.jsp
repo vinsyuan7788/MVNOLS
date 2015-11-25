@@ -18,8 +18,8 @@
 
   </head>
 
-<script type="text/javascript" src="<c:url value = '/js/jquery-1.4.2.js'/>"></script>
-<script type="text/javascript" src="<c:url value = '/js/jquery.validate.js'/>"></script>
+<script type="text/javascript" src="<c:url value = '/js/jquery/jquery-1.4.2.js'/>"></script>
+<script type="text/javascript" src="<c:url value = '/js/validation/jquery.validate.js'/>"></script>
 
 <script type="text/javascript">
 $().ready(function() {

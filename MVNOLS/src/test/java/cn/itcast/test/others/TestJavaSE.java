@@ -6,6 +6,8 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import cn.itcast.global.utils.DateUtils;
+
 /**
  * 	This is the class to test JavaSE
  */
@@ -59,5 +61,16 @@ public class TestJavaSE {
 		} else {
 			System.out.println("\"\\\\\" != \"/\" in Java directory");
 		}
+	}
+	
+	/**
+	 * 	Test comparing Date 
+	 */
+	@Test
+	public void testCompareDate () throws Exception {
+		
+		Date date1 = new Date();
+		Date date2 = new SimpleDateFormat("MM/dd/yyyy").parse("13/13/2013");
+		System.out.println(DateUtils.compareDate(date1, date2));
 	}
 }
