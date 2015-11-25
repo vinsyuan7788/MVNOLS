@@ -19,7 +19,7 @@ Versoin 1.0.2:
 Version 1.0.3:
 1. Improves the performance of the page bean, adresses a bug in the token validator interceptor, and introduce custom tag components for token validation
 
-Versoin 1.0.4:
+Version 1.0.4:
 1. Adds a order-by query to database, addressing the consequent issues & explore the optimal idea for single-table query (which so far can be implemented for module-by-module situation instead of general situation like interceptor, pagination, etc.)
 2. Later improves the architect of the project & completes the exploration of the MyBatis optimization idea 
 
