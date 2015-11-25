@@ -5,7 +5,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>http://localhost:8080/mvnols/register.jsp</title>
+    <title>Sign-up Page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -188,29 +188,29 @@ $().ready(function() {
 <div id="main">
 <form class="cmxform" id="registerForm" enctype="application/x-www-form-urlencoded">
 	<fieldset>
-		<legend>Please fill up the following information for registration</legend>
+		<legend>Please fill up the following information for sign-up (<font color="red">*</font> fields must be filled)</legend>
 		<p>
-			<label for="firstname">Firstname</label>
+			<label for="firstname">Firstname<font color="red">*</font></label>
 			<input type = "text" id="firstname" name="firstname" value="${user.firstname}"/>
 		</p>
 		<p>
-			<label for="lastname">Lastname</label>
+			<label for="lastname">Lastname<font color="red">*</font></label>
 			<input type = "text" id="lastname" name="lastname" value="${user.lastname}"/>
 		</p>
 		<p>
-			<label for="username">Username</label>
+			<label for="username">Username<font color="red">*</font></label>
 			<input type = "text" id="username" name="username" value="${user.username}"/>
 		</p>
 		<p>
-			<label for="password">Password</label>
+			<label for="password">Password<font color="red">*</font></label>
 			<input type="password" id="password" name="password" value="${user.password}"/>
 		</p>
 		<p>
-			<label for="confirm_password">Confirm password</label>
+			<label for="confirm_password">Confirm password<font color="red">*</font></label>
 			<input type="password" id="confirm_password" name="confirm_password" value="${user.password}"/>
 		</p>
 		<p>
-			<label for="email">Email</label>
+			<label for="email">Email<font color="red">*</font></label>
 			<input type = "text" id="email" name="email" value="${user.email}"/>
 		</p>
 		<p>
@@ -225,7 +225,7 @@ $().ready(function() {
 		</p>
 		<p>
 			<label>Birthday</label>
-			<input type = "text" class="easyui-datebox" id = "birthday" name = "birthday" value = "<fmt:formatDate value="${user.birthday}" pattern = "MM/dd/yyyy"/>"/>
+			<input type = "text" class="easyui-datebox" data-options="editable:true" id = "birthday" name = "birthday" value = "<fmt:formatDate value="${user.birthday}" pattern = "MM/dd/yyyy"/>"/>
 		</p>
 		<p>
 			<label>Nationality</label>
@@ -238,16 +238,16 @@ $().ready(function() {
 			<input type="text" name = "detail" value = "${user.detail}"/>
 		</p>
 		<p>
-			<label for="captcha">Captcha:</label>
+			<label for="captcha">Captcha<font color="red">*</font></label>
 			<input type = "text" id = "captcha" name = "captcha"/>
 			<img src="<c:url value = '/captcha/CaptchaServlet.servlet'/>" id = "captcha_img">
 		</p>
 		<p>
 			<label>This is the policy</label>
-			<textarea rows="5" cols="22" readonly="readonly">Piease register :)</textarea>
+			<textarea rows="5" cols="22" readonly="readonly">Piease sign up :)</textarea>
 		</p>
 		<p>
-			<label for="agree">Agree the policy</label>
+			<label for="agree">Agree the policy<font color="red">*</font></label>
 			<input type="checkbox" class="checkbox" id="agree" name="agree" />
 		</p>
 		<p>

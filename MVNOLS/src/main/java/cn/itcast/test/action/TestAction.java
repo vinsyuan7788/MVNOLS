@@ -63,11 +63,12 @@ public class TestAction implements WebBindingInitializer {
 	 * @throws Exception
 	 */
 	@RequestMapping("/dateConversion")
-	public String dateConversion (String name, String brand, Date date, Model model) throws Exception {
+	public String dateConversion (String name, String brand, Date date, Date datetime, Model model) throws Exception {
 		
 		System.out.println("The name is: " + name);
 		System.out.println("The brand is: " + brand);
 		System.out.println("The date is: " + date);
+		System.out.println("The datetime is " + datetime);
 		
 		model.addAttribute("successMessage", "Advanced search and date conversion succeeds! Please refer to the console to see the result!");
 		return "forward:/redirection/success.action";

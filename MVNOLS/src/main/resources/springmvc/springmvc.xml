@@ -91,8 +91,9 @@
 			<bean class = "cn.itcast.global.interceptor.StatisticsCollector"></bean>
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/user/queryUser.action"/>
-			<bean class = "cn.itcast.global.interceptor.ParameterValidator"></bean>
+			<mvc:mapping path="/user/updateUser.action"/>
+			<mvc:mapping path="/user/userRegister.action"/>
+			<bean class = "cn.itcast.global.interceptor.DateValidator"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 

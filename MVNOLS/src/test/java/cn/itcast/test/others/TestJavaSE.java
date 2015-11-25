@@ -71,6 +71,6 @@ public class TestJavaSE {
 		
 		Date date1 = new Date();
 		Date date2 = new SimpleDateFormat("MM/dd/yyyy").parse("13/13/2013");
-		System.out.println(DateUtils.compareDate(date1, date2));
+		System.out.println(DateUtils.compareDates(date1, date2));
 	}
 }

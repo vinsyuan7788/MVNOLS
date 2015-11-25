@@ -181,7 +181,8 @@ $().ready(function () {
 	<form id = "advancedSearchFormWithDateConersion" enctype="application/x-www-form-urlencoded">
 		Name: <input type = "text" name = "name"/><br/>
 		Brand: <input type = "text" name = "brand"><br/> 
-		Date: <input type = "text" class="easyui-datebox" id = "date" name = "date"/><br/> 
+		Date: <input type = "text" class="easyui-datebox" data-options="editable:true" id = "date" name = "date"/><br/>
+		DateTime: <input type = "text" class="easyui-datetimebox" data-options="editable:true" id = "datetime" name = "datetime"/><br/>
 		<input type = "submit" id = "search" value = "search"/>
 	</form>
     

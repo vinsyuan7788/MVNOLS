@@ -239,7 +239,7 @@ $().ready(function() {
 		</p>
 		<p>
 			<label>Birthday</label>
-			<input type = "text" class="easyui-datebox" id = "birthday" name = "birthday" value = "<fmt:formatDate value="${user.birthday}" pattern = "MM/dd/yyyy"/>"/>
+			<input type = "text" class="easyui-datebox" data-options="editable:true" id = "birthday" name = "birthday" value = "<fmt:formatDate value="${user.birthday}" pattern = "MM/dd/yyyy"/>"/>
 		</p>
 		<p>
 			<label>Nationality</label>

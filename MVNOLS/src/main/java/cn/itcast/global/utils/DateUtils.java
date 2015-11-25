@@ -9,14 +9,14 @@ public class DateUtils {
 
 	/**
 	 * 	Compare 2 dates
-	 * 	1. If date1 is earlier than date2, then return 1
-	 * 	2. If date1 is later than date2, then return -1
-	 * 	3. If 2 dates are the same, return 0
+	 * 	1. If date1 is earlier than date2, then return 1.
+	 * 	2. If date1 is later than date2, then return -1.
+	 * 	3. If 2 dates are the same, return 0.
 	 * @param date1
 	 * @param date2
 	 * @return
 	 */
-	public static int compareDate (Date date1, Date date2) {
+	public static int compareDates (Date date1, Date date2) {
 		
 		/*	If date1 is earlier than date2, return 1	*/
         if (date1.getTime() < date2.getTime()) {

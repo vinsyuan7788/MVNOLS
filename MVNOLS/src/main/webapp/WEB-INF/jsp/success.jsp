@@ -21,9 +21,14 @@
   <body>
     <h4>${requestScope.successMessage}</h4>
     <a href = "<c:url value = '/home.jsp'/>">Home</a>&nbsp;
-<c:if test="${empty sessionScope.user}">
-    <a href = "<c:url value = '/login.jsp'/>">Login</a>&nbsp;
-    <a href = "<c:url value = '/register.jsp'/>">Register</a>&nbsp;
-</c:if>
+<c:choose>
+	<c:when test="${empty sessionScope.user}">
+	   <a href = "<c:url value = '/login.jsp'/>">Login</a>&nbsp;
+	   <a href = "<c:url value = '/register.jsp'/>">Register</a>&nbsp;
+	</c:when>
+	<c:otherwise>
+	   <a href = "<c:url value = '/redirection/userAccount.action'/>">Account</a>&nbsp;
+	</c:otherwise>
+</c:choose>
   </body>
 </html>
