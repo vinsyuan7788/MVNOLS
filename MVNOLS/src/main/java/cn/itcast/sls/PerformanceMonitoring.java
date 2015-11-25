@@ -40,8 +40,8 @@ public class PerformanceMonitoring {
 	 */
 	public void beforeAdvice (JoinPoint joinPoint) throws Exception {	
 		
-		System.out.println("Joint point (method) name: " + joinPoint.getSignature().getName());
-		System.out.println("Target class: "  + joinPoint.getTarget().getClass());	
+		System.out.println("PerformanceMonitoring.beforeAdvice()...Joint point (method) name: " + joinPoint.getSignature().getName());
+		System.out.println("PerformanceMonitoring.beforeAdvice()...Target class: "  + joinPoint.getTarget().getClass());	
 		System.out.println("PerformanceMonitoring.beforeAdvice()...");
 	}
 	
@@ -57,9 +57,9 @@ public class PerformanceMonitoring {
 	 */
 	public void afterReturningAdvice (JoinPoint joinPoint, Object returnValue) throws Exception {
 		
-		System.out.println("Joint point (method) name: " + joinPoint.getSignature().getName());
-		System.out.println("Target class: "  + joinPoint.getTarget().getClass());
-		System.out.println("Target method return value: " + returnValue);
+		System.out.println("PerformanceMonitoring.afterReturningAdvice()...Joint point (method) name: " + joinPoint.getSignature().getName());
+		System.out.println("PerformanceMonitoring.afterReturningAdvice()...Target class: "  + joinPoint.getTarget().getClass());
+		System.out.println("PerformanceMonitoring.afterReturningAdvice()...Target method return value: " + returnValue);
 		System.out.println("PerformanceMonitoring.afterReturningAdvice()...");
 	}
 	
@@ -75,9 +75,9 @@ public class PerformanceMonitoring {
 	 */
 	public void afterThrowingAdvice (JoinPoint joinPoint, Throwable throwable) throws Exception {
 		
-		System.out.println("Joint point (method) name: " + joinPoint.getSignature().getName());
-		System.out.println("Target class: "  + joinPoint.getTarget().getClass());
-		System.out.println("The exception thrown by target method: " + throwable.getMessage());	
+		System.out.println("PerformanceMonitoring.afgterThrowingAdvice()...Joint point (method) name: " + joinPoint.getSignature().getName());
+		System.out.println("PerformanceMonitoring.afgterThrowingAdvice()...Target class: "  + joinPoint.getTarget().getClass());
+		System.out.println("PerformanceMonitoring.afgterThrowingAdvice()...The exception thrown by target method: " + throwable.getMessage());	
 		System.out.println("PerformanceMonitoring.afgterThrowingAdvice()...");
 	}
 	

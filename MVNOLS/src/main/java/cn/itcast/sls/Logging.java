@@ -17,8 +17,8 @@ public class Logging {
 	 */
 	public void beforeAdvice (JoinPoint joinPoint) throws Exception {	
 		
-		System.out.println("Joint point (method) name: " + joinPoint.getSignature().getName());
-		System.out.println("Target class: "  + joinPoint.getTarget().getClass());	
+		System.out.println("Logging.beforeAdvice()...Joint point (method) name: " + joinPoint.getSignature().getName());
+		System.out.println("Logging.beforeAdvice()...Target class: "  + joinPoint.getTarget().getClass());	
 		System.out.println("Logging.beforeAdvice()...");
 	}
 	
@@ -34,9 +34,9 @@ public class Logging {
 	 */
 	public void afterReturningAdvice (JoinPoint joinPoint, Object returnValue) throws Exception {
 
-		System.out.println("Joint point (method) name: " + joinPoint.getSignature().getName());
-		System.out.println("Target class: "  + joinPoint.getTarget().getClass());
-		System.out.println("Target method return value: " + returnValue);
+		System.out.println("Logging.afterReturningAdvice()...Joint point (method) name: " + joinPoint.getSignature().getName());
+		System.out.println("Logging.afterReturningAdvice()...Target class: "  + joinPoint.getTarget().getClass());
+		System.out.println("Logging.afterReturningAdvice()...Target method return value: " + returnValue);
 		System.out.println("Logging.afterReturningAdvice()...");
 	}
 	
@@ -52,9 +52,9 @@ public class Logging {
 	 */
 	public void afterThrowingAdvice (JoinPoint joinPoint, Throwable throwable) throws Exception {
 
-		System.out.println("Joint point (method) name: " + joinPoint.getSignature().getName());
-		System.out.println("Target class: "  + joinPoint.getTarget().getClass());
-		System.out.println("The exception thrown by target method: " + throwable.getMessage());	
+		System.out.println("Logging.afgterThrowingAdvice()...Joint point (method) name: " + joinPoint.getSignature().getName());
+		System.out.println("Logging.afgterThrowingAdvice()...Target class: "  + joinPoint.getTarget().getClass());
+		System.out.println("Logging.afgterThrowingAdvice()...The exception thrown by target method: " + throwable.getMessage());	
 		System.out.println("Logging.afgterThrowingAdvice()...");
 	}
 	

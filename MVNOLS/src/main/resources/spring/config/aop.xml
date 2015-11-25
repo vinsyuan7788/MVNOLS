@@ -24,19 +24,19 @@
 
 	<!-- AOP configuration for all action classes in test module -->
  	<aop:config proxy-target-class="false">
-		<aop:pointcut expression="execution(* cn.itcast.test.service.impl.*.*(..))" id="testActionTarget"/>
+		<aop:pointcut expression="execution(* cn.itcast.test.service.impl.*.*(..))" id="testServiceTarget"/>
 		<aop:aspect ref="performanceMonitoring">
-			<aop:around method="computeRunningTime" pointcut-ref="testActionTarget"/>
-			<aop:before method="beforeAdvice" pointcut-ref="testActionTarget"/>
-			<aop:after-returning method="afterReturningAdvice" pointcut-ref="testActionTarget" returning="returnValue"/>
-			<aop:after-throwing method="afterThrowingAdvice" pointcut-ref="testActionTarget" throwing="throwable"/>
-			<aop:after method="afterFinallyAdvice" pointcut-ref="testActionTarget"/>
+			<aop:around method="computeRunningTime" pointcut-ref="testServiceTarget"/>
+			<aop:before method="beforeAdvice" pointcut-ref="testServiceTarget"/>
+			<aop:after-returning method="afterReturningAdvice" pointcut-ref="testServiceTarget" returning="returnValue"/>
+			<aop:after-throwing method="afterThrowingAdvice" pointcut-ref="testServiceTarget" throwing="throwable"/>
+			<aop:after method="afterFinallyAdvice" pointcut-ref="testServiceTarget"/>
 		</aop:aspect>
 		<aop:aspect ref="logging">
-			<aop:before method="beforeAdvice" pointcut-ref="testActionTarget"/> 
-			<aop:after-returning method="afterReturningAdvice" pointcut-ref="testActionTarget" returning="returnValue"/>
-			<aop:after-throwing method="afterThrowingAdvice" pointcut-ref="testActionTarget" throwing="throwable"/>
-			<aop:after method="afterFinallyAdvice" pointcut-ref="testActionTarget"/>
+			<aop:before method="beforeAdvice" pointcut-ref="testServiceTarget"/> 
+			<aop:after-returning method="afterReturningAdvice" pointcut-ref="testServiceTarget" returning="returnValue"/>
+			<aop:after-throwing method="afterThrowingAdvice" pointcut-ref="testServiceTarget" throwing="throwable"/>
+			<aop:after method="afterFinallyAdvice" pointcut-ref="testServiceTarget"/>
 		</aop:aspect>
 	</aop:config> 
 	
