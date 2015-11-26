@@ -115,23 +115,23 @@ $().ready(function() {
    <form id = "itemForm" enctype="multipart/form-data">
    		<table border="1" cellspacing="0" bordercolor="pink" width = "50%" align="center">
    			<tr>
-   				<td>Item Name:</td>
+   				<td>Item Name<font color="red">*</font></td>
    				<td><input type = "text" id = "itemName" name = "itemName"></td>
    			</tr>
    		   	<tr>
-   				<td>Item Price:</td>
+   				<td>Item Price<font color="red">*</font></td>
    				<td><input type = "text" id = "itemPrice" name = "itemPrice"></td>
    			</tr>
    			<tr>
-   				<td>Manufacture place:</td>
+   				<td>Manufacture place<font color="red">*</font></td>
    				<td><input type = "text" id = "itemPlaceOfManufacture" name = "itemPlaceOfManufacture"></td>
    			</tr>
    			<tr>
-   				<td>Item Detail:</td>
+   				<td>Item Detail</td>
    				<td><input type = "text" id = "itemDetail" name = "itemDetail"></td>
    			</tr>
    			<tr>
-   				<td>Item Image:</td>
+   				<td>Item Image</td>
    				<td>
 					<img width = "100" height = "100" name = "img" id="img">
 					<input type="hidden" name="itemImage" id="itemImage"/>
@@ -139,7 +139,7 @@ $().ready(function() {
    				</td>
    			</tr>
    		    <tr>
-   				<td>Captcha</td>
+   				<td>Captcha<font color="red">*</font></td>
    				<td>
    					<input type = "text" id = "captcha" name = "captcha"/>
 					<img src="<c:url value = '/captcha/CaptchaServlet.servlet'/>" id = "captcha_img">
