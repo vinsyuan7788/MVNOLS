@@ -2,6 +2,7 @@ package cn.itcast.global.interceptor;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,7 +16,7 @@ import cn.itcast.global.utils.DateUtils;
  * 	1. Interceptor is executed before converter
  */
 public class DateValidator implements HandlerInterceptor {
-
+	
 	/**
 	 * 	Object handler: This is the H(Handler) found by HM, which only contains 1 target method mapped by request URL
 	 *  -- This target method is namely the handler|action method that will process the request (according to the SpringMVC request processing workflow)
@@ -72,7 +73,7 @@ public class DateValidator implements HandlerInterceptor {
 	 * 	When to execute this method:
 	 *  -- After executing the method of H|AC, before returning ModelAndView
 	 * 	In what situation to use:
-	 * 	-- Use ModelAndView to pass common data (e.g. username, userpoints(用户积分), etc.)
+	 * 	-- Use ModelAndView to pass common data (e.g. username, userpoints|usercredits|userscores, etc.)
 	 *  -- Use ModelAndView to unify the view
 	 */
 	@Override

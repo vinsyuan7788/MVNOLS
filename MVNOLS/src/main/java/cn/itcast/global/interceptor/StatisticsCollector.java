@@ -44,7 +44,7 @@ public class StatisticsCollector implements HandlerInterceptor {
 	 * 	When to execute this method:
 	 *  -- After executing the method of H|AC, before returning ModelAndView
 	 * 	In what situation to use:
-	 * 	-- Use ModelAndView to pass common data (e.g. username, userpoints(用户积分), etc.)
+	 * 	-- Use ModelAndView to pass common data (e.g. username, userpoints|usercredits|userscores, etc.)
 	 *  -- Use ModelAndView to unify the view
 	 */
 	@Override
