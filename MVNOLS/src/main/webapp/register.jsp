@@ -62,8 +62,8 @@ $().ready(function() {
 	/*  
 	 *  Validation requirement:
 	 *  1. Register a validation for a speicific form: $("#FormID").validate({...})
-	 *  2. Key_in_rules_&_messages = <input>id = <input>name
-	 *     -- e.g. username = <input>id = <input>name
+	 *  2. Key_in_rules_&_messages = <input>name
+	 *     -- e.g. username = <input>name
 	 *  3*. Specify submission handler: submitHandler:function(form){...}: NOT necessary
 	 *  4. ONLY workable for statically-generated elements
 	 */
@@ -160,6 +160,11 @@ $().ready(function() {
 		email: "This ain't right play boy"
 	});
 	
+	/*	This part is for birthday UI 	*/
+	$("#birthday").datebox({
+		editable: true
+	});
+	
 	/*	This part is to submit the register form when the "Register" button is clicked	*/
 	$("#register").click(function () {
 		$("#registerForm").attr("action", "<c:url value = '/user/userRegister.action'/>").attr("method", "post").submit();
@@ -225,7 +230,7 @@ $().ready(function() {
 		</p>
 		<p>
 			<label>Birthday</label>
-			<input type = "text" class="easyui-datebox" data-options="editable:true" id = "birthday" name = "birthday" value = "<fmt:formatDate value="${user.birthday}" pattern = "MM/dd/yyyy"/>"/>
+			<input type = "text" class="easyui-datebox" id = "birthday" name = "birthday" value = "<fmt:formatDate value="${user.birthday}" pattern = "MM/dd/yyyy"/>"/>
 		</p>
 		<p>
 			<label>Nationality</label>

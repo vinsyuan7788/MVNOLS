@@ -44,8 +44,8 @@ $().ready(function() {
 	/*  
 	 *  Validation requirement:
 	 *  1. Register a validation for a speicific form: $("#FormID").validate({...})
-	 *  2. Key_in_rules_&_messages = <input>id = <input>name
-	 *     -- e.g. currentPageCode = <input>id = <input>name
+	 *  2. Key_in_rules_&_messages = <input>name
+	 *     -- e.g. currentPageCode = <input>name
 	 *  3. Specify submission handler: submitHandler:function(form){...} 
 	 *  4. ONLY workable for statically-generated elements
 	 */
