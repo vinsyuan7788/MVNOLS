@@ -17,10 +17,12 @@
 	-->
 
   </head>
-  
+<!-- JQuery library -->  
 <script type="text/javascript" src="<c:url value = '/js/jquery/jquery-1.4.2.js'/>"></script>
+<!-- JQuery Validation library -->
 <script type="text/javascript" src="<c:url value = '/js/validation/jquery.validate.js'/>"></script>
-<script type="text/javascript" src="<c:url value = '/js/validation/jquery.form.js'/>"></script>
+<!-- JQuery Form library -->
+<script type="text/javascript" src="<c:url value = '/js/form/jquery.form.js'/>"></script>
 
 <script type="text/javascript">
 $().ready(function() {

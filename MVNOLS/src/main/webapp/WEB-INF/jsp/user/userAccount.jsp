@@ -23,12 +23,13 @@
 <link type="text/css" rel="stylesheet" href="<c:url value = '/css/easyui/themes/default/easyui.css'/>">
 <link type="text/css" rel="stylesheet" href="<c:url value = '/css/easyui/themes/icon.css'/>">
 
-<!-- Load the JS library -->
+<!-- JQuery library -->
 <script type="text/javascript" src="<c:url value = '/js/jquery/jquery-1.4.2.js'/>"></script>
 <!-- JQuery Validation library -->
 <script type="text/javascript" src="<c:url value = '/js/validation/jquery.validate.js'/>"></script>
 <script type="text/javascript" src="<c:url value = '/js/validation/cmxforms.js'/>"></script>
-<script type="text/javascript" src="<c:url value = '/js/validation/jquery.form.js'/>"></script>
+<!-- JQuery Form library -->
+<script type="text/javascript" src="<c:url value = '/js/form/jquery.form.js'/>"></script>
 <!-- JQuery EasyUI library -->
 <script type="text/javascript" src="<c:url value = '/js/easyui/jquery.easyui.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value = '/js/easyui/locale/easyui-lang-en.js'/>"></script>
