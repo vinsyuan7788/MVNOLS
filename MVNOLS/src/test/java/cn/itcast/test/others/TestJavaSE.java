@@ -76,19 +76,29 @@ public class TestJavaSE {
 	
 	/**
 	 * 	Test comparing Date 
+	 * 	1. "Switch case" is only workable for int-typed expression or the expression whose result can be automatically
+	 * 	   converted to int type (namely byte|short|char|int)
 	 */
 	@Test
 	public void testCompareDate () throws Exception {
 		
 		/*	Get 2 date objects by directly instantiating current date & parsing a string respectively	*/
 		Date date1 = new Date();
-		Date date2 = new SimpleDateFormat("MM/dd/yyyy").parse("13/13/2013");
+		Date date2 = new SimpleDateFormat("MM/dd/yyyy").parse("12/13/2016");
 		
 		/*	Do the date comparison by swtich case	*/
 		switch (DateUtils.compareDates(date1, date2)) {
-		case 1: System.out.println(date1 + " is earlier than " + date2);
-		case 0: System.out.println(date1 + " is the same as " + date2);
-		case -1: System.out.println(date1 + "is later than " + date2);
+		case 1: 
+			System.out.println(date1 + " is earlier than " + date2);
+			break;
+		case 0: 
+			System.out.println(date1 + " is the same as " + date2);
+			break;
+		case -1: 
+			System.out.println(date1 + "is later than " + date2); 
+			break;
+		default:
+			break;
 		}
 	}
 	
