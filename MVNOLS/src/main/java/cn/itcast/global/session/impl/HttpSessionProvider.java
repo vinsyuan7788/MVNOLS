@@ -75,7 +75,7 @@ public class HttpSessionProvider implements SessionProvider {
 	 */
 	@Override
 	public void removeAttribute(String attributeName,
-			HttpServletRequest request, HttpServletResponse response) {
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		/*	Get the original session  */
 		HttpSession session = request.getSession(false);

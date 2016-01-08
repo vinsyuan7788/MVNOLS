@@ -81,8 +81,8 @@ public class TestAction implements WebBindingInitializer {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/processChecbox")
-	public String processChecbox (String[] hobby, Model model) throws Exception {
+	@RequestMapping("/processCheckbox")
+	public String processCheckbox (String[] hobby, Model model) throws Exception {
 		
 		/*	If there is any element in the array, process the array 	*/
 		if (hobby != null && hobby.length > 0) {

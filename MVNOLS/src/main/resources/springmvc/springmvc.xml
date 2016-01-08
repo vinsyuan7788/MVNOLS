@@ -93,7 +93,7 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/user/updateUser.action"/>
 			<mvc:mapping path="/user/userRegister.action"/>
-			<bean class = "cn.itcast.global.interceptor.DateValidator"></bean>
+			<bean class = "cn.itcast.global.interceptor.BirtydateValidator"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 

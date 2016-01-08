@@ -1,4 +1,4 @@
-package cn.itcast.global.interceptor;
+package cn.itcast.temporary.interceptor.backup;
 
 import java.lang.reflect.Method;
 import java.util.UUID;
@@ -11,7 +11,7 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.itcast.global.annotation.utils.TokenUtils;
+import cn.itcast.global.annotation.Token;
 import cn.itcast.global.configuration.Constants;
 import cn.itcast.global.exception.CustomException;
 import cn.itcast.global.session.SessionProvider;
@@ -69,29 +69,33 @@ public class TokenValidator implements HandlerInterceptor {
 			
 			/*	Get the handler|action method that will process the request	 */
 			Method method = ((HandlerMethod) handler).getMethod();
-			
-			/*	If there is a "Token" annotation applied on the method & "saveToken" is true, remove the previous token & save a new token into session scope	*/
-			if (TokenUtils.parseSaveToken(method) == true) {
-				sessionProvider.setAttribute("token", UUID.randomUUID().toString(), request, response);
-			}
-			
-			/*	If there is a "Token" annotation applied on the method & validToken() is true, predicate if the request is duplicate with the token	 */
-			else if (TokenUtils.parseValidateToken(method) == true) {
-				
-        		/*	If the request is submitted the first time: release	 */
-    			if (isFirstTime(request, response)) {
-    				return true;
-				
-				/*	Else: return to the error view by throwing out an custom exception	*/
-    			} else {
-    				throw new CustomException("Your request is submitted successfully. Please do not repeat submission");
-    			}	
-			}
-			
-			/*	If there is no Token annotation applied on the method, make sure there is no token saved in the session	 */
-			else {
-				sessionProvider.removeAttribute("token", request, response);
-			}
+            
+			/*	If there is Token annotation applied on the method, get the annotation & parse the values of the fields  */
+            if (method.isAnnotationPresent(Token.class)) {
+            	Token token = method.getAnnotation(Token.class);
+            	
+            	/*	If saveToken() is true, then remove the previous token & save a new token into session scope	*/
+            	if (token.saveToken() == true) {
+            		sessionProvider.setAttribute("token", UUID.randomUUID().toString(), request, response);
+            	}
+            	
+            	/*	If validToken() is true, then predicate if the request is duplicate with the token	*/
+            	if (token.validateToken() == true) {
+            		
+            		/*	If the request is submitted the first time: release	 */
+        			if (isFirstTime(request, response)) {
+        				return true;
+    				
+    				/*	Else: return to the error view by throwing out an custom exception	*/
+        			} else {
+        				throw new CustomException("Your request is submitted successfully. Please do not repeat submission");
+        			}	
+            	}
+            
+            /*	If there is no Token annotation applied on the method, make sure there is no token saved in the session 	*/
+            } else {
+            	sessionProvider.removeAttribute("token", request, response);
+            }
 		}
 		
 		/*	For the rest of URLs & situations: release	*/
@@ -158,3 +162,4 @@ public class TokenValidator implements HandlerInterceptor {
 	}
 
 }
+

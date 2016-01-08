@@ -25,5 +25,5 @@ public interface SessionProvider {
 	public String getSessionId (HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	/*	Remove attribute from session scope	 */
-	public void removeAttribute(String attributeName, HttpServletRequest request, HttpServletResponse response);
+	public void removeAttribute(String attributeName, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

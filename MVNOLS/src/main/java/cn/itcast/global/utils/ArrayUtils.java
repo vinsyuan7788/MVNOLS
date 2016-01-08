@@ -8,7 +8,7 @@ public class ArrayUtils {
 	/**
 	 * 	This is a static method to convert String array to String
 	 * 	1. Different from org.apache.commons.lang3.ArrayUtils.toString()
-	 *     -- org.apache.commons.lang3.ArrayUtils.toString() will add braces at the both end of the String, which is not desirable
+	 *     -- org.apache.commons.lang3.ArrayUtils.toString() or java.util.Arrays.toString() will add braces at the both end of the String, which is not desirable
 	 * @param stringArray
 	 * @return
 	 */

@@ -160,7 +160,7 @@ $().ready(function () {
 		window.location.href = "<c:url value = '/test/getCurrentPageURL.action'/>?currentPageURL=" + window.location.href + "&currentPageURLWithParameters=" + window.location.href + queryParameters;
 	});
 	$("#submit").click(function () {
-		$("#hobbyForm").attr("action", "<c:url value = '/test/processChecbox.action'/>").attr("method", "get").submit();
+		$("#hobbyForm").attr("action", "<c:url value = '/test/processCheckbox.action'/>").attr("method", "get").submit();
 	});
 	$("#generateStaticPage").click(function () {
 		window.location.href = "<c:url value = '/test/generateStaticPage.action'/>";

@@ -15,7 +15,7 @@ import cn.itcast.global.utils.DateUtils;
  * 	This is an interceptor that can process the comparison between 2 dates for user birthday
  * 	1. Interceptor is executed before converter
  */
-public class DateValidator implements HandlerInterceptor {
+public class BirtydateValidator implements HandlerInterceptor {
 	
 	/**
 	 * 	Object handler: This is the H(Handler) found by HM, which only contains 1 target method mapped by request URL
@@ -46,8 +46,8 @@ public class DateValidator implements HandlerInterceptor {
 			/*	Parse the Date data	 */
 			try {
 				
-				/*	If the birthday does not exceed current date, return to error page	*/
-				if (DateUtils.compareDates(new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("birthday")), new Date()) != -1) {
+				/*	If the birthday does not exceed current date, release the request	*/
+				if (DateUtils.compareDates(new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("birthday")), new Date()) != 1) {
 					return true;
 				
 				/*	Else return to error page with a message	*/
