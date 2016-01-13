@@ -90,6 +90,19 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	/**
+	 * 	This is a service method to re-update the item state to "active"
+	 * 	1. Update the item state to "active", then to "active"
+	 */
+	@Override
+	public Item republishItemById(Integer id) throws Exception {
+		
+		/*	Update the item state to "unactive", then to "active"	*/
+		this.putItemOffSaleById(id);
+		Item item = this.putItemOnSaleById(id);
+		return item;
+	}
+	
+	/**
 	 * 	This is a service method to update the state of items to "active" & query the updated information of the items
 	 * 	1. Since Item class has an "itemDetail" field with BLOB type in database & it needs to be queried, hence:
 	 *     -- Adopt "selectByExampleWithBLOBs()" method
@@ -131,6 +144,19 @@ public class ItemServiceImpl implements ItemService {
 		itemMapper.updateByExampleSelective(item, itemExample);
 	}
 
+	/**
+	 * 	This is a service method to re-update the state of items ot "active"
+	 * 	1. Update the state of items to "unactive", then to "active"
+	 */
+	@Override
+	public List<Item> republishItemsByIds(List<Integer> ids) throws Exception {
+		
+		/*	Update the state of items to "unactive", then to "active"	*/
+		this.putItemsOffSaleByIds(ids);
+		List<Item> items = this.putItemsOnSaleByIds(ids);
+		return items;
+	}
+	
 	/**
 	 * 	This is a service method to add a new item
 	 * 	1. When new item is added, it is "unactive" state

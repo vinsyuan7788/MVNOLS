@@ -35,3 +35,7 @@ Version 1.0.7:
 Version 1.0.8:
 1. Adds the summarization regarding the experience of Java Web development, JavaSE core development, software design pattern 
 2. Boardens the testing functionality regarding JS
+
+Version 1.0.9:
+1. Addresses the defects regarding static page generation result, JS return to item administraton list, and utility class meethod finalization
+2. Adds a function regarding item republishment

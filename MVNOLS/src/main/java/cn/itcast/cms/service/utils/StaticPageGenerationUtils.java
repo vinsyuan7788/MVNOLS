@@ -18,21 +18,21 @@ public class StaticPageGenerationUtils implements ServletContextAware {
 	/*	This part is to obtain the ServletCotnext object from ServletContextAware	*/
 	private ServletContext servletContext;
 	@Override
-	public void setServletContext(ServletContext servletContext) {
+	public final void setServletContext(ServletContext servletContext) {
 		this.servletContext = servletContext;
 	}
 	
 	/**
 	 * 	This is a method to get the real path
 	 */
-	public String getRealPath (String directory) throws Exception {
+	public final String getRealPath (String directory) throws Exception {
 		return servletContext.getRealPath(directory);
 	}
 	
 	/**
 	 * 	This is a method to get the Writer object  
 	 */
-	public Writer getWriter (String directory, String encoding) throws Exception {
+	public final Writer getWriter (String directory, String encoding) throws Exception {
 		
 		/*	Get the real path of the directory	*/
 		String realPath = this.getRealPath(directory);

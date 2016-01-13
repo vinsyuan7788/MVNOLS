@@ -89,11 +89,11 @@ $().ready(function() {
 				/*	Set the attribute for the specific form & submit	 */
 				$("#itemListForm").attr("action", "<c:url value = '/item/putItemsOnSale.action'/>").attr("method", "post").submit();			
 			} else {
-			/*	If click "no" on the confirm window, then return to original page	*/
+			/*	If click "no" on the confirm window, then return to the request URL to current page	 */
 				return;
 			}
 		} else {
-		/*	If there is no checked checkedbox, pop out an alert & return to original page	*/
+		/*	If there is no checked checkedbox, pop out an alert & return to the request URL to current page	 */
 			alert("Please select at least one item");
 			return;
 		}
@@ -105,6 +105,21 @@ $().ready(function() {
 		if (checkedNumber > 0) {
 			if (window.confirm("Do you really want to put the item(s) OFF sale?")) {
 				$("#itemListForm").attr("action", "<c:url value = '/item/putItemsOffSale.action'/>").attr("method", "post").submit();
+			} else {
+				return;
+			}	
+		} else {
+			alert("Please select at least one item");
+			return;
+		}
+	});
+	
+	/*	This part is to specify the operation when "Republish" button is clicked	 */
+	$("#republishInBatches").click(function () {
+		var checkedNumber = $(":checkbox[name='checkedId']:checked").size();
+		if (checkedNumber > 0) {
+			if (window.confirm("Do you really want to republish the item(s)?")) {
+				$("#itemListForm").attr("action", "<c:url value = '/item/republishItems.action'/>").attr("method", "post").submit();
 			} else {
 				return;
 			}	
@@ -152,6 +167,7 @@ $().ready(function() {
 			<c:choose>
 				<c:when test="${sessionScope.buttonFlag eq 'putOnSale' }">
 					<input type = "submit" id = "putOffSaleInBatches" value = "Put Off Sale"/>
+					<input type = "submit" id = "republishInBatches" value = "Republish"/>
 				</c:when>
 				<c:when test="${sessionScope.buttonFlag eq 'putOffSale'}">
 					<input type = "submit" id = "putOnSaleInBatches" value = "Put On Sale"/>

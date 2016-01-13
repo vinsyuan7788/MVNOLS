@@ -106,8 +106,9 @@ public class RedirectionAction {
 	
 	/**
 	 * 	This is an action method to go to "admin/user/userList.jsp"
-	 * 	1. Save a token into session scope
-	 * 	2. Return to JSP view
+	 *  1. This is necessary due to "return" in the front-end JS
+	 * 	2. Save a token into session scope
+	 * 	3. Return to JSP view
 	 * @return
 	 * @throws Exception
 	 */
@@ -136,6 +137,17 @@ public class RedirectionAction {
 	@RequestMapping("/itemCriteria")
 	public String itemCriteria () throws Exception {
 		return "item/itemCriteria";
+	}
+	
+	/**
+	 * 	This is an action method to go to "admin/item/itemList.jsp"
+	 * 	1. This is necessary due to "return" in the front-end JS
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/itemAdminList")
+	public String itemAdminList () throws Exception {
+		return "admin/item/itemList";
 	}
 	
 	/**

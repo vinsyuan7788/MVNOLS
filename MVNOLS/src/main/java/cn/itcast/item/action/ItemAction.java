@@ -86,6 +86,30 @@ public class ItemAction {
 		model.addAttribute("successMessage", "Put the item off sale successfully");
 		return "forward:/redirection/success.action";
 	}
+	
+	/**
+	 * 	This is an action method to republish one item
+	 * 	1. Re-update the state of item to "active"
+	 * @param id
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/republishItem")
+	public String republishItem (Integer id, Model model) throws Exception {
+		
+		/*	Re-update the state of this item  */
+		Item item = itemService.republishItemById(id);
+		
+		/*	Generate the static page for this item	*/
+		Map<String, Item> dataModel = new HashMap<String, Item>();
+		dataModel.put("item", item);
+		staticPageGenerationService.itemDetailPageGeneration(dataModel, item.getId());
+		
+		/*	Save success message & return	*/
+		model.addAttribute("successMessage", "Republish item successfully");
+		return "forward:/redirection/success.action";
+	}
 
 	/**
 	 * 	This is an action method to put multiple items on sale
@@ -116,7 +140,7 @@ public class ItemAction {
 			}
 			
 			/*	Save success message & return	*/
-			model.addAttribute("successMessage", "Put the items on sale successfully");
+			model.addAttribute("successMessage", "Put the item(s) on sale successfully");
 			return "forward:/redirection/success.action";
 			
 		/*	Else throws a custom exception & return to error page	*/
@@ -146,9 +170,46 @@ public class ItemAction {
 			itemService.putItemsOffSaleByIds(ids);
 			
 			/*	Save success message & return	*/
-			model.addAttribute("successMessage", "Put the items off sale successfully");
+			model.addAttribute("successMessage", "Put the item(s) off sale successfully");
 			return "forward:/redirection/success.action";
 
+		/*	Else throws a custom exception & return to error page	*/
+		} else {
+			throw new CustomException("Please select at least one item");
+		}
+	}
+	
+	/**
+	 * 	This is an action method to republish multiple items
+	 * 	1. Re-update the state of items to "active"
+	 * @param checkedId
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/republishItems")
+	public String republishItems (Integer[] checkedId, Model model) throws Exception {
+		
+		/*	If there is any checkedId, process the checkedId array 	 */
+		if (checkedId != null && checkedId.length > 0) {
+			
+			/*	Transform the array to List	 */
+			List<Integer> ids = Arrays.asList(checkedId);
+			
+			/*	Update the state of the items & return the corresponding information of the items	*/
+			List<Item> items = itemService.republishItemsByIds(ids);
+			
+			/*	Generate the static pages for each item respectively  */
+			Map<String, Item> dataModel = new HashMap<String, Item>();
+			for (Item item : items) {
+				dataModel.put("item", item);
+				staticPageGenerationService.itemDetailPageGeneration(dataModel, item.getId());
+			}
+			
+			/*	Save success message & return	*/
+			model.addAttribute("successMessage", "Republish item(s) successfully");
+			return "forward:/redirection/success.action";
+			
 		/*	Else throws a custom exception & return to error page	*/
 		} else {
 			throw new CustomException("Please select at least one item");

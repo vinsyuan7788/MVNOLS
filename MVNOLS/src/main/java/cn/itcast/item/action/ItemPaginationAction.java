@@ -87,6 +87,6 @@ public class ItemPaginationAction {
 		
 		/*	Save the pageBean into session scope & return  */
 		sessionProvider.setAttribute("pageItemBean", pageItemBean, request, response);
-		return "admin/item/itemList";
+		return "redirect:/redirection/itemAdminList.action";
 	}
 }

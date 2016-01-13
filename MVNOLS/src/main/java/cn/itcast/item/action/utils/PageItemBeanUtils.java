@@ -35,6 +35,7 @@ public class PageItemBeanUtils extends PageBeanFieldSetter<PageItemBean> impleme
 		super.setParametersForQuery(pageItemBean);
 	}
 	
+	
 	/**
 	 * 	This is a static method to set necessary parameters for pagination display
 	 * @param pageUserBean

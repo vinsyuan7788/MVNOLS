@@ -13,7 +13,7 @@ public class PageBeanFieldSetter<T extends PageBean> {
 	 * @param pageBean
 	 * @throws Exception
 	 */
-	public void setParametersForQuery (T pageBean) throws Exception {
+	public final void setParametersForQuery (T pageBean) throws Exception {
 		
 		/*	Process the current page code	*/
 		if (pageBean.getCurrentPageCode() == null) {
@@ -29,7 +29,7 @@ public class PageBeanFieldSetter<T extends PageBean> {
 	 * @param offsetPosition
 	 * @throws Exception
 	 */
-	public void setParametersForDisplay (T pageBean, int pageSize, int maximumDisplayPages, int offsetPosition) throws Exception {
+	public final void setParametersForDisplay (T pageBean, int pageSize, int maximumDisplayPages, int offsetPosition) throws Exception {
 		
 		/*	Set the page size, maximum display pages, offset position	*/
 		pageBean.setPageSize(pageSize);

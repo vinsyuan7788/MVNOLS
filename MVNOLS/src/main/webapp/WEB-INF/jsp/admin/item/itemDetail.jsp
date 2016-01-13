@@ -39,6 +39,13 @@ $().ready(function() {
 			return;	
 		}
 	});
+	$("#republish").click(function () {
+		if (window.confirm("Do you really want to republish this item?")) {
+			$("#itemDetailForm").attr("action", "<c:url value = '/item/republishItem.action'/>").attr("method", "post").submit();
+		} else {
+			return;	
+		}
+	});	
 	$("#editItem").click(function () {
 		alert("Going to 'itemInfo.jsp' page...");
 		return;
@@ -97,6 +104,7 @@ $().ready(function() {
     		<td>Operation</td>
     		<td>
    				<input type = "button" id = "putOffSale" value = "Put Off Sale"/>
+   				<input type = "button" id = "republish" value = "Republish">
     			<input type = "button" id = "editItem" value = "Edit Item Information"/>
     		</td>
     	</tr>   

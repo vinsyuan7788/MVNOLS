@@ -23,4 +23,8 @@ public interface ItemService {
 	
 	public void addNewItem(Item item) throws Exception;
 
+	public Item republishItemById(Integer id) throws Exception;
+
+	public List<Item> republishItemsByIds(List<Integer> ids) throws Exception;
+
 }

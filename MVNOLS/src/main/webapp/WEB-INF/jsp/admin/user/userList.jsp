@@ -84,11 +84,11 @@ $().ready(function() {
 				/*	Set the attribute for the specific form & submit	 */
 				$("#userListForm").attr("action", "<c:url value = '/user/deleteUsers.action'/>").attr("method", "post").submit();			
 			} else {
-			/*	If click "no" on the confirm window, then return to original page	*/
+			/*	If click "no" on the confirm window, then return to the request URL to current page	 */
 				return;
 			}
 		} else {
-		/*	If there is no checked checkedbox, pop out an alert & return to original page	*/
+		/*	If there is no checked checkedbox, pop out an alert & return to the request URL to current page	 */
 			alert("Please select at least one user");
 			return;
 		}
