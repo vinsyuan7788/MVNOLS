@@ -7,11 +7,17 @@ import org.junit.Test;
 
 /**
  * 	This class is to perform testing regarding stack memory & heap memory
- * 	1. Reference: the variable in stack memory refers to the object in heap memory 
+ * 	1. Reference: the variable in stack memory refers to the object|instance in heap memory
  * 
- * 	Stack & Heap:
- * 	1. Stack: FILO; automatically-assigned by JVM|OS
- * 	2. Heap: FIFO: manually-assiend by programmer
+ * 	JVM memory rough composition: stack, heap & method area:
+ * 	1. Stack: to store variables
+ *     -- FILO 
+ *     -- Automatically-assigned by JVM|OS
+ * 	2. Heap: to store objects|instances
+ *     -- FIFO 
+ *     -- Manually-assiend by programmer
+ *  3. Method Area: to store compiled java files
+ *     -- Refer to "testReflection.java"
  */
 public class TestMemory {
 
@@ -19,14 +25,17 @@ public class TestMemory {
 	 * 	Test the difference between "==" and "equals()" for String objects
 	 */
 	@Test
-	public void testEqualsForString () throws Exception {
+	public void testReferenceAndValueComparisonForString () throws Exception {
 		
-		/*	Create a string object & a null string reference	 */
-		String string1 = "This is a test String";
+		/*	Create 2 null string references	 */
+		String string1 = null;
 		String string2 = null;
+		String string3 = null;
 		
 		/*	Do the comparison between the strings with same reference and value	*/
+		string1 = "This is a test String";
 		string2 = "This is a test String";
+		System.out.println("1st comparison:");
 		if (string1 == string2) {
 			System.out.println("string1 and string2 have the same reference");
 		} else {
@@ -39,9 +48,11 @@ public class TestMemory {
 		}
 		
 		/*	Do the comparison between the strings with different references and same value	*/
+		string1 = "This is a test String";
 		string2 = new String("This is a test String");
+		System.out.println("2nd comparison:");
 		if (string1 == string2) {
-			System.out.println("string1 and string3 have the same reference");
+			System.out.println("string1 and string2 have the same reference");
 		} else {
 			System.out.println("string1 and string2 have different references");
 		}
@@ -49,6 +60,57 @@ public class TestMemory {
 			System.out.println("string1 and string2 have the same value");
 		} else {
 			System.out.println("string1 and string2 have difference values");
+		}
+		
+		/*	Do the comparison between the strings with different references and same value	*/
+		string1 = new String("This is a test String");
+		string2 = new String("This is a test String");
+		System.out.println("3rd comparison:");
+		if (string1 == string2) {
+			System.out.println("string1 and string2 have the same reference");
+		} else {
+			System.out.println("string1 and string2 have different references");
+		}
+		if (string1.equals(string2)) {
+			System.out.println("string1 and string2 have the same value");
+		} else {
+			System.out.println("string1 and string2 have difference values");
+		}
+		
+		/*	Do the comparison between the strings with different references and same value	*/
+		string1 = new StringBuffer("This is a test String").toString();
+		string2 = new String("This is a test String");
+		string3 = "This is a test String";
+		System.out.println("4th comparison:");
+		if (string1 == string2) {
+			System.out.println("string1 and string2 have the same reference");
+		} else {
+			System.out.println("string1 and string2 have different references");
+		}
+		if (string1.equals(string2)) {
+			System.out.println("string1 and string2 have the same value");
+		} else {
+			System.out.println("string1 and string2 have difference values");
+		}
+		if (string1 == string3) {
+			System.out.println("string1 and string3 have the same reference");
+		} else {
+			System.out.println("string1 and string3 have different references");
+		}
+		if (string1.equals(string3)) {
+			System.out.println("string1 and string3 have the same value");
+		} else {
+			System.out.println("string1 and string3 have difference values");
+		}
+		if (string2 == string3) {
+			System.out.println("string2 and string3 have the same reference");
+		} else {
+			System.out.println("string2 and string3 have different references");
+		}
+		if (string2.equals(string3)) {
+			System.out.println("string2 and string3 have the same value");
+		} else {
+			System.out.println("string2 and string3 have difference values");
 		}
 	}
 	
@@ -59,7 +121,7 @@ public class TestMemory {
 	 *  2. If the integer value is out of range (-128, 127), the JVM will assign a new reference to the integer object
 	 */
 	@Test
-	public void testEqualsForInteger () throws Exception {
+	public void testReferenceAndValueComparisonForInteger () throws Exception {
 		
 		/*	Create 2 null integer references  */
 		Integer a = null;

@@ -1,0 +1,51 @@
+MyBatis & Hibernate Comparison:
+1. From mapping perspective:
+-- MyBatis: SQL-statement (or non-complete ORM) mapping
+   -- Need JavaBean for pass-in parameters and return results from DB
+-- Hibernate: ORM (JavaBean-table mapping), hence:B
+   -- Need JavaBean that corresponds to DB table or view
+2. From SQL perspective:
+-- MyBatis: SQL is manually wirtten
+   -- More friendly for SQL adjustment or optimization & hence the system performance is more conveniently controllable
+-- Hibernate: SQL is automatically generated
+   -- More friend for programming, but the SQL may be relatively redundant that the performance will be negatively affected when the system scale increases
+3. From DAO development perspective:
+-- MyBatis: in regular way or through dynamic proxy
+-- Hibernate: in regular way
+4. From cache perspective
+-- Mybatis: The cache servers SQL statement
+-- Hibernate: The cache serves for JavaBean & fields
+5. From association query perspective:
+-- MyBatis: no need to consider n-to-n model for JavaBean definition
+   -- When table relation is complex, just need to inspect the directly-related tables for a table, hence making the 1-to-n, n-to-1 statement mapping simple
+      -- Even for the worst case: n-to-n relation, just resolves it to 1-to-n-to-1 mapping in the <resultMap>
+-- Hibernate: need to consider n-to-n model for JavaBean definition
+   -- When table relation is complex, inspecting the n-to-n relation between 2 tables are difficult (since there is intermediate tables between these 2 tables), hence making the JavaBean definition difficult.
+ 
+MyBatis application summarization: focus more on sql MAPPING (M)
+0. SqlMapConfig.xml
+1. JavaBean|POJO definition (for to-1 & to-n)
+2. mapper.xml & mapper interface & dynamic proxy
+3. single query (resultType) & association query (resultMap): JavaBeanWrapper; QueryWrapper 
+4. lazy-loading: resultMap (& SqlMapConfig.xml if not integration) configuration
+5. cache: session-level cache & mapper-level cache
+
+Hibernate application summarization: focus more on OBJECT (O) operation
+0. hibernate.cfg.xml
+1. JavaBean|POJO definition (for to-1 & to-n)
+2. xxx.hbm.xml configuration
+3. single query & association (fetch) query 
+4. lazy-loading & fetching strategies: xxx.hbm.xml (& hibernate.cfg.xml if not integration) configuration 
+5. cache: session-level cache & sessionFactory-level cache & query cache
+ 
+MyBatis & Hibernate application scenario:
+1. For those small or medium (parts of) projects with relatively fixed demands: Hibernate
+   -- e.g., traditional projects such as OA (Office Automation), ERP, etc.
+   -- When the requirement or demand is relatively fixed, the table or view will be relatively fixed, which means no need to change the JavaBeans all the time
+   -- When the systen scale is large (e.g. tens of millons of records level), Hibernate SQL will be very redundant & drastically lower the performance 
+2. For those (parts of) projects that requires flexible demands: MyBatis:
+   -- e.g., internet projects, E-commercial projects
+     
+Generally: depends on the actual requirement 
+MyBatis: more SQL-flexible & controllable
+Hibernate: more object-oriented & platform-transferable

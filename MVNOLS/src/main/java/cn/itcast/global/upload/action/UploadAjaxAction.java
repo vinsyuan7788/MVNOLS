@@ -47,7 +47,7 @@ public class UploadAjaxAction {
 			 * 	2. Generate a 3-digit random numbers
 			 */
 			String dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
-			int randomFormat = (int)(Math.random()*899+100);
+			int randomFormat = (int)(Math.random()*900+100);
 			
 			/*	Get the upload file relative path & Request URL 	*/
 			String relativePath = "/uploadFiles/Files/" + dateFormat + "_" +randomFormat + "." + extensionName;
@@ -87,7 +87,7 @@ public class UploadAjaxAction {
 			 * 	2. Generate a 3-digit random numbers
 			 */
 			String dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
-			int randomFormat = (int)(Math.random()*899+100);
+			int randomFormat = (int)(Math.random()*900+100);
 			
 			/*	Get the upload file relative path & Request URL 	*/
 			String relativePath = "/uploadFiles/Files/" + dateFormat + "_" +randomFormat + "." + extensionName;

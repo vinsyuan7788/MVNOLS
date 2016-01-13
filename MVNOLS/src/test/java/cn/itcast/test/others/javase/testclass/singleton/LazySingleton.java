@@ -1,5 +1,6 @@
-package cn.itcast.test.others.javase.testclass;
+package cn.itcast.test.others.javase.testclass.singleton;
 
+import cn.itcast.test.others.javase.testclass.abstraction.AbstractClass;
 import cn.itcast.test.others.javase.testinterface.Run;
 
 /**
@@ -8,23 +9,34 @@ import cn.itcast.test.others.javase.testinterface.Run;
  *     -- Make sure others cannot new an object
  * 	2. ONLY Declare the reference for current class (don't create the instance)
  *  3. Offer a public static getter to get this unique object
+ *     -- Use double-checked locking pattern
  *     -- Before getting the object, do a predication:
  *        -- If the object is not instantiated, then create an instance
  *        -- If the object has been instantiated, then directly return the instance
  */
 public class LazySingleton extends AbstractClass implements Run {
 
-	/*	ONLY Declare the reference for current class	*/
+	/**	
+	 * 	ONLY Declare the reference for current class	
+	 */
 	private static volatile LazySingleton INSTANCE;
 	
-	/*	Privatize the class constructor	 */
+	/**	
+	 * 	Privatize the class constructor	 
+	 */
 	private LazySingleton () {}
 
-	/*	Offer a public static getter to get this unique object: this should be used on or after J2SE 5.0	*/
+	/**	
+	 * 	Offer a public static getter to get this unique object: this should be used on or after J2SE 5.0	
+	 */
 	public static LazySingleton getLazySingleton() {
+		
+		/**
+		 * 	Here is double-checked locking pattern
+		 */
         if(INSTANCE == null){
-            synchronized(LazySingleton.class){
-                /*	When more than two threads run into the first null check same time, to avoid instanced more than one time, it needs to be checked again	 */
+            synchronized (LazySingleton.class) {
+                /*	Before the instance is created, this predication will be done twice, however once the instance is created, this synchronized predication will never be done 	 */
                 if(INSTANCE == null){ 
                 	INSTANCE = new LazySingleton();
                  }

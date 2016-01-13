@@ -81,6 +81,15 @@ public class RedirectionAction {
 		return "test/testModule";
 	}
 	
+	/**
+	 * 	This is an action method to go to "testJS.jsp"
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/testJS")
+	public String testJS () throws Exception {
+		return "test/testJS";
+	}
 	//---------	This is for user module ------------------------------------
 	/**
 	 * 	This is an action method to go to "userAccount.jsp"

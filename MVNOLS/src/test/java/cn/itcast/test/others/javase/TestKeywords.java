@@ -2,12 +2,18 @@ package cn.itcast.test.others.javase;
 
 import org.junit.Test;
 
-import cn.itcast.test.others.javase.testclass.EagerSingleton;
-import cn.itcast.test.others.javase.testclass.LazySingleton;
+import cn.itcast.test.others.javase.testclass.singleton.EagerSingleton;
+import cn.itcast.test.others.javase.testclass.singleton.LazySingleton;
 import cn.itcast.test.others.javase.testinterface.Run;
 
 /**
- * 	This class is to perform testing regarding key words
+ * 	This class is to perform testing regarding keywords
+ * 	
+ * 	Modifiers: keywords to change the meaning of definition
+ * 	1. Access modifier: public|private|protected
+ *     -- Change the method accessibility|visibility
+ *  2. Non-access modifier: static|final|abstract|synchronized|volatile
+ *     -- Achieve specific functionalities 
  */
 public class TestKeywords {
 

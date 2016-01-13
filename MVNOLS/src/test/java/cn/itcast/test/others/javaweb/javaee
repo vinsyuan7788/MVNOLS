@@ -1,0 +1,70 @@
+HTTP:
+HTTP (Hyper Text Transmission Protocol): protocol for tranmission of hypertext over internet
+-- Hyper text: text with meta data
+URL (Uniform Resource Location): a representation of HTTP address
+
+Cookie & Session: 
+Cookie: data sent from a website|server-side and stored in the user's browser|browser-side
+-- Functions: user authenticaion; session identification, etc.
+   -- Cookies realize the functions on browser-side; Server realize the functions on server-side
+-- Cookie stores text information; session stores text information & objects
+
+Web Servlet|Filter|Listener: refer to the classes under "javaweb.testclass.web" package
+Servlet:
+-- 3 life-cycle methods: (5 methods in total)
+   -- init(): executed once when servlet is created
+   -- service(): executed each time the requeset is being processed
+   -- destroy(): executed once when the servlet is destroyed
+-- Configuration: in "web.xml" file: <servlet> + <servlet-mapping>
+-- Servlet chaining: multiple servlets serving the request in chain.
+   -- Achieved by: "httpServletRequest.getRequestDispatcher().forward()|include()"
+Filter:
+-- 3 life-cycle methods: (3 methods in total)
+   -- init(): executed once when servlet is created
+   -- doFilter(): executed each time the requeset is being processed
+   -- destroy(): executed once when the servlet is destroyed
+-- Configuration: in "web.xml" file: <filter> + <filter-mapping>
+   -- Can filter 4 kinds of access: request|forward|include|error
+      -- Intercept request|forward|include to a specific servlet
+      -- Intercept a specific servlet to error page 
+Listener:
+-- 8 kinds of listeners:
+   -- For application scope: life-cycle change & attribute change
+   -- For session scope: life-cycle change & attribute change
+   -- For request scope: life-cycle change & attribute change
+   -- For JavaBean: session binding & session passivation
+      Serialization & Passivation: refer to "javaweb.testclass.bean.Person.java"
+	  -- Serialization: store the state of an object in a file or other medium
+		 -- Used for file storage or tranmission: in the environment with distributed cache
+		 -- Deserialization is the reverse process of serialization
+	  -- Passivation: store the state of an ServletSession (which has implemented Serializable) object in a file or other medium
+		 -- If other objects (e.g, JavaBean objects) want to go with session, they MUST implement Serializble interface as well
+		 -- Activation is the reverse process of passivation
+-- Configuration: in "web.xml" file: <listener> (except the 2 listeners for JavaBean)
+
+3 Scopes:
+-- Request: the interaction between user and web-app in a single HTTP request
+   -- Created when HttpServletRequest is instantiated & ended when HttpServletRequest instance is ended
+   -- Operated by "HttpServletRequest httpServletrequest"
+-- Session: the interaction between user and web-app in mutliple HTTP requests
+   -- Created when HttpSession is instantiated & ended when HttpSession instance is ended
+   -- Operated by "HttpSession httpSession"
+-- Application (by "ServletContext servletContext"): the interaction between user and web-app across the whole web application life-cycle
+   -- Created when web-app (e.g., tomcat) is started & ended when web-app (e.g., tomcat) is ended
+   -- Operated by "ServletContext servletContext"
+
+JSP & EL:
+JSP life cycle: translation --> compilation --> class-loading --> instantiation --> initialization --> request processing --> destroy
+JSP directives: page|include|taglib
+
+JDBC:
+The step of JDBC executing SQL:
+-- 1. Get the connection 
+-- 2. Write SQL to PreparedStatement for execution 
+-- 3. Process the result
+-- 4. Catch the exception if there is any
+-- 5. Close the resource
+
+Tomcat & Apache:
+Tomcat: application server
+Apache: web server

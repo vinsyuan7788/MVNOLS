@@ -1,5 +1,6 @@
-package cn.itcast.test.others.javase.testclass;
+package cn.itcast.test.others.javase.testclass.singleton;
 
+import cn.itcast.test.others.javase.testclass.abstraction.AbstractClass;
 import cn.itcast.test.others.javase.testinterface.Run;
 
 /**
@@ -12,13 +13,19 @@ import cn.itcast.test.others.javase.testinterface.Run;
  */
 public class EagerSingleton extends AbstractClass implements Run {
 	
-	/*	Create a static class object inside the class	 */
+	/**	
+	 * 	Declare the reference for current class & create a static and final instance inside the class	 
+	 */
 	private static final EagerSingleton INSTANCE = new EagerSingleton();
 	
-	/*	Privatize the class constructor	 */
+	/**
+	 * 	Privatize the class constructor	 
+	 */
 	private EagerSingleton () {}
 
-	/*	Offer a public static getter to get this unique object	*/
+	/**
+	 * 	Offer a public static getter to get this unique object	
+	 */
 	public static EagerSingleton getEagerSingleton() {
 		return INSTANCE;
 	}

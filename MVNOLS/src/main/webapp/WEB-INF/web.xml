@@ -6,7 +6,7 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   	<display-name>MVNOLC</display-name>
  
- 	<!-- Load the Spring container when Tomcat is started  -->
+ 	<!-- Load the Spring container when Tomcat is started -->
 	<listener>
     	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   	</listener>
@@ -49,7 +49,7 @@
     	<url-pattern>/*</url-pattern>
   	</filter-mapping>
   
-  	<!--	Configure the DS (Dispatcher Servlet) in SpringMVC -->
+  	<!-- Configure the DS (Dispatcher Servlet) in SpringMVC -->
   	<servlet>
   	  	<servlet-name>springmvc</servlet-name>
     	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -74,7 +74,7 @@
   	</servlet-mapping>
   <servlet-mapping>
     <servlet-name>CaptchaServlet</servlet-name>
-    <!-- Specify that JavaWeb servlet process the request ending with ".servlet" -->
+    <!-- Specify that JavaWeb servlet process the request url named "/captcha/CaptchaServlet.servlet" -->
     <url-pattern>/captcha/CaptchaServlet.servlet</url-pattern>
   </servlet-mapping>
   	

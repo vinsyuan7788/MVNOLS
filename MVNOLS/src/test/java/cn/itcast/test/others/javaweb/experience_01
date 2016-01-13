@@ -1,0 +1,62 @@
+Spring and Sturts2 Comparison:
+1. From mechanism perspective:
+-- Framework design:
+   -- SpringMVC: extesion of Servlet & supports AOP
+   -- Struts2: Apply more OOP & AOP thought
+-- Components: 
+   -- SprinMVC: DS, HM, HA, H, VR
+   -- struts2: interceptors and AC
+-- Request processing: 
+   -- SpringMVC: DispatcherServlet-based & method-based
+      -- In SpringMVC: H only contains ONE target method in AC, namely request URL is mapped to one method
+         -- Which is why there is NO global instance variable in AC|H: uses arguments to accept request parameter
+         -- Hence SpringMVC controller class is singleton by default
+   -- Struts2: Filter-based & class-based
+      -- In Struts2: request URL is mapped to the whole AC, then invoke the method in AC
+         -- Which is why there are public instances variables to accept request parameter in AC: JavaBean, etc.
+         -- Hence Struts2 action class is prototype be default
+-- Interceptors: 
+   -- SpringMVC: HM returns interceptors with H together
+   -- Sstruts2: interceptors directly serve action class generally without extra configuraiton
+-- View processing: 
+   -- SpringMVC: return V through VR 
+   -- Struts2: returns V by ResutlSetInterceptor
+2. From application perspective:
+   -- Data reception in server side: 
+      -- SprinMVC: receive the form data in various request parameter binding method
+      -- Struts2: get the data of whole form
+   -- Data storage:
+      -- SpringMVC puts data into request scope by Model|ModelAndView|HttpServletRequest 
+      -- Struts2: put data into ContextMap|ValueStack	
+   -- Data reception in browser side: 
+      -- SpringMVC: use SpringEL or JSTL+EL
+      -- Struts2 uses Sturts2Tag+OGNL or JSTL+EL
+   -- Interceptors: 
+      -- SpringMVC: interceptors are more customizable & flexible & easy-implementable
+         -- i.e., SpringMVC can process the necessary aspects using interceptors 
+      -- Struts2: offer many interceptors which are functionally powerful
+         -- i.e., Struts2 interceptors have already process more aspects (while brings more rules and mechanism to memorize and understand)
+   -- Configuration with Spring:
+      -- SpringMVC: less or few configuration
+      -- Struts2: more configuration
+      
+SpringMVC application summarization: focus more on Model (M) and Controller (C) 
+0. "springmvc.xml"
+1. Request Mapping: 
+2. Request Parameter Binding: JavaBeanWrapper; Converter<S,T>
+3. Result Forward|Redirection:
+4. JSON:
+5. Interceptors:
+6. Handler Exception Resolver
+ 
+Struts2 aplication summarization: focus more on Controller (C) and View (V): 
+0. "struts.xml"
+1. Configuration file:
+2. Interceptors: 
+3. ContextMap|ValueStack|StackContext:
+4. Struts2Tags:
+5. OGNL
+ 
+Generally: SpringMVC is better
+-- SpringMVC: lighter, more flexible & efficient
+-- Struts2: heavier, more OOP-representative

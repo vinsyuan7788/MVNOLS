@@ -1,12 +1,16 @@
-1. In Maven web project, if the configuraiton in Spring is correct, but it always says that "ClassIsNotFound"
-	-- Check "classes" folder in current project under "webapps" folder, see if there is any compilation .class file
-		-- Usually is no, hence needs to re-compile the java file, refers to "BookMarks" - "Software Engineering" - "MyEclipse"
-		
-2. Check "cn.itcast.cms.service.impl.StaticPageGenerationServiceImpl" for more support
+1. Compilation problems:
+-- In Maven web project, if the configuraiton in Spring is correct, but it always says that "ClassIsNotFound"
+   -- Check "webapps/[CurrentProject]/WEB-INF/classes" folder under the server (e.g., tomcat), see if there is any compilation .class file
+   -- Usually is no, hence needs to re-compile the java file, refers to "BookMarks" - "Software Engineering" - "MyEclipse" -- "Tomcat 6.0/webapps/..."
+	  -- Adopts the way 1 and 2: namely make sure "project->build automatically" is clicked, then "project->clean"
+	  -- Check "cn.itcast.cms.service.impl.StaticPageGenerationServiceImpl" for more support information
+-- For "CHKJ3000E: WAR Validation Failed: java.lang.NullPointerException":
+   -- Still check "webapps/[CurrentProject]/WEB-INF/classes" folder under the server (e.g., tomcat), see if there is any compilation .class file
+   -- Usually is no: hence adopts the same way for resolution
 
-3. Servlet JSP tag: here needs to be very careful.
+2. Servlet JSP tag: here needs to be very careful.
    The jars like "servlet-api" & "jsp-api" are included inside the tomcat. If user introduces the jars
-   with theese names, it will override these built-in jars & may bring some troubles when complying servlet
+   with these names, it will override these built-in jars & may bring some troubles when complying servlet
    or JSP.
    For example: the maven dependency shown as following will lead to an JSP class compilation exception
    <dependency>

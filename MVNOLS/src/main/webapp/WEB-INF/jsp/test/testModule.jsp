@@ -141,9 +141,6 @@ $().ready(function () {
 	});
 	
 	/*	This part is to submit the form when submission button is clicked   */ 
-	$("#search").click(function () {
-		$("#advancedSearchFormWithDateConersion").attr("action","<c:url value = '/test/dateConversion.action'/>").attr("method","get").submit();
-	});
 	$("#queryUser").click(function () {
 		window.location.href = "<c:url value = '/test/queryUser.action'/>?id=1";
 	});
@@ -155,6 +152,9 @@ $().ready(function () {
 			$("#queryForm").attr("action", "<c:url value = '/test/queryUser.action'/>").attr("method","post").submit();		
 		}
 	});
+	$("#search").click(function () {
+		$("#advancedSearchFormWithDateConersion").attr("action","<c:url value = '/test/dateConversion.action'/>").attr("method","get").submit();
+	});
 	$("#getCurrentPageURL").click(function () {
 		var queryParameters = "?parameterA=aaa&parameterB=bbb&parameterC=ccc";
 		window.location.href = "<c:url value = '/test/getCurrentPageURL.action'/>?currentPageURL=" + window.location.href + "&currentPageURLWithParameters=" + window.location.href + queryParameters;
@@ -165,14 +165,17 @@ $().ready(function () {
 	$("#generateStaticPage").click(function () {
 		window.location.href = "<c:url value = '/test/generateStaticPage.action'/>";
 	});
+	$("#testJS").click(function () {
+		window.location.href = "<c:url value = '/redirection/testJS.action'/>";
+	});
 });
   </script>
   
   <body>
-  	<h4>Welcome ${sessionScope.user.username}. Here is to test the mvnols, including regular action, AJAX action, caching, static page generation, etc.<br/>
+  	<h4>Welcome ${sessionScope.user.username}. Here is to test the mvnols, including regular action, AJAX action, JS|JQuery, caching, static page generation, etc.<br/>
 	<a href="<c:url value = '/home.jsp'/>">Home</a> 
   	<a href="<c:url value = '/user/userLogout.action'/>">Log-out</a></h4>
-	
+		
   	This is a get request using &lt;a/&gt; element: <br/>
   	<a href="javascript:void(0)" id = "queryUser">Click here to query the user</a><br/><br/>
  
@@ -202,6 +205,9 @@ $().ready(function () {
     <a href="<c:url value = '/test/returnException.action'/>">Click here to query a calculation result</a>
 	<br/><br/>
 	
+	This is a test link regarding JS: <br/>
+	<a href="javascript:void(0)" id = "testJS">Click here to test JS</a><br/><br/>
+		
 	This is a dropdown list interaction: <br/>
 	<select id = "country" name = "country">
 		<option value = "">Please select a country</option>
@@ -242,7 +248,7 @@ $().ready(function () {
 	<br/>
 	
 	This is a test to generate static page: <br/>
-	<a href = "javascript:void(0)" id = "generateStaticPage">Click here to generate static page</a> <br/>
+	<a href = "javascript:void(0)" id = "generateStaticPage">Click here to generate static page</a><br/><br/>
 	
   </body>
 </html>

@@ -1,0 +1,3 @@
+cn.itcast.test.others.javase.testclass.factory.subject.Person
+id=303
+name=Jeffrey

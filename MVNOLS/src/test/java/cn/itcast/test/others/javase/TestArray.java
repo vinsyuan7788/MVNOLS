@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
+
 import org.junit.Test;
 
 import cn.itcast.global.utils.ArrayUtils;
@@ -11,7 +13,9 @@ import cn.itcast.global.utils.ArrayUtils;
 /**
  * 	This class is to perform testing regarding array
  * 	1. Array to String and to List
- * 	2. Arrays & Collections class
+ * 	2. "Arrays" & "Collections" class:
+ *     -- "Array" is the hardware for load-balancing
+ *     -- "Collection" is an interface
  * 	3. Multiple-dimensional array
  * 
  * 	Array: the length is invariable
@@ -25,7 +29,7 @@ public class TestArray {
 	 */
 	@Test
 	public void testStringArray () throws Exception {
-		
+
 		/*	Instantiate a string array dynamically	*/
 		String[] hobbyArray = new String[5];
 		hobbyArray[0] = "Movies";
@@ -52,7 +56,8 @@ public class TestArray {
 	public void testIntegerArray () throws Exception {
 		
 		/*	Instantiate a integer array statically: each element is between 10 and 99	*/
-		Integer[] integerArray = {(int) (Math.random()*89+10), (int) (Math.random()*89+10), (int) (Math.random()*89+10), (int) (Math.random()*89+10), (int) (Math.random()*89+10)};
+		Integer[] integerArray = new Integer[]{(int) (Math.random()*90+10), new Random().nextInt(90)+10, (int) (Math.random()*90+10), new Random().nextInt(90)+10, (int) (Math.random()*90+10)};
+//		Integer[] integerArray = (Math.random()*90+10), new Random().nextInt(90)+10, (int) (Math.random()*90+10), new Random().nextInt(90)+10, (int) (Math.random()*90+10)};
 		System.out.println("The original integer array: " + Arrays.toString(integerArray));
 		int elementForIndex = integerArray[1];
 		System.out.println("The element for index: " + elementForIndex);
@@ -75,12 +80,11 @@ public class TestArray {
 		}
 		
 		/*	Sort the integer array in descending order	*/
-		DescComparator descComparator = new DescComparator();
-		Arrays.sort(integerArray, descComparator);
+		Arrays.sort(integerArray, new DescComparator());
 		System.out.println("The descending integer array: " + Arrays.toString(integerArray));
 		
 		/*	Binary search the integer array: array must be sorted in DESCENDING order	*/
-		int indexInDescOrder = Arrays.binarySearch(integerArray, elementForIndex, descComparator);
+		int indexInDescOrder = Arrays.binarySearch(integerArray, elementForIndex, new DescComparator());
 		if (indexInDescOrder < 0) {
 			System.out.println("The element does not exist.");
 		} else {

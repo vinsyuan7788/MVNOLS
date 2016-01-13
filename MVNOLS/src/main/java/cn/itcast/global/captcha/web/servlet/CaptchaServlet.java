@@ -25,6 +25,7 @@ public class CaptchaServlet extends HttpServlet {
 	/**
 	 * 	This is a Java web servlet method to obtain the captcha
 	 */
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	

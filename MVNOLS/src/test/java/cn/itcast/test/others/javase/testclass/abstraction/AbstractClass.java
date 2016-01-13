@@ -1,7 +1,8 @@
-package cn.itcast.test.others.javase.testclass;
+package cn.itcast.test.others.javase.testclass.abstraction;
 
 /**
  * 	This is an abstract class be extended by EagerSingleton and LazySingleton class
+ * 	1. This class extracts 2 common methods for its subclasses
  */
 public abstract class AbstractClass {
 

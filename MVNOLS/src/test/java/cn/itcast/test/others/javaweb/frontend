@@ -1,0 +1,21 @@
+HTML|XML|CSS|JS:
+HTML (Hyper Text Markup Language): 
+XML (eXtesive Markup Language): language to describe data & its metadata
+-- Constraints:
+   -- DTD (Document Type Definition): a standard to verify if the data received from outside world is valid & parsible 
+   -- XSD (XML Schema Definition): an extension of DTD & more powerful than DTD
+-- Parsing Techniques:
+   -- SAX (Simple APIs for XML): parsing technique trhough event-driven, top-down & row-by-row order
+   -- DOM (Document Object Model): parsing technique through tree structure & treat each level as object (document, element, attribute, text, node)
+-- Parser: 
+   -- JAXP: for SAX & DOM
+   -- DOM4J:: for SAX & DOM
+JS (JavaScript):
+JSON (JavasSript Object Notation):
+-- For client-server|server-server communication
+-- Alternative to XML
+-- Can be object ({key:value, key:value, ...}) or array ([value, value, ...])
+   -- Supported data type: [Number, String, Boolean], [Array, Object], null 
+-- To convert string|text to JSON object: "eval()"|"JSON.parse()"
+-- To convert JSON object to string|text: "JSON.stringify()"
+-- prons compared with XML: object representation; multiple data type support

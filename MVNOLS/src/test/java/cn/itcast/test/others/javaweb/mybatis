@@ -1,0 +1,5 @@
+Mapper-level cache application scenarios: (*******)
+1. For complex query or statistics (e.g. statistics in telecommunication), querying DB is very resource-wasting.
+   Hence use mapper-level cache and set the flushInterval to let MyBatis automatically refresh the query result or statistics
+2. For fast query (e.g. query real-time news), can adopt a CRUD statement that uses mapper-level cache to refresh the news timely
+   so that can get real-time news from the cache. A better way is using page cache.

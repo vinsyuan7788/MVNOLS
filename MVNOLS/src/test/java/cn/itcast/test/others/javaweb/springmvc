@@ -1,0 +1,34 @@
+What is SpringMVC?
+-- MVC-based web-application framework
+
+SringMVC dispatcher center & components:
+1 dispatcher center:
+-- DS: Dispatcher Servlet
+3 components:
+-- HM: Handler Mapping
+-- HA: Handler Adapter
+-- VR: View Resolver
+
+Flow of SpringMVC:
+1. DS (DispatchServlet) receives the requests from V (View)
+2. DS invokes HM (Handler Mapping) 
+   HM returns H (Handler)
+3. DS invokes HA (Handler Adapter) 
+   HA executes H
+4. C|H returns ModelAndView to HA
+   then HA returns ModelAndView to DS
+5. DS invokes VR (View Resolver)
+   VR returns V
+6. DS put the model data into request scope and respond V to user 
+Technique implemented in this flow: request mapping; parameter binding; result forward|redirection
+
+How to manage the error messages in web application:
+-- "Message.properties" file
+
+Thread-safety:
+Thread-sharable instance (non-static) variables in conroller, service, DAO classes (except those DI by spring) will raise thread-safety problem
+-- Because: conroller, service, DAO in springMVC are all singleton by defaul
+-- To resolve this: 
+   -- Avoid using thread-sharable instance (non-static) variables (except those DI by spring)
+   -- Using ThreadLocal<> class
+   -- Using multiton for conroller, service, DAO classes: NOT recommended

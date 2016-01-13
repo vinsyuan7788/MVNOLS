@@ -1,0 +1,31 @@
+What is Spring?
+-- Spring is light-weight DI|ICO & AOP container|framework
+   -- DI (Dependency Injection)|IOC (Inverse of Control): to pass the object creation to a external component where objects can be injected using configuration
+      -- Good for IOP (Interface-Oritented Programming)
+   -- AOP (Aspect-Oriented Programming): to separate the concerns (e.g., business, functionality)
+      -- Example: declarative transaction management (separate the data exchange & transaction open|close)
+   -- DI|IOC and AOP are good for modular programming & decoupling & reusability
+   
+Spring modules:
+-- Spring MVC, web module, Core container, ApplicationContext, AOP, DAO, ORM
+
+JavaBean & SpringBean:
+-- JavaBean managed by Spring container is SpringBean
+
+3 Ways of creating objects in Spring: through ApplicationContext interface
+1. Using default constructor: most usually-used
+2. Using static factory method:
+3. Using dynamic factory method:
+
+2 Ways for DI|IOC: XML configuraiton; annotation
+-- In actual, these 2 ways are mixedly used
+-- annotation: bean auto-wiring
+   -- auto-wiring: automatically inject the bean that is matched by name, type or constructor (to the bean with @autowire annotation) 
+      -- Cons: unable to resolve configuation conflicts. If there is any conflict, reject all auto-wiring
+
+The scope that Spring supports: singleton, prototype, request, session, global-session
+
+5 advices for AOP: before, after (returning, throwing, finally), around
+
+
+

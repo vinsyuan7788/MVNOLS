@@ -1,0 +1,44 @@
+JVM Memory:
+-- Stack: to store variables
+   -- FILO 
+   -- Automatically-assigned by JVM|OS
+-- Heap: to store objects|instances
+   -- FIFO 
+   -- Manually-assiend by programmer
+-- Method Area: to store compiled java files
+   -- Refer to "javase.testReflection.java"
+
+OOP (Object-Oriented Programming): refer to "javase.TestOOP.java"
+4 Features:
+-- Encapsulation: privatization for protection (e.g. JavaBean)
+-- Abstraction: extraction of common features
+-- Inheritance: Subclass can gain the ability of superclass (& enhance the abliity of themselves)
+-- Polymorphism: Superclass can refer to the object of any subclass
+Achievement:
+-- Higher cohesion & lower coupling
+
+Array|Tree|Link|Hash: 
+-- Array: sorted & ordered
+   -- Fast for query, slow for addition|removal
+-- Link: ordered & unsorted
+   -- Fast for addition|removal, slow for query
+-- Tree: sorted but unordered
+-- Hash: unsorted & unordered
+
+List|Set|Map:
+-- List: duplicable & sorted 
+-- Set: unduplicable & unsorted
+-- Map: key-value pair
+
+Thread:
+2 ways of implementing thread: extends Thread|implements Runnable
+
+Serialization: 
+-- Store the state of an object in a file or other medium
+-- Used for file storage or tranmission: in the environment with distributed cache
+
+New features:
+-- Generics, Enumrate, Autoboxing (wrapper class), Annoation, Static import, etc.
+-- Wrapper class:
+   -- Boolean, [Byte, Character], [Int, Short, Long, Float, Double]
+   -- Autoboxing & unboxing

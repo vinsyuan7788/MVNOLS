@@ -31,3 +31,7 @@ Version 1.0.6:
 
 Version 1.0.7:
 1. Updates the architect of JS, integrates the JQueryUI effects & addresses a potential bug regarding the data with Date type by implementing an interceptor & add a new utility class regarding to Date comparison
+
+Version 1.0.8:
+1. Adds the summarization regarding the experience of Java Web development, JavaSE core development, software design pattern 
+2. Boardens the testing functionality regarding JS
