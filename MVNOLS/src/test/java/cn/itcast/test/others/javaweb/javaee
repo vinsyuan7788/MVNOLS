@@ -78,7 +78,7 @@ EL built-in|implicit objects:
 -- Map pageScope: to set|get data in|from page scope
 -- Map requestScope: to set|get data in|from request scope
 -- Map sessionScope: to set|get data in|from session scope
--- Map applicationScope: to set|get data in|from applcation scope
+-- Map applicationScope: to set|get data in|from application scope
 -- Map param & Map paramValues
 -- Map header & Map headerValues
 -- Map cookie
