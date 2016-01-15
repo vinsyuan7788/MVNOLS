@@ -19,7 +19,7 @@
 	<!-- JDBC (using C3P0) configuration -->
 	<!-- 
 		The advantages of C3P0 over DBCP:
-		1. Support the connection to multiple database
+		1. Support multiple databse connections
 		2. Support re-connection when the connection is off
 	 -->
   	<bean id="dataSource" destroy-method="close" class="com.mchange.v2.c3p0.ComboPooledDataSource">

@@ -45,6 +45,7 @@ import cn.itcast.test.others.javase.testclass.template.CustomClass;
  *     -- Thread-local: to have (global) resource local to each thread
  *  5. Architectural pattern: to solve soft architecture
  *     -- IOC: to pass the object creation to a external component where objects can be injected using configuration
+ *     -- MVC: to improve the program robustness, scalability & flexibility
  * 
  * 	Pattern: a fixed procedure to resolve one type of problem
  * 	1. Hence no need to understand: if there is a demand, then use this pattern  

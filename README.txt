@@ -37,5 +37,6 @@ Version 1.0.8:
 2. Boardens the testing functionality regarding JS
 
 Version 1.0.9:
-1. Addresses the defects regarding static page generation result, JS return to item administraton list, and utility class meethod finalization
-2. Adds a function regarding item republishment
+1. Modifies the configuration regarding database & adds the summarization regarding database implementation
+2. Addresses the defects regarding static page generation result, JS return to item administraton list, and utility class meethod finalization
+3. Adds a function regarding item republishment

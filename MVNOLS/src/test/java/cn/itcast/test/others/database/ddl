@@ -1,0 +1,84 @@
+------------------------------------------------------------------------------------------------------------------
+Table & Field & Records:
+-- Table: a collection of data organized in a model with columns and rows
+   -- Column: vertical
+   -- Row: horizontal
+-- A table may have specified number of columns called field & any number of rows called records
+
+Primary|Unique|Foreign Key:
+-- Primary key: the field (or the combination of fields) that uniquely specifies a row
+   -- One table can have ONLY one primary key constraint
+   -- Primary key must be  NOT NULL
+-- Unique key: same as primary key
+   -- One table can have multiple unique key constraints
+   -- Unique key can be NULL
+-- Foreign key: the field that relates to the primary key of another table
+
+What are the (table) relationship?
+-- 1-to-1; 1-to-n; n-to-1; n-to-n
+
+What is constraint?
+-- To specify the limit on the data type of a table
+-- Specified when creating or altering a table
+   -- e.g., NOT NULL, PRIMARY KEY, FOREIGN KEY
+
+What is auto-increment?
+-- To geneate a unique number automatically when a new record is inserted into the table
+
+How to create an empty table from an existing table?
+-- "SELECT * INTO [EmptyTable] FROM [ExistingTable] WHERE 1 = 2"
+
+------------------------------------------------------------------------------------------------------------------
+What is view?
+-- Virtual table which consists of a subset of data contained in a table
+-- More space-efficient
+
+Is view updatable?
+-- Only the columns coming from the same table are updatable at the same time. 
+-- The colomns coming from different tables are not updatable at the same time
+
+------------------------------------------------------------------------------------------------------------------
+What is index?
+-- A technique to improve data retrieval efficiency
+
+What are the types of index?
+-- Unique index: does not allow duplicate values if a column is uniquely indexed
+   -- Applied when primary key is defined
+-- Clustered index: alter the physical order of a table (i.e., the way data is stored in a table) by the column which is set to be clustered-indexed & search based on the values of the clustered-indexed columns 
+   -- Each table can have ONLY one clustered index
+-- Non-clustered index: does not alter the physical order of a table
+   -- Each table can have multiple non-clustered indexes
+
+------------------------------------------------------------------------------------------------------------------
+What is cursor?
+-- like a pointer, to traverse the rows for a table for retrieval, insertion, updation or removal
+
+Types of cursor: implicit, explicit, reference
+
+------------------------------------------------------------------------------------------------------------------
+What is (stored) procedure?
+-- A collection of SQL statements that can be called to perform a specific task
+-- Recursive (stored) procedure: repeatedly invokes itself until meeting some boundary condition
+
+The pros and cons of (stored) procedure:
+-- Pros: 
+   -- Create once for repeative use
+   -- Reduce traffics
+   -- Better security
+-- Cons:
+   -- Executable only in DB
+   -- Consume more memory in DB server
+
+------------------------------------------------------------------------------------------------------------------
+What is function?
+-- A collection of SQL statements that can be called to achieve a specific function
+-- Can return one single value or a table
+
+------------------------------------------------------------------------------------------------------------------
+What is trigger?
+-- A collection of SQL statements automatically executed with response to some event on a table or view 
+
+------------------------------------------------------------------------------------------------------------------
+Differences between global variable and local variable:
+-- Global: visible and accessible by all the logic modules (e.g., function)
+-- Local: visible and accessible within a logic module (e.g., function)

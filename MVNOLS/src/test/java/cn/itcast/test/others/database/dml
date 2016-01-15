@@ -1,0 +1,7 @@
+What are the differences among DELETE, TRUNCATE and DROP?
+-- DELETE: to remove the rows specified by WHERE clause in a table
+   -- Rollbackable
+-- TRUNCATE: remove all rows in a table
+   -- Unrollbackable
+-- DROP: remove the whole table from DB
+   -- Unrollbackable

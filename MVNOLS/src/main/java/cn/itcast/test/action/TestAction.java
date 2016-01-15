@@ -157,7 +157,7 @@ public class TestAction implements WebBindingInitializer {
 		 *     -- This is the strategy adopted in this project, refers to "WEB-INF/jsp/item/itemList.jsp"
 	     */
 		List<String> returnURLs = testService.getReturnURLExperiment(currentPageURL, currentPageURLWithParameters, parameterB, parameterC);
-		System.out.println("The returnURLs are:");
+		System.out.println("The returnURLs from the experiment are:");
 		for (String returnURL : returnURLs) {
 			System.out.println(returnURL);
 		}

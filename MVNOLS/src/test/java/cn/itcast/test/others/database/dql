@@ -1,0 +1,167 @@
+/*	Here are the queries that need to be executed on "mvnols" database in MySQL	 */
+/*
+	Query: (the codes) to get information from database
+	Subquery: a query within another query
+	-- Correlated query: refer to "Correlated query"
+	-- Non-correlated query: refer to "Non-correlated query"
+*/
+/*	
+	Correlated query: involve the interaction between inner query and outer query; inner & outer are dependent
+	-- Inner query and outer query can refer to the same table or not
+	
+	Requirement:	
+	1. Select the row with 2nd lowest item price from item table	
+*/
+SELECT main_table.* FROM item main_table WHERE 2 = (
+	SELECT COUNT(DISTINCT(auxillary_table.item_price)) FROM item auxillary_table
+		WHERE auxillary_table.`item_price` <= main_table.`item_price`
+);
+		
+/*	
+	Non correlated-query: make use of the result from inner query to complete the outer query; inner & outer are independent 
+	-- Inner query and outer query can refer to the same table or not	
+	
+	Requirement:
+	1. Select the row with 2nd lowest item price from item table		
+	2. Select the user_id buy the item with item_price = 50.00 from order table and orderdetail table
+	3. Get the even rows and odd rows from user table
+	   -- AS is ignorable
+*/
+/*	Select the row with 2nd lowest item price from item table	*/
+SELECT main_table.* FROM item main_table WHERE main_table.item_price = (
+	SELECT MAX(auxillary_table.`item_price`) FROM (
+		SELECT DISTINCT(i.`item_price`) FROM item i ORDER BY i.`item_price` ASC LIMIT 0, 2
+	) auxillary_table
+);
+
+/*	Select the user_id buy the item with item_price = 50.00		*/
+SELECT o.`user_id` FROM `order` o 
+	WHERE o.`id` IN (SELECT od.`order_id` FROM orderdetail od
+		WHERE od.`item_price` = 50.00);
+
+/*	Get the even rows and odd rows from a user table: AS is ignorable	*/
+SELECT ur.* FROM (
+	SELECT u.*, (@rowNum:=@rowNum+1) AS rowno FROM `user` u, (SELECT (@rowNum:=0)) r
+) ur WHERE MOD(ur.`rowno`, 2) = 0;
+
+SELECT ur.* FROM (
+	SELECT u.*, (@rowNum:=@rowNum+1) AS rowno FROM `user` u, (SELECT (@rowNum:=0)) r
+) ur WHERE MOD(ur.`rowno`, 2) = 1;
+
+/*
+	Pattern Matching Operator: LIKE
+	
+	Requirement:
+	1. Find the information of the user whose name contains "v" or "V" from user table
+	2. Find the information of the user whose name starts with "v" or "V from user table
+	3. Fine the information of the user whose name ends with "v" or "V from user table
+*/
+SELECT u.* FROM `user` u WHERE u.`username` LIKE '%V%';
+SELECT u.* FROM `user` u WHERE u.`username` LIKE 'V%';
+SELECT u.* FROM `user` u WHERE u.`username` LIKE '%V';
+
+/*
+	Join: query data from more tables based on the relationship between the fields of tables
+	1. Inner join:
+	-- Inner join: return the common rows between tables only
+	2. Outer join:
+	-- Left join: return the common rows between tables & all rows of left-hand-side table
+	-- Right join: return the common rows between tables & all rows of right-hand-side table
+	-- Full join: return the common rows between tables & all rows of both-hand-side tables
+	   -- Can be replaced by "left join + union + right join"
+	3. Inner join & outer join can realize self join & cross join
+	-- Self join: a query involving the comparison between a table and itself (e.g., compare the value in a column with other values in the same column in the same table)
+	-- Cross join: a query involving the comparison between different tables
+	   -- The join is done through Cartesian product
+	
+	Requirement:
+	1. Find the information regarding what user_id purchases what items from order table and orderdetail table (this is an cross join)
+*/	
+/*	Regular query	*/
+SELECT o.`user_id`, od.`item_id`, od.`item_num` FROM `order` o, orderdetail od 
+	WHERE o.`id` = od.`order_id` ORDER BY o.`user_id` ASC;	
+	
+/*	Inner join query	*/
+SELECT o.`user_id`, od.`item_id`, od.`item_num` FROM `order` o
+	INNER JOIN orderdetail od ON o.`id` = od.`order_id` ORDER BY o.`user_id` ASC;
+
+/*	Left join query	 	*/	
+SELECT o.`user_id`, od.`item_id`, od.`item_num` FROM `order` o
+	LEFT JOIN orderdetail od ON o.`id` = od.`order_id` ORDER BY o.`user_id` ASC;
+
+/*	Right join query	*/
+SELECT o.`user_id`, od.`item_id`, od.`item_num` FROM `order` o
+	RIGHT JOIN orderdetail od ON o.`id` = od.`order_id` ORDER BY o.`user_id` ASC;
+
+/*	Full join query		*/
+SELECT Full_join.* FROM (
+	(SELECT o.`user_id`, od.`item_id`, od.`item_num` FROM `order` o
+		LEFT JOIN orderdetail od ON o.`id` = od.`order_id`)
+	MINUS
+	(SELECT o.`user_id`, od.`item_id`, od.`item_num` FROM `order` o
+		RIGHT JOIN orderdetail od ON o.`id` = od.`order_id`)
+) Full_join ORDER BY Full_join.user_id ASC;
+		
+/*	
+	UNION|UNION ALL & MINUS & INTERSECT 
+	1. UNION: combine the results of two tables & remove duplicate rows
+	2. UNION ALL: combine the results of two tables without removing duplicate rows
+	3. MINUS: return the rows of the first query, but exclude the rows returned from both queres
+	4. INTERSECT: return the rows returned by both queries
+	   -- e.g., to fetch the common results from two tables
+*/
+
+/*
+	GROUP BY & HAVING: 
+	1. To get the results correpsonding to some categories with some conditions
+	
+	Requirement:
+	1. Find the sales information of each item_id repsectively
+*/
+SELECT od.`item_id`,
+       SUM(od.`item_num`) total_sales,
+       MAX(od.`item_num`) highest_sales, 
+       MIN(od.`item_num`) lowest_sales, 
+       AVG(od.`item_num`) average_sales,
+       COUNT(od.`id`) 
+FROM orderdetail od GROUP BY od.`item_id`
+	HAVING total_sales > 30;
+
+
+/*	
+	Aggreate Function: can evaluate the values in a column and return a value
+				
+	Requirement:
+	1. Select the item sales statistics from orderdetail table
+	2. Get the distinct item id and corresponding information from orderdetail table
+	   -- When contradictory DESC & ASC appears simultaneously, the left-most one works
+	3. Fetch the first 3 string of the username in user table
+	   -- AS is ignorable
+*/
+/*	Select the item sales statistics from orderdetail table		*/
+SELECT SUM(od.`item_num`) total_sales,
+       MAX(od.`item_num`) highest_sales, 
+       MIN(od.`item_num`) lowest_sales, 
+       AVG(od.`item_num`) average_sales,
+       COUNT(od.`id`) 
+FROM orderdetail od;
+
+/*	Get the distinct item price from orderdetail table: the left-most (i.e., DESC) works	*/
+SELECT DISTINCT(od.`item_id`), od.`item_price` FROM orderdetail od
+	ORDER BY od.`item_price` DESC, od.`item_id` ASC;
+	
+/*	Fetch the first 5 string of the username in user table: AS is ignorable		*/
+SELECT SUBSTRING(u.`username`, 1, 3) AS sub_username, 
+       u.* 
+FROM `user` u;
+SELECT RIGHT(u.`username`, 3) AS sub_username, 
+       u.* 
+FROM `user` u;
+
+/*	
+	Scalar function: evaluate a single input & reutrn a value	
+	
+	Requirement:
+	1. Get the absolute value of -12
+*/
+SELECT ABS(-12) FROM DUAL;

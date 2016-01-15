@@ -1,16 +1,19 @@
+----------------------------------------------------------------------------------------------
 HTTP:
 HTTP (Hyper Text Transmission Protocol): protocol for tranmission of hypertext over internet
 -- Hyper text: text with meta data
 URL (Uniform Resource Location): a representation of HTTP address
 
+----------------------------------------------------------------------------------------------
 Cookie & Session: 
 Cookie: data sent from a website|server-side and stored in the user's browser|browser-side
 -- Functions: user authenticaion; session identification, etc.
    -- Cookies realize the functions on browser-side; Server realize the functions on server-side
 -- Cookie stores text information; session stores text information & objects
 
+----------------------------------------------------------------------------------------------
 Web Servlet|Filter|Listener: refer to the classes under "javaweb.testclass.web" package
-Servlet:
+Servlet: singleton by default
 -- 3 life-cycle methods: (5 methods in total)
    -- init(): executed once when servlet is created
    -- service(): executed each time the requeset is being processed
@@ -53,11 +56,17 @@ Listener:
    -- Created when web-app (e.g., tomcat) is started & ended when web-app (e.g., tomcat) is ended
    -- Operated by "ServletContext servletContext"
 
+----------------------------------------------------------------------------------------------
 JSP & EL:
 JSP life cycle: translation --> compilation --> class-loading --> instantiation --> initialization --> request processing --> destroy
 JSP directives: page|include|taglib
 
+----------------------------------------------------------------------------------------------
 JDBC:
+C3P0 & DBCP: C3P0 is better
+-- C3P0 supports multiple databse connections
+-- C3P0 supports re-connection when the connection is off
+
 The step of JDBC executing SQL:
 -- 1. Get the connection 
 -- 2. Write SQL to PreparedStatement for execution 
@@ -65,6 +74,7 @@ The step of JDBC executing SQL:
 -- 4. Catch the exception if there is any
 -- 5. Close the resource
 
+----------------------------------------------------------------------------------------------
 Tomcat & Apache:
 Tomcat: application server
 Apache: web server

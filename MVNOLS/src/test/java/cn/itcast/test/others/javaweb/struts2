@@ -1,2 +1,42 @@
 What is Struts2?
--- MVC-based web-application framework
+-- MVC-based pluggable web-application framework
+   -- Pluggbale component: interceptor, etc.
+
+What is MVC?
+-- An architectural design pattern to improve the program robustness, scalability & flexibility
+-- M (Model): contain the data and behavior for business logic
+   -- Can be realized by JavaBean
+-- V (View): for presentation to user based on the change of the model
+   -- Can be realized by JSP
+-- C (Controller): to control the working flow
+   -- Can be realized by Servlet: accpet, process and dispatch the request
+   
+Differences between Struts1 and Struts2
+-- Stucts2 merges Webwork; Struts1 is independent product
+-- Struts2 introduces interceptors; Struts1 have no interceptors
+
+Differencs between interceptor and filter: interceptor has wider range of application
+-- Mechanism:
+   -- Interceptor: reflection-based; Filter: callback-based (defined by JavaEE standard)
+-- Working depth:
+   -- Interceptor: work on method-level (around method); Fitler: work on class-level (around servlet)
+-- Web container dependency:
+   -- Interceptor: independent on web containr; Filter: dependent on web container (e.g., Tomcat) 
+-- IOC container interaction:
+   -- Interceptor: can get the bean from IOC container (e.g., Spring); Filter: cannot get beans from IOC container
+-- Range of application:
+   -- Interceptor: work on many programs (web, application, etc.); Filter: work on only web program
+-- Request processing:
+   -- Interceptor: work on the request to action; Filter: work on all requests
+
+Interceptors in Struts2:
+-- ModelDrivenInterceptor: push the model onto ValueStack
+-- TokenInterceptor: avoid duplicate submission
+-- ValidationInterceptor: validate request parameters
+-- etc.
+
+Action chaining: Multiple action serving the request in chain
+
+OGNL (Object-Graph Navagation Language):
+-- an EL to manipulate the properties of JavaBean
+-- in Struts2 used to interact with ValueStack|StackContext

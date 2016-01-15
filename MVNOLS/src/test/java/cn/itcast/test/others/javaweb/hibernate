@@ -1,0 +1,56 @@
+What is Hibernate?
+-- Java ORM framework to interact with DB
+-- Pros: 
+   -- No need to know SQL & DB schema 
+   -- Caching to improve performance
+   
+Hiberate core interfaces:
+SessionFactory: to create session
+-- Singleton: there is only one SessionFactory object in Hibernate
+Session: to interact with DB
+-- Multiton: there are multiple Session objects in Hibernate, each correpsonding to one thread
+
+ID generators: increment, assigned, identity, uuid
+-- Increment: find the max value of ID & plus one
+-- Assigned: manually assign ID
+-- Identity: auto-increment ID
+   -- Premise: the corresponding table MUST turn on this function
+-- UUID: generate an UUID as ID
+Dialect: to tell Hibernate which variant of SQL to generate
+
+Associations: 1-to-1; 1-to-n; n-to-1; n-to-n
+
+Cache:
+First-level cache: to cache data within a session (in local)
+-- Enabled by default & cannot be disabled
+   -- To clear the cache: "evict()"|"clear()"
+      -- "evict()": convert one persistent instance to detached
+      -- "clear()": convert ALL persistent instances to detached
+Second-level cache: to cache data acorss sessions (in global)
+-- Disabled by default & can be enabled using configuration
+-- Types of second-level cache: EHCache, OSCache, etc.
+
+Instance state:
+-- Transient: in JVM (heap) memory
+   -- e.g., if an object is trasient, the object is in JVM (heap) memory
+-- Persistent: in (first-level|second-level|query) cache 
+   -- e.g., if an object is trasient, the object is in JVM (heap) memory
+-- Detached: not managed by Hibernate any more (due to session close, etc.)
+   -- e.g., if an object is detached, the object is left in JVM (heap) memory due to session close, etc.
+
+Lazy loading: does not load the child object when parent object is loaded, until the child object is actually needed
+-- Fetching strategy: a stategy of how to load the child object when it is needed
+
+What are in "hibernate.cfg.xml"?
+-- DB connection; dialect; show SQL; second-level cache; query cache; hbm.xml files 
+
+Others:
+Inheritance mapping: mapping from JavaBean class to DB table
+-- Types of inheritance: table per class; table per sub class; table per concrete class
+Collection types in Hibernate: 
+-- Array, List, Set, Map
+Differences between "get()" and "load()"
+-- "get()" finds the data from cache, if no, then find data from DB
+-- "load()" finds the data from cache, if no, return a proxy for lazy loading
+Name some Hibernate annoations:
+-- @OneToOne, @OneToMany, @ManyToOne, @ManyToMan
