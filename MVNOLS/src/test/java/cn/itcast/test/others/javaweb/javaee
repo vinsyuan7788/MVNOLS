@@ -59,7 +59,33 @@ Listener:
 ----------------------------------------------------------------------------------------------
 JSP & EL:
 JSP life cycle: translation --> compilation --> class-loading --> instantiation --> initialization --> request processing --> destroy
+
 JSP directives: page|include|taglib
+
+JSP built-in|implicit objects:
+-- Object page: equivalent to "this"
+-- PageContext pageContext: to set|get data in|from page scope
+-- HttpServletRequest request: to set|get data in|from request scope
+-- HttpServlerResponse response
+-- HttpSession session: to set|get data in|from session scope
+-- ServletContext application: to set|get data in|from application scope
+-- ServletConfig config
+-- JSPWriter out
+-- Throwable exception
+
+EL built-in|implicit objects:
+-- PageContext pageContext
+-- Map pageScope: to set|get data in|from page scope
+-- Map requestScope: to set|get data in|from request scope
+-- Map sessionScope: to set|get data in|from session scope
+-- Map applicationScope: to set|get data in|from applcation scope
+-- Map param & Map paramValues
+-- Map header & Map headerValues
+-- Map cookie
+-- Map initParam
+
+EL default|implicit search|query order from scope:
+-- From "pageScope" to "applicationScope"  
 
 ----------------------------------------------------------------------------------------------
 JDBC:

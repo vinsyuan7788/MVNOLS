@@ -29,6 +29,7 @@ How to create an empty table from an existing table?
 -- "SELECT * INTO [EmptyTable] FROM [ExistingTable] WHERE 1 = 2"
 
 ------------------------------------------------------------------------------------------------------------------
+View:
 What is view?
 -- Virtual table which consists of a subset of data contained in a table
 -- More space-efficient
@@ -38,6 +39,7 @@ Is view updatable?
 -- The colomns coming from different tables are not updatable at the same time
 
 ------------------------------------------------------------------------------------------------------------------
+Index:
 What is index?
 -- A technique to improve data retrieval efficiency
 
@@ -50,12 +52,14 @@ What are the types of index?
    -- Each table can have multiple non-clustered indexes
 
 ------------------------------------------------------------------------------------------------------------------
+Cursor:
 What is cursor?
 -- like a pointer, to traverse the rows for a table for retrieval, insertion, updation or removal
 
 Types of cursor: implicit, explicit, reference
 
 ------------------------------------------------------------------------------------------------------------------
+(Stored) Procedure:
 What is (stored) procedure?
 -- A collection of SQL statements that can be called to perform a specific task
 -- Recursive (stored) procedure: repeatedly invokes itself until meeting some boundary condition
@@ -70,15 +74,18 @@ The pros and cons of (stored) procedure:
    -- Consume more memory in DB server
 
 ------------------------------------------------------------------------------------------------------------------
+Function:
 What is function?
 -- A collection of SQL statements that can be called to achieve a specific function
 -- Can return one single value or a table
 
 ------------------------------------------------------------------------------------------------------------------
+Trigger:
 What is trigger?
 -- A collection of SQL statements automatically executed with response to some event on a table or view 
 
 ------------------------------------------------------------------------------------------------------------------
+Others:
 Differences between global variable and local variable:
 -- Global: visible and accessible by all the logic modules (e.g., function)
 -- Local: visible and accessible within a logic module (e.g., function)

@@ -1,4 +1,5 @@
 ------------------------------------------------------------------------------------------------------------------
+Normalization & Normal form 
 Normalization: the process of minimizing redundancy and dependency by organizing fields and table
 
 What are the normalization or normal form?
@@ -7,6 +8,7 @@ What are the normalization or normal form?
 -- Third Normal Form:
 
 ------------------------------------------------------------------------------------------------------------------
+DBMS & RDBMS & SQL:
 What is DBMS (Database Management System)?
 -- A system that control creation, maintenance and use of database
 
@@ -22,21 +24,32 @@ What is SQL (Structured Query Language)?
    -- TCL: Transaction Control Language: COMMIT, ROLLBACK, etc.
 
 ------------------------------------------------------------------------------------------------------------------
+Data Type:
+-- String: char, varchar, etc. 
+-- Number: int, float, double, long, etc.
+-- Date 
+-- Large objects: blob, clob, text, image, etc.
+
+------------------------------------------------------------------------------------------------------------------
+Integrity:
 What is data integrity?
 -- Accuracy and consistency of data stored in a database
 -- Typically important in transaction management
 
 ------------------------------------------------------------------------------------------------------------------
+Collation:
 What is data collation?
 -- A set of rules that determine how character data can be sorted and compared
 -- Types of collation sensitivity: case-sensitivity, width-sensitivity
 
 ------------------------------------------------------------------------------------------------------------------
+OLTP:
 What is OLTP (Online Transaction Processing)?
 -- Tranaction-based application for easy data entry & retrieval 
 -- Compared with OLAP: more simplicity & efficiency oriented
 
 ------------------------------------------------------------------------------------------------------------------
+DW:
 What is data warehouse (DW)?
 -- A central repository of data from multiple databases
 -- The data in DW is consoliated, transformed, properly redundant for OLAP
