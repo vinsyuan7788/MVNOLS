@@ -5,7 +5,7 @@ Update logging:
 
 Version 1.0.0: 1st time submission. 
 1. Completes the initial architect design & the environment establishment & revelant framework configuration.
-2. Completes the initial functionality design, component development front and back end (excluding CSS so far). 
+2. Completes the initial functionality design, component development front and back end (excluding CSS so far).
 3. More details refer to the project.
 
 Version 1.0.1:
@@ -13,7 +13,7 @@ Version 1.0.1:
 2. Also corrects some comments.
 
 Versoin 1.0.2:
-1. Updates some features: annotation, aspects, etc. 
+1. Updates some features: annotation, aspects, etc.
 2. Adds new annotation & aop feature & improve duplicate submission avoidance & session. Test is done & no new problem is found.
 
 Version 1.0.3:
@@ -24,7 +24,7 @@ Version 1.0.4:
 2. Later improves the architect of the project & completes the exploration of the MyBatis optimization idea.
 
 Version 1.0.5:
-1. Addresses a JAR problem regarding JSP APIm re-arranges the user & test module architecture & suppliments the comment for necessary JSP views. 
+1. Addresses a JAR problem regarding JSP APIm re-arranges the user & test module architecture & suppliments the comment for necessary JSP views.
 
 Version 1.0.6:
 1. Updates a feature of checkbox regarding all-select, all-unselect, reverse-select, performs 2 methods to process String array parameters based on different applcation scenario with a custom ArrayUtils class, & addresses a potential defects on user & item module regarding array parameters in the back-end.
@@ -33,7 +33,7 @@ Version 1.0.7:
 1. Updates the architect of JS, integrates the JQueryUI effects & addresses a potential bug regarding the data with Date type by implementing an interceptor & add a new utility class regarding to Date comparison.
 
 Version 1.0.8:
-1. Adds the summarization regarding the experience of Java Web development, JavaSE core development, software design pattern. 
+1. Adds the summarization regarding the experience of Java Web development, JavaSE core development, software design pattern.
 2. Boardens the testing functionality regarding JS.
 
 Version 1.0.9:
