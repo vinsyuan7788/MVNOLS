@@ -3,7 +3,7 @@
     -- Right click that file: "MyEclipse" - "Exclude from validation"
 
 2. Jar problems:
--- Servlet JSP tag: here needs to be very careful.
+-- Servlet JSP tag in "pom.xml" using Maven: here needs to be very careful.
    The jars like "servlet-api" & "jsp-api" are included inside the tomcat. If user introduces the jars
    with these names, it will override these built-in jars & may bring some troubles when complying servlet
    or JSP.
