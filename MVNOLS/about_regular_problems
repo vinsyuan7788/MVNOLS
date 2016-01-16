@@ -16,10 +16,10 @@
      
 3. Compilation problems:
 -- In Maven web project, if the configuraiton in Spring is correct, but it always says that "ClassIsNotFound"
-   -- Check "webapps/[CurrentProject]/WEB-INF/classes" folder under the server (e.g., tomcat), see if there is any compilation .class file
+   -- Check "webapps/[CurrentProject]/WEB-INF/classes" folder under the server (e.g., tomcat), see if there is any compilation ".class" file
    -- Usually is no, hence needs to re-compile the java file, refers to "BookMarks" - "Software Engineering" - "MyEclipse" -- "Tomcat 6.0/webapps/..."
 	  -- Adopts the way 1 and 2: namely make sure "project->build automatically" is clicked, then "project->clean"
 	  -- Check "cn.itcast.cms.service.impl.StaticPageGenerationServiceImpl" for more support information
 -- For "CHKJ3000E: WAR Validation Failed: java.lang.NullPointerException":
-   -- Still check "webapps/[CurrentProject]/WEB-INF/classes" folder under the server (e.g., tomcat), see if there is any compilation .class file
+   -- Still check "webapps/[CurrentProject]/WEB-INF/classes" folder under the server (e.g., tomcat), see if there is any compilation ".class" file
    -- Usually is no: hence adopts the same way for resolution
