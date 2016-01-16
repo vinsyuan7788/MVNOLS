@@ -8,7 +8,8 @@
    -- Still check "webapps/[CurrentProject]/WEB-INF/classes" folder under the server (e.g., tomcat), see if there is any compilation .class file
    -- Usually is no: hence adopts the same way for resolution
 
-2. Servlet JSP tag: here needs to be very careful.
+2. Jar problems:
+-- Servlet JSP tag: here needs to be very careful.
    The jars like "servlet-api" & "jsp-api" are included inside the tomcat. If user introduces the jars
    with these names, it will override these built-in jars & may bring some troubles when complying servlet
    or JSP.
@@ -18,3 +19,7 @@
 	   <artifactId>jsp-api</artifactId>
 	   <version>2.0</version>
    </dependency> 
+ 
+3. Validation problems:
+-- If want MyEclipse to ignore the validation of some files (e.g., some JS files, etc.)
+    -- Right click that file: "MyEclipse" - "Exclude from validation"
