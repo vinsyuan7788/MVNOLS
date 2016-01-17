@@ -27,6 +27,7 @@ XML (eXtesive Markup Language): to describe data & its metadata
 ----------------------------------------------------------------------------------------------
 JS (JavaScript): to dynamically operate the HTML document content & improve the interaction between browser and user
 -- JS is an IL (Intepreated Language)
+-- Data type: [Number, String, Boolean], [Array, Object], null, undefined
 -- Prototype: a default property in each JS object
    -- Inheritance: prototype can be inherited (e.g., the properties and methods can be inherited)
    -- Can use "new" to create instance from the prototype
