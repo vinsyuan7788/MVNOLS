@@ -58,6 +58,9 @@ Listener:
 
 ----------------------------------------------------------------------------------------------
 JSP & EL:
+What is JSP (Java Server Page)?
+-- To generate dynamic web-page based on HTML, XML or other types of documents
+
 JSP life cycle: translation --> compilation --> class-loading --> instantiation --> initialization --> request processing --> destroy
 
 JSP directives: page|include|taglib
@@ -73,6 +76,10 @@ JSP built-in|implicit objects:
 -- JSPWriter out
 -- Throwable exception
 
+What is EL (Expression Language)?
+-- A PL (Programming Language) to embed expression into web page for special purpose
+   -- E.g., to store|obtain the data from each scope
+ 
 EL built-in|implicit objects:
 -- PageContext pageContext
 -- Map pageScope: to set|get data in|from page scope

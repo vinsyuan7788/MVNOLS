@@ -26,7 +26,7 @@ Techniques adopted in this project includes:
    -- Caching technique:
       -- OSCache for web page
       -- Memcached for distributed caching
-   -- Use FreeMarker for stationary page generation
+   -- Use FreeMarker for static web-page generation
    -- Use multiple server for different functions
       -- Process customer requests
       -- Upload file storage 

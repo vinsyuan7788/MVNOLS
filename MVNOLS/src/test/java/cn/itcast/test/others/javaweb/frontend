@@ -1,6 +1,19 @@
-HTML|XML|CSS|JS:
-HTML (Hyper Text Markup Language): 
-XML (eXtesive Markup Language): language to describe data & its metadata
+----------------------------------------------------------------------------------------------
+HTML (Hyper Text Markup Language): to creating websites and anything that can be viewed in a web browser
+-- HTML is an ML (Markup Language)
+
+How to represent space (i.e., " "), "<", ">", etc.?
+-- Space: &nbsp;
+-- "<": &lt;
+-- ">": &gt;
+
+---------------------------------------------------------------------------------------------
+CSS (Cascading Style Sheets): to describe the presentation of a document written in a markup language (e.g, HTML, XML)
+-- CSS is an SSL (Style Sheet Language)
+
+----------------------------------------------------------------------------------------------
+XML (eXtesive Markup Language): to describe data & its metadata
+-- XML is an ML (Markup Language)
 -- Constraints:
    -- DTD (Document Type Definition): a standard to verify if the data received from outside world is valid & parsible 
    -- XSD (XML Schema Definition): an extension of DTD & more powerful than DTD
@@ -10,12 +23,41 @@ XML (eXtesive Markup Language): language to describe data & its metadata
 -- Parser: 
    -- JAXP: for SAX & DOM
    -- DOM4J:: for SAX & DOM
-JS (JavaScript):
+
+----------------------------------------------------------------------------------------------
+JS (JavaScript): to dynamically operate the HTML document content & improve the interaction between browser and user
+-- JS is an IL (Intepreated Language)
+-- Prototype: a default property in each JS object
+   -- Inheritance: prototype can be inherited (e.g., the properties and methods can be inherited)
+   -- Can use "new" to create instance from the prototype
+   -- Can add new variables|methods to the constructor through corresponding prototype
+-- Function: a block of code designed to perform a specific task.
+   -- Constructor: function has constructor object to create instance
+   -- Callback: passed as an argument in another function & invoked and executed during the running of that function
+   -- "This: represent whoever invokes current function
+   -- Others:
+      -- JS function does not support overload (meaning if 2 methods have the same name, the latter one replace the previous one)
+      -- Function object & JSON object are not necessarily relevant: what is return from function object (e.g., string, number, JSON object) may be converted to JSON object 
+-- Closure: an inner function that has access to the outer function’s variable
+   -- When the outer function is invoked, it can return whatever is returned from the inner function
+-- Event: whatever happens to the HTML elements
+   -- Can add a stacked event for existing element: e.g, $("div").click(function () {...})
+   -- Can add an unstacked event for existing element: e.g, $("div").unbind("click"); $("div").bind("click", function () {...})
+   -- Can add a stackaed event for incoming element: e.g., $("body").delegate("div", "click", function () {...})
+   -- 3 Basics to customize an event: event name, binding element, trigger conditions 
+
 JSON (JavasSript Object Notation):
 -- For client-server|server-server communication
 -- Alternative to XML
 -- Can be object ({key:value, key:value, ...}) or array ([value, value, ...])
-   -- Supported data type: [Number, String, Boolean], [Array, Object], null 
+   -- Supported data type: [Number, String, Boolean], [Array, Object], null (they can be returned from a function)
 -- To convert string|text to JSON object: "eval()"|"JSON.parse()"
 -- To convert JSON object to string|text: "JSON.stringify()"
 -- prons compared with XML: object representation; multiple data type support
+
+----------------------------------------------------------------------------------------------
+DHTML (Dynamic HTML):
+-- A collection of techniques used together to create interactive web-sites
+   -- HTML: provide the markup for data encapsulation to display in a web browser <br/>
+   -- CSS: set the style using various attributes <br/>
+   -- JS: for the dynamic operation of the HTML document content & the interaction between browser and user
