@@ -1,0 +1,77 @@
+-----------------------------------------------------------------------------------------------------------------
+WS (Web Service):
+What is WS (Web Service):
+-- A platform-independent remote invocation technique for data exchange between 2 devices|servers through SOAP|HTTP
+-- SOAP-based specification: JAX-WS, JAXM&SAAJ
+   -- SOAP-based specification: JAX-WS, JAXM&SAAJ
+      -- JAX-WS (Java API for XML-based Web Service): use SOAP for data transmission & WSDL for WS functionality description
+      -- JAXM&SAAJ (Java API for XML Message & SOAP with Attachcment API for Java): same as above
+      -- 3 Elements: SOAP, WSDL, UDDI
+-- HTTP-based specification: JAX-RS 
+   -- JAX-RS (Java API for RESTful Web Service): use HTTP for data transmission & more lighter
+
+Comparison between WS and socket:
+-- WS:
+   -- Platform independent: use SOAP
+   -- Object-oriented: good for software integration, reusability & decoupling 
+   -- Relatively slow: 
+      -- Due to the SOAP serialization & deserialization during the data transmission in web service
+      -- The performance is also affected by the web container (e.g., tomcat)
+      -- If speed is not required, the prefer web service
+   -- Standard protocol: no need to customize transission protocol for service development
+-- Socket:
+   -- Platform independent: socket is the API provided by OS so it has implementation for different PLs (Programming Languages)
+   -- Procedure oriented: need to parse the data stream by programmers
+   -- Relatively fast: 
+      -- Directly transmit data through whatever is parsed
+	  -- If speed is required, the prefer socket
+   -- Customized protocol: not convenient for service development
+
+WS application scenario:
+-- Integration among distributed programs
+-- Improve software reusability
+-- e.g.:
+   -- In SSO envrionment, log-in function can be extracted & published through web service to improve integration & reusability
+   -- If publish a public interface (no need to consider the type of client), can use web service
+   -- If need to invoke the web service interface, then use web service
+   
+WS non-application scenario:
+-- If A enterprise develops 2 programs using the same PL, then no need to use web service: can use RMI instead
+   -- If enterprise|PL is different, then consider web service 
+
+-----------------------------------------------------------------------------------------------------------------
+SOAP-based WS:
+What is SOAP (Simple Object Access Protocol)?
+-- A protocol based on HTTP (which exchanges data based on socket)
+
+What is WSDL (Web Service Definition Language)?
+-- A XML-based langauge to describe the functionality offered by WS
+
+What is UDDI (Universal Description, Discovery and Integration)?
+-- A service to publish & search web service
+-- The actual result is not as good as expected: since web service can be also obtained from WSDL
+
+-----------------------------------------------------------------------------------------------------------------
+HTTP-based|RESTful WS:
+What is REST?
+-- A software architecture style that typically reflects on resource location & operation
+-- Resource location: use layered structure to reppresent or locate an URL, instead of using question mark
+   -- URL style comparison between SOAP-based & RESTful:
+      -- SOAP-based: http://ip:port/queryUser.action?userType=XXX&studentId=001&...
+      -- RESTful: http://ip:port/user/student/001/...
+-- Resource operation: use "GET|POST|PUT|DELETE" method for database CRUD
+-- System|Framework that conforms to the constraints|style of REST is called "RESTful"
+
+What is RESTful WS?
+-- Web service is published using REST style
+
+Pros & Cons of REST:
+-- Pros: simple & clear
+-- Cons: bad readibility if the layer structure is too deep
+
+-----------------------------------------------------------------------------------------------------------------
+Others:
+What is SSO (Single Sign On)?
+-- In multi-system environment, if one user logged on in a system, the user does no need to log on in other systems
+
+Examples of WS framework: CXF, Jersey, etc.

@@ -1,0 +1,6 @@
+For RESTful web service:
+1. Just directly invoke the web service through RESTful URL:
+-- In this case: directly use "http://127.0.0.1:12345/rest/city/[CityName]?_type=xml"  to invoke the web service
+-- E.g., "http://127.0.0.1:12345/rest/city/Bethlehem?_type=xml"
+-- E.g., "http://127.0.0.1:12345/rest/city/list/small?_type=xml"
+2. If want to write a client, then directly use a "GET" request to invoke web service 

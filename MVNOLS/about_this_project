@@ -27,7 +27,7 @@ Techniques adopted in this project includes:
       -- OSCache for web page
       -- Memcached for distributed caching
    -- Use FreeMarker for static web-page generation
-   -- Use multiple server for different functions
+   -- Use Jersey for multiple-server architecture
       -- Process customer requests
       -- Upload file storage 
    -- Use LVS + Keepalived (in CentOS6) for load balance to resolve high concurrency for server
