@@ -1,3 +1,4 @@
+--------------------------------------------------------------------------------------------------------
 JVM Memory:
 -- Stack: to store variables
    -- FILO 
@@ -8,6 +9,7 @@ JVM Memory:
 -- Method Area: to store compiled java files
    -- Refer to "javase.testReflection.java"
 
+--------------------------------------------------------------------------------------------------------
 OOP (Object-Oriented Programming): refer to "javase.TestOOP.java"
 4 Features:
 -- Encapsulation: privatization for protection (e.g. JavaBean)
@@ -17,6 +19,7 @@ OOP (Object-Oriented Programming): refer to "javase.TestOOP.java"
 Achievement:
 -- Higher cohesion & lower coupling
 
+--------------------------------------------------------------------------------------------------------
 Array|Tree|Link|Hash: 
 -- Array: sorted & ordered
    -- Fast for query, slow for addition|removal
@@ -25,18 +28,27 @@ Array|Tree|Link|Hash:
 -- Tree: sorted but unordered
 -- Hash: unsorted & unordered
 
+--------------------------------------------------------------------------------------------------------
 List|Set|Map:
 -- List: duplicable & sorted 
 -- Set: unduplicable & unsorted
 -- Map: key-value pair
 
+--------------------------------------------------------------------------------------------------------
 Thread:
 2 ways of implementing thread: extends Thread|implements Runnable
 
+How to detect deadlock efficiently and precisely (among huge mount of codes)?
+-- Use thread dump
+   -- Activate thread dump in windows: ctrl + break
+   -- Activate thread dump In Linux: kill -3 pid
+
+--------------------------------------------------------------------------------------------------------
 Serialization: 
 -- Store the state of an object in a file or other medium
 -- Used for file storage or tranmission: in the environment with distributed cache
 
+--------------------------------------------------------------------------------------------------------
 New features:
 -- Generics, Enumrate, Autoboxing (wrapper class), Annoation, Static import, etc.
 -- Wrapper class:

@@ -1,0 +1,35 @@
+---------------------------------------------------------------------------------------------------------
+Business Procedure:
+What is workflow?
+-- Use computer technique to automatically faciliate the implementation and realization of scheduled working|business process
+-- E.g., Faciliate the document|message transfer between different stages of the project or different participants in the project
+-- Suitable for various industries: e-commerce, logistics, banking, finance, etc.
+
+What is Activiti?
+-- A workflow engine which can extranct & execute complex business processes described in BPMN 2.0 to improve the efficiency of business and organization
+-- BPMN (Business Process Model & Notation): a graphical representation to specify business processes in a business process model
+-- Acitiviti is irrelevant to the development and implementation of business|service functionality|logics
+
+How to model the business process?
+-- Use BPM tool to draw a busness process & use facilitating tool to view the corresponding XML file: recommended
+   -- E.g., use Activiti designer to draw a busness process
+-- Directly configure the XML file for a business process
+
+What are Activiti services?
+-- RepositoryService(RE): for workflow deployment
+-- RuntimeService(RU): for workflow instantiation
+-- TaskService: for individual & group task operation
+-- HistoryService(HI): for historical workflow operation
+-- IdentityService(ID): for the setting of user & group
+-- FormService: for form data configuration
+-- ManagerService: for Activiti runtime monitoring (by super administrator)
+---------------------------------------------------------------------------------------------------------
+Software Build:
+
+What is Maven?
+-- A tool for automation of software build, reporting & dependency management
+
+---------------------------------------------------------------------------------------------------------
+Verson Control:
+What is SVN (Subversion)?
+-- A software for version control
