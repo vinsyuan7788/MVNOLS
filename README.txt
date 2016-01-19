@@ -40,3 +40,7 @@ Version 1.0.9:
 1. Modifies the configuration regarding database & adds the summarization regarding database implementation.
 2. Addresses the defects regarding static page generation result, JS return to item administraton list, and utility class method finalization.
 3. Supplements a function regarding item republishment.
+
+Version 1.1.0:
+1. Addresses the defects regarding user module, including case sensitivity, login validation bug & corresponding configuration constants
+2. Includes the previous summarization of JavaWeb, including web service & workflow or business process management
