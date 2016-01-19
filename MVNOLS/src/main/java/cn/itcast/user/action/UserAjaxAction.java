@@ -1,11 +1,13 @@
 package cn.itcast.user.action;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.itcast.global.session.SessionProvider;
 import cn.itcast.user.bean.User;
 import cn.itcast.user.service.UserService;
 
@@ -19,20 +21,22 @@ public class UserAjaxAction {
 	/*	IOP: IOC & DI	*/
 	@Resource
 	private UserService userService;
+	@Resource
+	private SessionProvider sessionProvider;
 	
 	/**
-	 * 	This is an action method for duplication validation through AJAX in JSP view for registration
-	 * 	1. If there is no username duplication, then return "true" (i.e. no error message)
-	 *  2. If there is a username duplication, then return "false" (i.e. pop out error message)
+	 * 	This is an action method for existence validation through AJAX in JSP view for registration
+	 * 	1. If the username is not existing, then return "true" (i.e. no error message)
+	 *  2. If the username is existing, then return "false" (i.e. pop out error message)
 	 * @param username
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/duplicationValidation")
-	public @ResponseBody String duplicationValidation (String username) throws Exception {
+	@RequestMapping("/signUpValidation")
+	public @ResponseBody String signUpValidation (String username) throws Exception {
 		
-		int count = userService.queryUserbyUsername(username);
-		if (count == 0) {
+		int existenceCount = userService.queryUserbyUsername(username);
+		if (existenceCount == 0) {
 			return "true";
 		} else {
 			return "false";
@@ -46,11 +50,11 @@ public class UserAjaxAction {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/existenceValidation")
-	public @ResponseBody String existenceValidation (String username, String password) throws Exception {
+	@RequestMapping("/signInValidation")
+	public @ResponseBody String signInValidation (String username, String password) throws Exception {
 		
-		int count = userService.queryUserByLoginInfo(username, password);
-		if (count == 1) {
+		int existenceCount = userService.queryUserByLoginInfo(username, password);
+		if (existenceCount == 1) {
 			return "true";
 		} else {
 			return "false";
@@ -68,19 +72,18 @@ public class UserAjaxAction {
 	 * @throws Exception
 	 */
 	@RequestMapping("/updateValidation")
-	public @ResponseBody String updateValidation (String username, HttpSession httpSession) throws Exception {
+	public @ResponseBody String updateValidation (String username, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		User currentUser = (User) httpSession.getAttribute("user");
-		String currentUsername = currentUser.getUsername();
+		User currentUser = (User) sessionProvider.getAttribute("user", request, response);
 		
-		if (username.equals(currentUsername)) {
+		if (username.equals(currentUser.getUsername())) {
 			return "true";
 		} else {
-			int count = userService.queryUserbyUsername(username);
-			if (count != 0) {
-				return "false";
-			} else {
+			int existenceCount = userService.queryUserbyUsername(username);
+			if (existenceCount == 0) {
 				return "true";
+			} else {
+				return "false";
 			}
 		}
 	}

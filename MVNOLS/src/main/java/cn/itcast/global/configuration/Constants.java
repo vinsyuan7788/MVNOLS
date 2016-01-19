@@ -33,7 +33,7 @@ public interface Constants {
 	public static final String PUBLIC_URL = "/redirection/success.action, /redirection/login.action, /redirection/itemCriteria.action, /redirection/itemList.action, " +
 			"/captchaAjax/captchaValidation.action, " +
 			"/user/userLogin.action, /user/userLogout.action, /user/userRegister.action, /user/userActivate.action, " +
-			"/userAjax/duplicationValidation.action, /userAjax/existenceValidation.action, /userAjax/updateValidation.action, " +
+			"/userAjax/signUpValidation.action, /userAjax/signInValidation.action, /userAjax/updateValidation.action, " +
 			"/nationalityAjax/queryNationality.action, " +
 			"/itemPagination/queryItemListByCriteria.action";
 	

@@ -189,15 +189,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	/**
-	 * 	This is a service method
+	 * 	This is a service method to query if there is an existing user by username
 	 */
 	@Override
 	public int queryUserbyUsername(String username) throws Exception {
 		
+		/*	Set the query condition	 */
 		UserExample userExample = new UserExample();
 		UserExample.Criteria criteria = userExample.createCriteria();
 		criteria.andUsernameEqualTo(username);
 		
+		/*	Query if there is any existing user according to query condition	*/
 		return userMapper.countByExample(userExample);
 	}
 

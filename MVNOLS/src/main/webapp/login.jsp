@@ -53,15 +53,15 @@ $().ready(function() {
 		rules: {
 			username: {
 				required: true,
-				minlength: 2,
+				minlength: 2
 			},
 			password: {
 				required: true,
 				minlength: 5,
-//				remote: "<c:url value = '/userAjax/existenceValidation.action'/>"
+//				remote: "<c:url value = '/userAjax/signInValidation.action'/>"
 				/*	Below is the default complete form of "remote" for customization	*/
  				remote: {
-					url: "<c:url value = '/userAjax/existenceValidation.action'/>",
+					url: "<c:url value = '/userAjax/signInValidation.action'/>",
 					type: "get",
 					dataType: "json",
 					data: {

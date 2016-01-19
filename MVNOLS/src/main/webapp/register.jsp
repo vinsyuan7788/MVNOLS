@@ -75,10 +75,10 @@ $().ready(function() {
 			username: {
 				required: true,
 				minlength: 2,
-				remote: "<c:url value = '/userAjax/duplicationValidation.action'/>"
+				remote: "<c:url value = '/userAjax/signUpValidation.action'/>"
 				/*	Below is the default complete form of "remote" for customization	*/
  /*				remote: {
-					url: "<c:url value = '/userAjax/duplicationValidation.action'/>",
+					url: "<c:url value = '/userAjax/signUpValidation.action'/>",
 					type: "get",
 					dataType: "json",
 					data: {

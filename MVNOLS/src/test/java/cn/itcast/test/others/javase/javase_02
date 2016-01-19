@@ -1,0 +1,37 @@
+Cohesion & Coupling: refer to "TestOOP.java"
+-- Cohesion: a measure of how related the responsibilities of a class are
+-- Coupling: a measure of how much the dependency between classes are
+
+Inner class:
+-- Should be avoided as much as possible in the design of actual application (*****)
+   -- Not good for cohesion & decoupling
+-- If inner class: create the inner class directly inside the outer class
+   -- CAN access the class (instance|static) variable
+   -- NOT create inside the class (instance|static) method: inner class' method cannot access the method's local variable
+   
+Constructor:
+-- Chaining: When the parent class has a construcotr, the child class use "super()" to call it
+   -- "super()"
+-- Copy constructor: the constructor receiving the object that is same type as current class as argument 
+   -- Refer to "TestConstructor.class"
+   
+Assertion: refer to "TestAssertion.java"
+-- Should NOT be used for input validation to a public method
+   -- Better option: IllegalArgumenetException, etc.
+
+Reflection: refer to "TestReflection.java"
+
+Collection: refer to "TesCollectionAndMap.java"
+-- Using generic type
+
+Serialization & Passivation: refer to "javaweb.testclass.bean.Person.java"
+Serialization: store the state of an object in a file or other medium
+-- Used for file storage or tranmission: in the environment with distributed cache
+-- Deserialization is the reverse process of serialization
+Passivation: store the state of an ServletSession (which has implemented Serializable) object in a file or other medium
+-- If other objects (e.g, JavaBean objects) want to go with session, they MUST implement Serializble interface as well
+-- Activation is the reverse process of passivation
+
+hashCode() & equals():
+-- If equals() is overriden, then hashCode() must be overrided too
+   -- Because by default hashCode() compares the memory address between objects, hence to need to overide it for value comparison

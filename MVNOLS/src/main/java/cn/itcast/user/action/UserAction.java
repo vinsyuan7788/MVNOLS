@@ -48,6 +48,7 @@ public class UserAction {
 	 *        -- Create a new instance for processing upload file
 	 *        -- Process the upload file
 	 *        -- Update & obtain the latest user information & return
+	 *  3. If necessary: can use an interceptor for update validation in server side
 	 * @param user
 	 * @param uploadFile
 	 * @param model
@@ -146,7 +147,7 @@ public class UserAction {
 
 	/**
 	 * 	This is an action method for user login
-	 * 	1. Format validation & existence validation are both completed in JSP view
+	 * 	1. Format validation & existence validation are both completed in JSP view (i.e., in browser side)
 	 * 	2. If the request comes here, that means the request passes the format check & existence check
 	 *     -- Hence in this method, just need to:
 	 *        -- Query the existing user
@@ -154,6 +155,7 @@ public class UserAction {
 	 *  3. For return view: (*****)
 	 *     -- If the returnURL is null, return to home page
 	 *     -- If not, redirect the request to the returnURL
+	 *  4. If necessary: can use an interceptor for login validation in server side
 	 * @param user
 	 * @param httpSession
 	 * @return
@@ -162,16 +164,24 @@ public class UserAction {
 	@RequestMapping("/userLogin")
 	public String userLogin (User user, String returnURL, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		/*	Query the existing user according to login information	*/
+		/*	Query the user according to login information	*/
 		List<User> existingUsers = userService.queryUserByLoginInfo(user);
-		User existingUser = existingUsers.get(0);
 		
-		/*	Save the user information into session scope & return	*/
-		sessionProvider.setAttribute("user", existingUser, request, response);
-		if (returnURL == null || returnURL.trim().length() == 0) {
-			return "redirect:/home.jsp";
+		/*	If the user is existing, then get the existing user	*/
+		if (existingUsers != null && existingUsers.size() > 0) {
+			User existingUser = existingUsers.get(0);
+			
+			/*	Save the user information into session scope & return	*/
+			sessionProvider.setAttribute("user", existingUser, request, response);
+			if (returnURL == null || returnURL.trim().length() == 0) {
+				return "redirect:/home.jsp";
+			} else {
+				return "redirect:" + returnURL;
+			}
+		
+		/*	If there is no existing user, then throw an exception	*/
 		} else {
-			return "redirect:" + returnURL;
+			throw new CustomException("Please enter the correct username and password");
 		}
 	}
 
@@ -189,12 +199,13 @@ public class UserAction {
 	
 	/**
 	 * 	This is an action method for user registration
-	 * 	1. Format validation & duplication validation are both completed in JSP view
+	 * 	1. Format validation & duplication validation are both completed in JSP view (i.e., in browser side)
 	 * 	2. If the request comes here, that means the request passes the format check & duplication check
 	 *     -- Hence in this method, just need to:
 	 *        -- Set initial values for necessary fields
 	 *        -- Insert the JavaBean into DB & send the email
 	 *        -- Return to success view
+	 *  3. If necessary: can use an interceptor for registration validation in server side
 	 * @param user
 	 * @param model
 	 * @return
