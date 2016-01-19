@@ -284,6 +284,39 @@
 			<artifactId>jersey-client</artifactId>
 			<version>1.18.1</version>
 		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.18.1</version>
+		</dependency>
+   		<dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-spring</artifactId>
+            <version>1.18.1</version>
+            <!-- Exclude the Unnecessary Spring Jars Contained by Jersey -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-aop</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-web</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 		
 		<!-- Local Jars -->
 		<dependency>
@@ -323,6 +356,11 @@
 	        <artifactId>cxf-rt-frontend-jaxws</artifactId>
 	        <version>${cxf-version}</version>
 	    </dependency>
+	    <dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>${cxf-version}</version>
+		</dependency>
 	    <dependency>
 	        <groupId>org.apache.cxf</groupId>
 	        <artifactId>cxf-rt-transports-http</artifactId>

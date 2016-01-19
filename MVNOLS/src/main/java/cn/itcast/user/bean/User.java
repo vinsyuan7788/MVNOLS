@@ -3,6 +3,9 @@ package cn.itcast.user.bean;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class User implements Serializable {
     private Integer id;
 

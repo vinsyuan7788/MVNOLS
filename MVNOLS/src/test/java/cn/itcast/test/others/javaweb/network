@@ -59,7 +59,7 @@ What is REST?
    -- URL style comparison between SOAP-based & RESTful:
       -- SOAP-based: http://ip:port/queryUser.action?userType=XXX&studentId=001&...
       -- RESTful: http://ip:port/user/student/001/...
--- Resource operation: use "GET|POST|PUT|DELETE" method for database CRUD
+-- Resource operation: use "GET|POST|PUT|DELETE" method for database query|create|update(create)|delete
 -- System|Framework that conforms to the constraints|style of REST is called "RESTful"
 
 What is RESTful WS?

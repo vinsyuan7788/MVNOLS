@@ -16,7 +16,7 @@ import cn.itcast.test.others.javaweb.testclass.webservice.jaxrs.bean.City;
  * 	1. Use annotation to change the default name space in the interface when using CXF for web service
  * 	2. Use annotation to specify the RESTful URL path
  */
-@WebService(targetNamespace="http://server.client.jaxrs.webservice.testclass.javaweb.others.test.itcast.cn/")
+@WebService()
 @Path("/city")
 public interface CityService {
 

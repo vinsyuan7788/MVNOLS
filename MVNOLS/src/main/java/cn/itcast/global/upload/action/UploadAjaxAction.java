@@ -12,10 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import cn.itcast.global.configuration.Constants;
-import cn.itcast.global.utils.AjaxResponseUtils;
 
 import com.sun.jersey.api.client.Client;
+
+import cn.itcast.global.configuration.Constants;
+import cn.itcast.global.utils.AjaxResponseUtils;
 
 /**
  * 	This is the action class to process AJAX request for upload files
