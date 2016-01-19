@@ -41,6 +41,7 @@ Collation:
 What is data collation?
 -- A set of rules that determine how character data can be sorted and compared
 -- Types of collation sensitivity: case-sensitivity, width-sensitivity
+   -- Can specify case sensitivity or not for column through collation
 
 ------------------------------------------------------------------------------------------------------------------
 OLTP:
