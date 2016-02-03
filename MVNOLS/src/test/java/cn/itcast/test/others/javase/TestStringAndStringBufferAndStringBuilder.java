@@ -2,6 +2,8 @@ package cn.itcast.test.others.javase;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Collection;
+import java.util.Collections;
 
 import org.junit.Test;
 
@@ -11,8 +13,9 @@ import org.junit.Test;
  *     -- Pros: Can be applied in synchronization: refer to "TestThread.java"
  *     -- Cons: String is more stack-memory-consuming & less time-efficient in some situation: refer to "testStringBufferAndStringBuilderMutability()"
  *  2. StringBuffer is synchronized|thread-safe, while StringBuilder is not
+ * @author Vince Xu Yuan
  */
-public class TestString {
+public class TestStringAndStringBufferAndStringBuilder {
 
 	/**
 	 * 	Test the string immutability
@@ -94,12 +97,17 @@ public class TestString {
 				System.out.println("The string from StringBuffer: " + stringBuffer.toString());
 				System.out.println("The string length: " + stringBuffer.toString().length());
 				System.out.println("The elapse time: " + (endTimeForStringBuffer - startTimeForStringBuffer) + " ns");
+				System.out.println("The order of maginitude of elapse time: " + String.valueOf(endTimeForStringBuffer - startTimeForStringBuffer).length());
+				System.out.println();
 				System.out.println("The string from StringBuilder: " + stringBuilder.toString());
 				System.out.println("The string length: " + stringBuilder.toString().length());
 				System.out.println("The elapse time: " + (endTimeForStringBuilder - startTimeForStringBuilder) + " ns");
+				System.out.println("The order of maginitude of elapse time: " + String.valueOf(endTimeForStringBuilder - startTimeForStringBuilder).length());
+				System.out.println();
 				System.out.println("The string from String: " + string);
 				System.out.println("The string length: " + string.length());
 				System.out.println("The elapse time: " + (endTimeForString - startTimeForString) + " ns");
+				System.out.println("The order of maginitude of elapse time: " + String.valueOf(endTimeForString - startTimeForString).length());
 				
 				/*	Break the loop	*/
 				break;
