@@ -240,7 +240,7 @@ public class UserAction {
 	@RequestMapping("/userActivate")
 	public String userActivate (String activationuuid, Model model) throws Exception {
 		
-		userService.activate(activationuuid);
+		userService.activateUser(activationuuid);
 		model.addAttribute("successMessage", "Congratulations! Activation succeeds!");
 		return "forward:/redirection/success.action";
 	}

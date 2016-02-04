@@ -65,6 +65,7 @@
 			<tx:method name="recover*" isolation="DEFAULT" propagation="REQUIRED" read-only="false" rollback-for="Exception"/>
 			<tx:method name="delete*" isolation="DEFAULT" propagation="REQUIRED" read-only="false" rollback-for="Exception"/>
 			<tx:method name="put*" isolation="DEFAULT" propagation="REQUIRED" read-only="false" rollback-for="Exception"/>
+			<tx:method name="republish*" isolation="DEFAULT" propagation="REQUIRED" read-only="false" rollback-for="Exception"/>
 			<tx:method name="query*" isolation="DEFAULT" propagation="SUPPORTS" read-only="true" rollback-for="Exception"/>
 			<tx:method name="get*" isolation="DEFAULT" propagation="SUPPORTS" read-only="true" rollback-for="Exception"/>
 		</tx:attributes>

@@ -130,7 +130,7 @@ public class UserServiceImpl implements UserService {
 	 *  3. If use is found & user state is "unactive", then update to "active"
 	 */
 	@Override
-	public User activate(String activationuuid) throws Exception {
+	public void activateUser(String activationuuid) throws Exception {
 		
 		/*	Query user according to activation code	*/
 		UserExample userExample = new UserExample();
@@ -152,8 +152,6 @@ public class UserServiceImpl implements UserService {
 		/*	If user is found & user state is "unactive", then update to "active"	*/
 		user.setState("active");
 		userMapper.updateByExampleSelective(user, userExample);
-		
-		return null;
 	}
 
 	/**

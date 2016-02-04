@@ -21,7 +21,7 @@ public interface UserService {
 	public void insertUserupload(Userupload userupload) throws Exception;
 	public void updateUser(User user, Userupload userupload) throws Exception;
 	public void insertUser(User user, Userupload userupload) throws Exception;
-	public User activate(String activationuuid) throws Exception;
+	public void activateUser(String activationuuid) throws Exception;
 	public List<User> queryUserByLoginInfo(User user) throws Exception;
 	public int queryUserByLoginInfo(String username, String password) throws Exception;
 	public int queryUserbyUsername(User user) throws Exception;
