@@ -57,7 +57,7 @@ public class TestArray {
 		
 		/*	Instantiate a integer array statically: each element is between 10 and 99	*/
 		Integer[] integerArray = new Integer[]{(int) (Math.random()*90+10), new Random().nextInt(90)+10, (int) (Math.random()*90+10), new Random().nextInt(90)+10, (int) (Math.random()*90+10)};
-//		Integer[] integerArray = (Math.random()*90+10), new Random().nextInt(90)+10, (int) (Math.random()*90+10), new Random().nextInt(90)+10, (int) (Math.random()*90+10)};
+//		Integer[] integerArray = {(int) (Math.random()*90+10), new Random().nextInt(90)+10, (int) (Math.random()*90+10), new Random().nextInt(90)+10, (int) (Math.random()*90+10)};
 		System.out.println("The original integer array: " + Arrays.toString(integerArray));
 		int elementForIndex = integerArray[1];
 		System.out.println("The element for index: " + elementForIndex);

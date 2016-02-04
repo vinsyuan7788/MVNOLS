@@ -1,0 +1,27 @@
+Optimization for database design
+-- Heap table: partitioned|temporary table
+   -- Partitioned table:
+      -- Non-composite way: by range|list|hash
+      -- Composite way: by range-range|list|hash, list-range|list|hash
+      -- Avoid unncessary operation & throughput on the table
+   -- Temporary table:
+      -- Can clean the data when commit transaction or log out session
+      -- Session independent: each session can have local temporary table or use global temporary table
+-- Index: B-tree|function-based|reverse|bit-map|full-text
+   -- B-tree: most usually used on primary key
+   -- Speed up the query but it may bring overhead
+      -- Avoid full-table scan & locate the target row quickly & precisely
+      -- Modify the index correspondingly when insert|update|delete a row
+-- Explain plan: use some method to affect the explain plan
+   -- Use hint: e.g., /* RESULT_CACHE */ or /* PARALLEL */
+      -- /* RESULT_CACHE */: the query result will be stored in cache in SP (shared pool) 
+         -- Save the cost of CPU & I/O
+         -- Cost more cache in SP
+      -- /* PARALLEL */: do the query in parallel 
+         -- Speed up the query 
+         -- Bring overhead to CPU
+      -- In oracle, oracle will pick the optimal hint for execution, hence in general it is no need to specify the hint
+   -- Use SQL: "INSERT ALL" in Oracle; Insert multiple values at once in MySQL (INSERT [TABLE] VALUES A, B, etc.)
+-- Others:
+   -- Table: cluster table; IOT (Index Organized Table)
+   -- View: materialized view
