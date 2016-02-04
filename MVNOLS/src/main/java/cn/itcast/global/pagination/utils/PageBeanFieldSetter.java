@@ -4,6 +4,7 @@ import cn.itcast.global.pagination.bean.PageBean;
 
 /**
  * 	This is a page bean utility class that can be extended to process page bean fields in action layer
+ * @author Vince Xu Yuan
  * @param <T>
  */
 public class PageBeanFieldSetter<T extends PageBean> {

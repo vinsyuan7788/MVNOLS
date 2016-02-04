@@ -2,7 +2,7 @@ package cn.itcast.test.dao.mapper;
 
 import cn.itcast.item.bean.Item;
 import cn.itcast.item.bean.ItemExample;
-import cn.itcast.item.bean.wrapper.PageItemBean;
+import cn.itcast.temporary.bean.item.PageItemBean;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;

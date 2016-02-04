@@ -7,7 +7,10 @@ import cn.itcast.temporary.bean.query.utils.ConditionField;
 import cn.itcast.temporary.bean.query.utils.OrderField;
 import cn.itcast.temporary.bean.query.utils.QueryField;
 
-
+/**
+ * 	This is the class for the SQL in DAO mapper
+ * @author Vince Xu Yuan
+ */
 public class QueryBean {
 
 	/*	For selector  */

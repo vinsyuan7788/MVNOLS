@@ -10,7 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.itcast.item.bean.Item;
-import cn.itcast.item.bean.wrapper.PageItemBean;
+
+import cn.itcast.temporary.bean.item.PageItemBean;
 import cn.itcast.temporary.bean.query.bean.QueryBean;
 import cn.itcast.temporary.bean.query.utils.ConditionField;
 import cn.itcast.temporary.bean.query.utils.OrderField;

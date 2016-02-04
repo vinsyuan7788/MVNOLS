@@ -4,6 +4,7 @@ import cn.itcast.global.pagination.bean.PageBean;
 
 /**
  * 	This is a page bean utility interface to process page bean fields in action layer
+ * @author Vince Xu Yuan
  * @param <T>
  */
 public interface PageBeanFieldProcessor<T extends PageBean> {
