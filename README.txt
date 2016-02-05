@@ -44,3 +44,4 @@ Version 1.0.9:
 Version 1.1.0:
 1. Addresses the defects regarding user module, including case sensitivity, login validation bug & corresponding configuration constants.
 2. Includes the previous summarization of JavaWeb, including web service & workflow or business process management.
+3. Inlucdes the testing regarding regex, IO stream, big number, message format, enumeration, etc.

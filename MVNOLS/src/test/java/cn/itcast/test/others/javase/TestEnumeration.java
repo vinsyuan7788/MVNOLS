@@ -41,13 +41,18 @@ public class TestEnumeration {
 		/*	Invoke the public enumeration class	*/
 		Light red = Enumeration.Light.RED;
 		String string = red.flash();
+		String value = red.getValue();
 		Light[] enumerationValues = Enumeration.Light.values();
 		String defaultColor = Enumeration.Light.DEFAULT_COLOR;
 		String light = Enumeration.Light.getLight();
 		
 		/*	Output the results	*/
-		System.out.println("The Red light: " + red.value);
+		System.out.println("The red light: " + red);
+		System.out.println("The red light name:" + red.name());
+		System.out.println("The red light value: " + red.value);
+		System.out.println("The red light ordinal: " + red.ordinal());
 		System.out.println("The string from \"flash()\" of enumeration value: " + string);
+		System.out.println("The result of \"getValue()\": " + value);
 		System.out.println("All enumeration values: " + Arrays.toString(enumerationValues));
 		System.out.println("The default color: " + defaultColor);
 		System.out.println("The light obtain by \"getLight()\": " + light);

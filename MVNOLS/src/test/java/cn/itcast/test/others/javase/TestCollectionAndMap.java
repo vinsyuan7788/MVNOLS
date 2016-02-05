@@ -27,6 +27,7 @@ import org.junit.Test;
  * 	1. Traverse way of list, set and map
  * 	2. "Collections" class
  *     -- "Collection" is an interface
+ *     -- "Collections.synchronizedList(Collection<T> collection)": to return a thread-safe collection
  * 
  * 	Collections (List & Set): length-variable array
  * 	1. The collection length (which is in heap memory) is variable even it is instantiated
@@ -65,7 +66,7 @@ public class TestCollectionAndMap {
 		List<String> list = new ArrayList<String>();	// backed by array: relativly better at query but worse at insert & remove
 //		List<String> list = new LinkedList<String>();	// backed by doubly-linked list: relatively better at insert & remove but worse at query
 //		List<String> list = new Vector<String>();		// thread security
-		
+
 		/*	Add some string into the list	*/
 		list.add("aaa");
 		list.add("bbb");

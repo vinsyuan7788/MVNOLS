@@ -4,6 +4,11 @@ import org.junit.Test;
 
 import cn.itcast.test.others.javase.testclass.iostream.bytes.BufferedIOStream;
 import cn.itcast.test.others.javase.testclass.iostream.bytes.FileIOStream;
+import cn.itcast.test.others.javase.testclass.iostream.bytes.ObjectIOStream;
+import cn.itcast.test.others.javase.testclass.iostream.bytes.PrintOutStream;
+import cn.itcast.test.others.javase.testclass.iostream.bytes.SequenceInStream;
+import cn.itcast.test.others.javase.testclass.iostream.bytes.object.Address;
+import cn.itcast.test.others.javase.testclass.iostream.bytes.object.User;
 import cn.itcast.test.others.javase.testclass.iostream.character.BufferedReaderWriter;
 import cn.itcast.test.others.javase.testclass.iostream.character.ByteStreamReaderWriter;
 import cn.itcast.test.others.javase.testclass.iostream.character.FileReaderWriter;
@@ -16,6 +21,7 @@ import cn.itcast.test.others.javase.testclass.iostream.character.FileReaderWrite
  *     -- Buffered IO: BufferedInputStream & BufferedOutputStream
  *     -- Sequence input: SequenceInputStream
  *     -- Object IO: ObjectInputStream & ObjectOutputStream
+ *     -- Print output: PrintStream
  *  2. Character stream: handle I/O of character data, automatically handling translation to and from the local character set (namely "character stream = byte stream + encoding|decoding")
  *     -- Reader & Writer (which are abstract classes) are the superclasses of all character I/O streams
  *     -- File IO: FileReader; FileWriter
@@ -128,6 +134,90 @@ public class TestIOStream {
 		
 		/*	Copy the file	*/
 		BufferedIOStream.copyFile(originalFilePath, copyFilePath);
+	}
+	
+	/**
+	 * 	Test write an object out to a file on disk with ObjectOututStream
+	 * @throws Exception
+	 */
+	@Test
+	public void testObjectOutputStream () throws Exception {
+		
+		/*	Specify a JavaBean object & file path	*/
+		User user = new User();
+		user.setUserName("Admin");
+		user.setPassword("123");
+		user.setGender("Male");
+		user.setIncome(12000.0);
+		user.setAddress(new Address("USA", "FL", "Portdoom Street, No.109"));
+		String filePath = "D:\\JavaWeb\\ObjectOutputStream.txt";
+		
+		/*	Write the object to a file on disk	*/
+		ObjectIOStream.writeToFile(user, filePath);
+	}
+	
+	/**
+	 * 	Test read an object from a file on disk with ObjectInputStream
+	 * @throws Exception
+	 */
+	@Test
+	public void testObjectInputStream () throws Exception {
+		
+		/*	Specify the file path	*/
+		String filePath = "D:\\JavaWeb\\ObjectOutputStream.txt";
+		
+		/*	Read the object from a file on disk	 */
+		ObjectIOStream.readFromFile(filePath);
+	}
+	
+	/**
+	 * 	Test concatenate files with SequenceInputStream
+	 * @throws Exception
+	 */
+	@Test
+	public void testSequenceInputStream () throws Exception {
+		
+		/*	Specify the buffer size, the original file paths & new file paths	*/
+		int bufferSize = 128;
+		String[] originalFilePaths = {"D:\\example.java", "D:\\example1.java", "D:\\example2.java"};
+		String newFilePath = "D:\\JavaWeb\\SequenceInputStream.txt";
+		
+		/*	Do the file concatenation	*/
+		SequenceInStream.concatenateFiles(bufferSize, originalFilePaths, newFilePath);
+	}
+	
+	/**
+	 * 	Test print data to a file on disk with PrintStream
+	 * @throws Exception
+	 */
+	@Test
+	public void testPrintToFile () throws Exception {
+		
+		/*	Specify the data & file path	*/
+		User user = new User();
+		user.setUserName("Admin");
+		user.setPassword("123");
+		user.setGender("Male");
+		user.setIncome(12000.0);
+		user.setAddress(new Address("USA", "FL", "Portdoom Street, No.109"));
+		String filePath = "D:\\JavaWeb\\PrintStream_PrintToFile.txt";
+		
+		/*	Print the data to a file	*/
+		PrintOutStream.printToFile(user, filePath);
+	}
+	
+	/**
+	 * 	Test print exception information to a log file with PrintStream
+	 * @throws Exception
+	 */
+	@Test
+	public void testPrintToLog () throws Exception {
+		
+		/*	Specify the file path of log to store exception inforatmion	 */
+		String logFilePath = "D:\\JavaWeb\\PrintStream_PrintExceptionLog.txt";
+		
+		/*	Print the exception information to the log file	 */
+		PrintOutStream.printExceptionLog(logFilePath);
 	}
 	
 	//--------------------------------------  Character Stream  -------------------------------------------------

@@ -27,6 +27,7 @@ Collection: refer to "TesCollectionAndMap.java"
 Serialization & Passivation: refer to "javaweb.testclass.bean.Person.java"
 Serialization: store the state of an object in a file or other medium
 -- Used for file storage or tranmission: in the environment with distributed cache
+   -- Can specify a default serial version ID to avoid version incompatibility, especially when the class in the project is modified and the serialized class is not modified yet
 -- Deserialization is the reverse process of serialization
 Passivation: store the state of an ServletSession (which has implemented Serializable) object in a file or other medium
 -- If other objects (e.g, JavaBean objects) want to go with session, they MUST implement Serializble interface as well

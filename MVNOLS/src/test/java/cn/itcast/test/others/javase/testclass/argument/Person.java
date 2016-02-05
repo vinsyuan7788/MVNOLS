@@ -26,6 +26,7 @@ public class Person {
 	
 	/**
 	 * 	This is the setter to set a person's hobbies
+	 * 	1. If there are multiple argumetns, variable-arguments MUST be put at the end
 	 * @param hobbies
 	 */
 	public void setHobbyArray(String... hobbies) {
