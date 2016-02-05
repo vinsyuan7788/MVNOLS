@@ -1,9 +1,10 @@
-package cn.itcast.test.others.javase.testclass.regex;
+package cn.itcast.test.others.javase.testclass.math;
 
 import java.util.Random;
 
 /**
  * 	This is the class to randomly generate a captcha
+ * 	1. "Math.random()" & "new Random().nextInt(int n)"
  * @author Vince Xu Yuan
  */
 public class Captcha {
@@ -31,3 +32,4 @@ public class Captcha {
 		return stringBuffer.toString();
 	}
 }
+
