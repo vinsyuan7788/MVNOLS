@@ -2,9 +2,6 @@ package cn.itcast.test.others.javase;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Collection;
-import java.util.Collections;
-
 import org.junit.Test;
 
 /**
