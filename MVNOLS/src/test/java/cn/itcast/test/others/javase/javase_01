@@ -2,7 +2,7 @@ Why is Java popular?
 -- Platform independent: runnable without any modificaiton in any OS environment
    -- Thanks to JVM (Java Virtual Machine)
 -- OOP (Object-Oriented Programming) thought
-   -- DifferenceS between C++ and Java: pointer; memory management v.s. garbage collection; etc.
+   -- Differences between C++ and Java: pointer; memory management v.s. garbage collection; etc.
    -- Encapsulation; Abstraction; Inheritance|Polymorphism: refer to "TestOOP.java"
    -- Advantages: JavaBean|domain mapping; Reusability 
    

@@ -1,0 +1,13 @@
+Communication regarding business:
+-- Business research: 
+   -- Goal: to set up a sketch|blueprint & decide a genenral direction of the business
+   -- Preserve those profitable & manageable & scalable; remove those trivial
+      -- E.g., Some client may neglect the potential of expanding their business. During the communication and discussion those potential maybe discovered as much as possible
+-- Requirement establishment|analysis: 
+   -- Goal: to specify the details for further implementation
+   -- Decide what types of functionality are neeeded or what types are not
+      -- E.g., If there is a detailed requirement, all the teams have specific objectives & know what is necessary|unncessary to implement, hence the implementation efficiency will be overall higher
+-- Priority determination: 
+   -- Goal: to help set up the timeline for the project
+   -- Core requirements should have higher priority & be firstly implemented & tested
+      -- E.g., If the clients want to test the system in the middle stage of the project, then we can provide those core modules|functionality for them
