@@ -9,9 +9,9 @@ Why is Java popular?
 String v.s. StringBuilder v.s. StringBuffer: refer to "TestString.java"
 -- String object is immutable, while StringBuilder|StringBuffer is not
 -- StringBuffer is synchronized|thread-safe, while StringBuilder is not
-
+  
 Keywords & modifiers: refer to "TestKeywords.java"
-
+  
 Variable arguments: allow to call a method with any number of arguments in the same type
 -- refer to "TestArgument.java"
 
@@ -22,4 +22,3 @@ Anonymous class (the class you know it is used only once)
 wrapper class (autoboxing & unboxing)
 toString(): a text presentation of detailed information of a class (e.g., class variables)
 -- A default toString() method is provided by Java (but not the desirable one usually)
-

@@ -1,0 +1,25 @@
+MVC (Model-View-Controller)
+What is MVC?
+-- An architectural design pattern to improve the program robustness, scalability & flexibility for user interface implementation
+-- M (Model): contain the data and behavior for business logic
+   -- Can be realized by JavaBean
+-- V (View): for presentation to user based on the change of the model
+   -- Can be realized by JSP
+-- C (Controller): to control the working flow
+   -- Can be realized by Servlet: accpet, process and dispatch the request
+
+MVC-based framework: the framework for simplifying MVC implementation
+-- E.g., Struts2, SpringMVC, etc.
+
+------------------------------------------------------------------------------------------------------------------
+3-layer web application architecture
+What is 3-layer architecture? 
+Web layer: front-end & server-side where the requests are sent, processed & returned 
+-- Goal: to send requests from front-end, accept & process requests on server-side, return the requests to front-end
+business layer: where the business logic will be processed on server-side
+-- Goal: to process business logic
+DAO layer: where the data interacts with database on server-side
+-- Goal: to have data interact with database
+
+How to simplify the implementation of web application (under 3-layer architecutre; after architecting web application with 3-layer architecture)?
+-- Use framework: MVC-based framework (SpringMVC, Struts2, etc.), container|application framwork (Spring, etc.), DAO framwork (MyBatis, Hiberante, etc.)

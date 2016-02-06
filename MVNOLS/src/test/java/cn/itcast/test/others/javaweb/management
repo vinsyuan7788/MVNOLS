@@ -1,4 +1,3 @@
----------------------------------------------------------------------------------------------------------
 Business Procedure:
 What is workflow?
 -- Use computer technique to automatically faciliate the implementation and realization of scheduled working|business process
@@ -23,9 +22,9 @@ What are Activiti services?
 -- IdentityService(ID): for the setting of user & group
 -- FormService: for form data configuration
 -- ManagerService: for Activiti runtime monitoring (by super administrator)
+
 ---------------------------------------------------------------------------------------------------------
 Software Build:
-
 What is Maven?
 -- A tool for automation of software build, reporting & dependency management
 

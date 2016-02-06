@@ -2,10 +2,10 @@ Spring and Sturts2 Comparison:
 1. From mechanism perspective:
 -- Framework design:
    -- SpringMVC: extesion of Servlet & supports AOP
-   -- Struts2: Apply more OOP & AOP thought
+   -- Struts2: apply more OOP & AOP thought
 -- Components: 
    -- SprinMVC: DS, HM, HA, H, VR
-   -- struts2: interceptors and AC
+   -- Struts2: interceptors and AC
 -- Request processing: 
    -- SpringMVC: method-based
       -- In SpringMVC: H only contains ONE target method in AC, namely request URL is mapped to one method
@@ -17,7 +17,7 @@ Spring and Sturts2 Comparison:
          -- Hence Struts2 action class is prototype be default
 -- Interceptors: 
    -- SpringMVC: HM returns interceptors with H together
-   -- Sstruts2: interceptors directly serve action class generally without extra configuraiton
+   -- Struts2: interceptors directly serve action class generally without extra configuraiton
 -- View processing: 
    -- SpringMVC: return V through VR 
    -- Struts2: returns V by ResutlSetInterceptor

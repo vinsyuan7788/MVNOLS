@@ -8,7 +8,7 @@ Inner class:
 -- If inner class: create the inner class directly inside the outer class
    -- CAN access the class (instance|static) variable
    -- NOT create inside the class (instance|static) method: inner class' method cannot access the method's local variable
-   
+
 Constructor:
 -- Chaining: When the parent class has a construcotr, the child class use "super()" to call it
    -- "super()"
@@ -20,10 +20,10 @@ Assertion: refer to "TestAssertion.java"
    -- Better option: IllegalArgumenetException, etc.
 
 Reflection: refer to "TestReflection.java"
-
+ 
 Collection: refer to "TesCollectionAndMap.java"
 -- Using generic type
-
+ 
 Serialization & Passivation: refer to "javaweb.testclass.bean.Person.java"
 Serialization: store the state of an object in a file or other medium
 -- Used for file storage or tranmission: in the environment with distributed cache
@@ -32,7 +32,7 @@ Serialization: store the state of an object in a file or other medium
 Passivation: store the state of an ServletSession (which has implemented Serializable) object in a file or other medium
 -- If other objects (e.g, JavaBean objects) want to go with session, they MUST implement Serializble interface as well
 -- Activation is the reverse process of passivation
-
+ 
 hashCode() & equals():
 -- If equals() is overriden, then hashCode() must be overrided too
    -- Because by default hashCode() compares the memory address between objects, hence to need to overide it for value comparison
