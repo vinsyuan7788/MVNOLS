@@ -15,7 +15,7 @@ Cookie: data sent from a website|server-side and stored in the user's browser|br
 Web Servlet|Filter|Listener: refer to the classes under "javaweb.testclass.web" package
 Servlet: 
 -- Servlet is instantiated by server when servlet is first time accessed or server is started (depends on the "loadOnStartup" configuration in "web.xml")
-   -- Singleton: since server only instaintiates one object for one servlet (even there are multiple servlets)
+   -- Singleton: since server only instantiates one object for one servlet (even there are multiple servlets)
 -- Servlet is destroyed by servler container when server container is shut down or restarted
 -- 3 life-cycle methods: (5 methods in total)
    -- init(): executed once when servlet is created
@@ -26,7 +26,7 @@ Servlet:
    -- Achieved by: "httpServletRequest.getRequestDispatcher().forward()|include()"
 Filter: 
 -- Filter is instantiated by server when server is started
-   -- Singleton: since server only instaintiates one object for one filter (even there are multiple filters)
+   -- Singleton: since server only instantiates one object for one filter (even there are multiple filters)
 -- Filter is destroyed by server when server is shut down or restarted
 -- 3 life-cycle methods: (3 methods in total)
    -- init(): executed once when filter is instantiated 
