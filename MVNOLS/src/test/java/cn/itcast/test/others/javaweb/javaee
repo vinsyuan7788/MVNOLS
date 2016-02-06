@@ -13,7 +13,10 @@ Cookie: data sent from a website|server-side and stored in the user's browser|br
 
 ----------------------------------------------------------------------------------------------
 Web Servlet|Filter|Listener: refer to the classes under "javaweb.testclass.web" package
-Servlet: singleton by default
+Servlet: 
+-- Servlet is instantiated by server when servlet is first time accessed or server is started (depends on the "loadOnStartup" configuration in "web.xml")
+   -- Singleton: since server only instaintiates one object for one servlet (even there are multiple servlets)
+-- Servlet is destroyed by servler container when server container is shut down or restarted
 -- 3 life-cycle methods: (5 methods in total)
    -- init(): executed once when servlet is created
    -- service(): executed each time the requeset is being processed
@@ -21,11 +24,14 @@ Servlet: singleton by default
 -- Configuration: in "web.xml" file: <servlet> + <servlet-mapping>
 -- Servlet chaining: multiple servlets serving the request in chain.
    -- Achieved by: "httpServletRequest.getRequestDispatcher().forward()|include()"
-Filter:
+Filter: 
+-- Filter is instantiated by server when server is started
+   -- Singleton: since server only instaintiates one object for one filter (even there are multiple filters)
+-- Filter is destroyed by server when server is shut down or restarted
 -- 3 life-cycle methods: (3 methods in total)
-   -- init(): executed once when servlet is created
+   -- init(): executed once when filter is instantiated 
    -- doFilter(): executed each time the requeset is being processed
-   -- destroy(): executed once when the servlet is destroyed
+   -- destroy(): executed once when the filter is destroyed
 -- Configuration: in "web.xml" file: <filter> + <filter-mapping>
    -- Can filter 4 kinds of access: request|forward|include|error
       -- Intercept request|forward|include to a specific servlet
@@ -108,6 +114,11 @@ The step of JDBC executing SQL:
 -- 5. Close the resource
 
 ----------------------------------------------------------------------------------------------
-Tomcat & Apache:
+Server:
+Servers that do not support JavaEE stardard: Tomcat, GlassFish
+-- They only supports Java Web (part of JavaEE standard)
+Servers that support JavaEE stardard: JBoss, Resin, Weblogic, Websphere
+-- Typically supporting JavaEE stardard means supporting EJB
+
 Tomcat: application server
 Apache: web server
