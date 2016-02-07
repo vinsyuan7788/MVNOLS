@@ -21,9 +21,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
   <body>
-    This is my JSP page. <br>
- 	URL for login validation test: <br>
-    1. http://localhost:8080/mvnols/user/queryUser.action?id=1 <br>
-    2. http://localhost:8080/mvnols/exception/returnException.action <br>
+    URL for accessing this project: <br/>
+    http://localhost:8080/mvnols/home.jsp <br/>
+ 	URL for login validation test: <br/>
+    1. http://localhost:8080/mvnols/user/queryUser.action?id=1 <br/>
+    2. http://localhost:8080/mvnols/exception/returnException.action <br/>
   </body>
 </html>
