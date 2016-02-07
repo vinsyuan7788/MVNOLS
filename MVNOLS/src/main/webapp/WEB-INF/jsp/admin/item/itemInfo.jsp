@@ -19,6 +19,6 @@
   </head>
   
   <body>
-    This is my JSP page. <br>
+    This is the item information page. You can update the item information here. <br>
   </body>
 </html>
