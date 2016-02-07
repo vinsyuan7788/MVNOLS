@@ -35,8 +35,8 @@ public class TestBeans {
 	public void testPaginationDisplay () throws Exception {
 		
 		PageUserBean pageUserBean = new PageUserBean();
-		pageUserBean.setCurrentPageCode(4);
-		pageUserBeanUtils.ProcessFieldsForDisplay(pageUserBean);
+		pageUserBean.setCurrentPageCode(2);
+		pageUserBeanUtils.ProcessFieldsForAdminDisplay(pageUserBean);
 		pageUserBean.setTotalRecords(28);
 		
 		System.out.println("totalPages: " + pageUserBean.getTotalPages());
