@@ -17,6 +17,10 @@ import cn.itcast.global.exception.CustomException;
 import cn.itcast.item.bean.Item;
 import cn.itcast.item.service.ItemService;
 
+/**
+ *	This is an action class to process request:
+ * @author Vince Xu Yuan
+ */
 @Controller
 @RequestMapping("/item")
 public class ItemAction {

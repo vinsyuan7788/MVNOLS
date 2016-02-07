@@ -13,6 +13,7 @@ import cn.itcast.user.service.UserService;
 
 /**
  * 	This is an action class to process AJAX request
+ * @author Vince Xu Yuan
  */
 @Controller
 @RequestMapping("/userAjax")

@@ -23,11 +23,7 @@ import cn.itcast.user.service.UserService;
 
 /**
  *	This is an action class to process request:
- *	1. URL for normal test: 
- *	   -- http://localhost:8080/mvnols/home.jsp
- *  2. URL for login validation test: 
- *     -- http://localhost:8080/mvnols/user/queryUser.action?id=1
- *     -- http://localhost:8080/mvnols/exception/returnException.action
+ * @author Vince Xu Yuan
  */
 @Controller
 @RequestMapping("/user")

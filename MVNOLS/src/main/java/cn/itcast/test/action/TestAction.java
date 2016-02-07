@@ -28,7 +28,8 @@ import cn.itcast.user.bean.User;
 import cn.itcast.user.service.UserService;
 
 /**
- * 	This is a action class to process regular request for action testing module 
+ * 	This is a action class to process regular request for action testing module
+ * @author Vince Xu Yuan 
  */
 @Controller
 @RequestMapping("/test")

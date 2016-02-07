@@ -14,6 +14,10 @@ import cn.itcast.item.bean.Item;
 import cn.itcast.item.bean.wrapper.PageItemBean;
 import cn.itcast.item.service.ItemService;
 
+/**
+ *	This is an action class to process request with pagination:
+ * @author Vince Xu Yuan
+ */
 @Controller
 @RequestMapping("/itemPagination")
 public class ItemPaginationAction {

@@ -16,7 +16,8 @@ import cn.itcast.test.service.TestService;
 import cn.itcast.user.service.UserService;
 
 /**
- * 	This is a action class to process AJAX request for action testing module 
+ * 	This is a action class to process AJAX request for action testing module
+ * @author Vince Xu Yuan 
  */
 @Controller
 @RequestMapping("/testAjax")

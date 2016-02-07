@@ -1,0 +1,6 @@
+Need re-arrange the structure by putting cart, item, order, user into a "core" package before further development & implementation, then:
+-- Inside "core", divide the layers as "action|controller", "service", "dao"
+-- In each layer, separate the classes to classes corresponding to modules
+   -- E.g., seperate "UserAction.java" under "core/action" into "UserCenterAction.java" and "UserAdministrationAction.java"
+-- Then check the configuration in "src/test/spring" & "src/test/springmvc" to see if there is any necessary modification
+-- Check the front-end JSP, modify the request URL if necessary
