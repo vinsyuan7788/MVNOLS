@@ -9,15 +9,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cn.itcast.cms.service.StaticPageGenerationService;
-import cn.itcast.cms.service.utils.StaticPageGenerationUtils;
 import cn.itcast.user.bean.User;
 
 import freemarker.template.Configuration;
@@ -45,10 +41,10 @@ public class TestFreeMarker {
 		Configuration configuration = new Configuration();
 		
 		/*	Specify the template directory	*/
-		String templateDirectory = "D:/JavaWeb/MyEclipse 10/MVNOLS/src/main/webapp/";
+		String templatePrefix = "D:/JavaWeb/MyEclipse 10/MVNOLS/src/main/webapp/";
 		
 		/*	Load the template directory & get the raw template	*/
-		configuration.setDirectoryForTemplateLoading(new File(templateDirectory + "WEB-INF/ftl/"));
+		configuration.setDirectoryForTemplateLoading(new File(templatePrefix + "WEB-INF/ftl/"));
 		Template template = configuration.getTemplate("freemarker.html");
 		
 		/*	
@@ -99,7 +95,7 @@ public class TestFreeMarker {
 		dataModel.put("word", null);
 		
 		/*	generate the static page	*/
-		Writer out = new FileWriter(new File(templateDirectory + "html/test_freemarker.html"));
+		Writer out = new FileWriter(new File(templatePrefix + "html/test_freemarker.html"));
 		template.process(dataModel, out);
 		
 		/*	Close the file stream	*/

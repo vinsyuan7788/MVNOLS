@@ -11,19 +11,52 @@
 
   </head>
   
-  
- 
+  <!-- Import JQuery library -->
   <script type="text/javascript" src="../../js/jquery/jquery-1.4.2.js"></script>
+  <!-- Import JQuery Validation library -->
   <script type="text/javascript" src="../../js/validation/jquery.validate.js"></script>
-  
+
+<!--  Here is the JS codes -->
 <script type="text/javascript">
 $().ready(function() {
 
-	/*	This part is for the item operation	 */
+	
+	/*	This part is for returning to home page	 */
 	$("#home").click(function () {
 		/*	Set the hard-coding URL temporarily	 */ 
 		window.location.href = "/mvnols/home.jsp";		
 	});
+	
+	/*  
+	 *  Validation requirement:
+	 *  1. Register a validation for a speicific form: $("#FormID").validate({...})
+	 *  2. Key_in_rules_&_messages = <input>name
+	 *     -- e.g. username = <input>name
+	 *  3*. Specify submission handler: submitHandler:function(form){...}: NOT necessary
+	 *  4. ONLY workable for statically-generated elements
+	 */
+	$("#itemDetailForm").validate({
+		/*	This part specifies the validation rules	 */
+		rules: {
+			amount: {
+				required: true,
+				digits: true,
+				min: 1,
+				max: $("#itemStock").val().replace(/,/g, "")			// Use "replace()" to remove the comma if there is any
+			}
+		},
+		/*	This part specifies the error messages	*/
+		messages: {
+			amount: {
+				required: "Please enter a purchase amount",
+				digits: "Please enter the number correctly",
+				min: $.validator.format("The amount should be at least {0}"),
+				max: $.validator.format("The amount cannot be greater than {0}")
+			}
+		}
+	});
+
+	/*	This part is for adding items to shopping cart	*/
 	$("#purchase").click(function () {
 		alert("Purchase the item...");
 		return;
@@ -37,8 +70,9 @@ $().ready(function() {
  <h4 align = "center">Here is the detailed information of the item. <a href = "javascript:void(0)" id = "home">Home</a></h4>	
     
 <form id = "itemDetailForm" enctype="application/x-www-form-urlencoded"> 
-    <table border="1" cellspacing="0" bordercolor="pink" width = "50%" align="center">
+    <table border="1" cellspacing="0" bordercolor="pink" width = "70%" align="center">
     	<caption>Item Details</caption>
+		<input type = "hidden" name = "id" value = "${item.id! }" readonly="readonly"/>
      	<tr>
     		<td>Name</td>
     		<td><input type = "text" name = "itemName" value = "${item.itemName! }" readonly="readonly"/></td>
@@ -48,7 +82,11 @@ $().ready(function() {
     		<td><input type = "text" name = "itemPrice" value = "${item.itemPrice! }" readonly="readonly"/></td>
     	</tr>  
     	<tr>
-    		<td>Manufacture Place:</td>
+    		<td>Stock</td>
+    		<td><input type = "text" id = "itemStock" name = "itemStock" value = "${item.itemStock! }" readonly="readonly"/></td>
+    	</tr>
+    	<tr>
+    		<td>Manufacture Place</td>
     		<td><input type = "text" name = "itemPlaceOfManufacture" value = "${item.itemPlaceOfManufacture! }" readonly="readonly"/></td>
     	</tr> 
     	<tr>
@@ -62,10 +100,12 @@ $().ready(function() {
     		<td><input name = "itemDetail" value = "${item.itemDetail! }" readonly="readonly"/></td>
     	</tr>
      	<tr>
-    		<td>Operation</td>
-    		<td>
-    			<input type = "button" id = "purchase" value = "Purchase"/>
-    		</td>
+    		<td width = "40%">Amount</td>
+    		<td><input type = "text" name = "amount" value = "1"/></td>
+    	</tr> 
+     	<tr>
+    		<td>Purchase</td>
+    		<td><input type = "button" id = "purchase" value = "Purchase"/></td>
     	</tr>   	  
     </table>
 </form>

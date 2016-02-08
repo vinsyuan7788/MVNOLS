@@ -71,9 +71,13 @@ $().ready(function() {
     	<tr>
     		<td>Price</td>
     		<td><input type = "text" name = "itemPrice" value = "${item.itemPrice }" readonly="readonly"/></td>
-    	</tr>  
+    	</tr>
     	<tr>
-    		<td>Manufacture Place:</td>
+    		<td>Stock</td>
+    		<td><input type = "text" name = "itemStock" value = "${item.itemStock }" readonly="readonly"/></td>
+    	</tr>    
+    	<tr>
+    		<td>Manufacture Place</td>
     		<td><input type = "text" name = "itemPlaceOfManufacture" value = "${item.itemPlaceOfManufacture }" readonly="readonly"/></td>
     	</tr>   
     	<tr>

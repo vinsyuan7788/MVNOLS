@@ -23,7 +23,7 @@ public class StaticPageGenerationUtils implements ServletContextAware {
 	}
 	
 	/**
-	 * 	This is a method to get the real path
+	 * 	This is a method to get the real path through ServletContext instance
 	 */
 	public final String getRealPath (String directory) throws Exception {
 		return servletContext.getRealPath(directory);
@@ -32,18 +32,18 @@ public class StaticPageGenerationUtils implements ServletContextAware {
 	/**
 	 * 	This is a method to get the Writer object  
 	 */
-	public final Writer getWriter (String directory, String encoding) throws Exception {
+	public final Writer getWriter (String filePath, String encoding) throws Exception {
 		
 		/*	Get the real path of the directory	*/
-		String realPath = this.getRealPath(directory);
+		String realPath = this.getRealPath(filePath);
 		
 		/*	Create the parent directory  */
 		File file = new File(realPath);
 		if (!file.getParentFile().exists()) {
 			file.getParentFile().mkdirs();
-		}
+		} 
 		
-		/*	Get the Writer object & return	*/
+		/*	Get the Writer object with the real path & return	*/
 		return new OutputStreamWriter(new FileOutputStream(file), encoding);
 	}
 }

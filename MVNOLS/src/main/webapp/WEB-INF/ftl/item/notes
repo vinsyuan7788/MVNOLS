@@ -1,0 +1,2 @@
+Once the freemarker template is changed & republish the static page using the new template
+-- Clean the browser cache before testing so that the old static pages that are cached by browser will not cover the new one static pages

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.itcast.item.dao.mapper.ItemMapper">
+<mapper namespace="cn.itcast.item.dao.mapper.ItemMapper" >
   <resultMap id="BaseResultMap" type="cn.itcast.item.bean.Item" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="item_name" property="itemName" jdbcType="VARCHAR" />
@@ -8,6 +8,7 @@
     <result column="item_place_of_manufacture" property="itemPlaceOfManufacture" jdbcType="VARCHAR" />
     <result column="item_image" property="itemImage" jdbcType="VARCHAR" />
     <result column="item_state" property="itemState" jdbcType="VARCHAR" />
+    <result column="item_stock" property="itemStock" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="cn.itcast.item.bean.Item" extends="BaseResultMap" >
     <result column="item_detail" property="itemDetail" jdbcType="LONGVARCHAR" />
@@ -71,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, item_name, item_price, item_place_of_manufacture, item_image, item_state
+    id, item_name, item_price, item_place_of_manufacture, item_image, item_state, item_stock
   </sql>
   <sql id="Blob_Column_List" >
     item_detail
@@ -127,10 +128,10 @@
   <insert id="insert" parameterType="cn.itcast.item.bean.Item" >
     insert into item (id, item_name, item_price, 
       item_place_of_manufacture, item_image, item_state, 
-      item_detail)
+      item_stock, item_detail)
     values (#{id,jdbcType=INTEGER}, #{itemName,jdbcType=VARCHAR}, #{itemPrice,jdbcType=REAL}, 
       #{itemPlaceOfManufacture,jdbcType=VARCHAR}, #{itemImage,jdbcType=VARCHAR}, #{itemState,jdbcType=VARCHAR}, 
-      #{itemDetail,jdbcType=LONGVARCHAR})
+      #{itemStock,jdbcType=INTEGER}, #{itemDetail,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.itcast.item.bean.Item" >
     insert into item
@@ -152,6 +153,9 @@
       </if>
       <if test="itemState != null" >
         item_state,
+      </if>
+      <if test="itemStock != null" >
+        item_stock,
       </if>
       <if test="itemDetail != null" >
         item_detail,
@@ -175,6 +179,9 @@
       </if>
       <if test="itemState != null" >
         #{itemState,jdbcType=VARCHAR},
+      </if>
+      <if test="itemStock != null" >
+        #{itemStock,jdbcType=INTEGER},
       </if>
       <if test="itemDetail != null" >
         #{itemDetail,jdbcType=LONGVARCHAR},
@@ -208,6 +215,9 @@
       <if test="record.itemState != null" >
         item_state = #{record.itemState,jdbcType=VARCHAR},
       </if>
+      <if test="record.itemStock != null" >
+        item_stock = #{record.itemStock,jdbcType=INTEGER},
+      </if>
       <if test="record.itemDetail != null" >
         item_detail = #{record.itemDetail,jdbcType=LONGVARCHAR},
       </if>
@@ -224,6 +234,7 @@
       item_place_of_manufacture = #{record.itemPlaceOfManufacture,jdbcType=VARCHAR},
       item_image = #{record.itemImage,jdbcType=VARCHAR},
       item_state = #{record.itemState,jdbcType=VARCHAR},
+      item_stock = #{record.itemStock,jdbcType=INTEGER},
       item_detail = #{record.itemDetail,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -236,7 +247,8 @@
       item_price = #{record.itemPrice,jdbcType=REAL},
       item_place_of_manufacture = #{record.itemPlaceOfManufacture,jdbcType=VARCHAR},
       item_image = #{record.itemImage,jdbcType=VARCHAR},
-      item_state = #{record.itemState,jdbcType=VARCHAR}
+      item_state = #{record.itemState,jdbcType=VARCHAR},
+      item_stock = #{record.itemStock,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -259,6 +271,9 @@
       <if test="itemState != null" >
         item_state = #{itemState,jdbcType=VARCHAR},
       </if>
+      <if test="itemStock != null" >
+        item_stock = #{itemStock,jdbcType=INTEGER},
+      </if>
       <if test="itemDetail != null" >
         item_detail = #{itemDetail,jdbcType=LONGVARCHAR},
       </if>
@@ -272,6 +287,7 @@
       item_place_of_manufacture = #{itemPlaceOfManufacture,jdbcType=VARCHAR},
       item_image = #{itemImage,jdbcType=VARCHAR},
       item_state = #{itemState,jdbcType=VARCHAR},
+      item_stock = #{itemStock,jdbcType=INTEGER},
       item_detail = #{itemDetail,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -281,7 +297,8 @@
       item_price = #{itemPrice,jdbcType=REAL},
       item_place_of_manufacture = #{itemPlaceOfManufacture,jdbcType=VARCHAR},
       item_image = #{itemImage,jdbcType=VARCHAR},
-      item_state = #{itemState,jdbcType=VARCHAR}
+      item_state = #{itemState,jdbcType=VARCHAR},
+      item_stock = #{itemStock,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   

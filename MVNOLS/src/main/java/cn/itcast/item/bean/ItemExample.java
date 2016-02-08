@@ -503,6 +503,66 @@ public class ItemExample {
             addCriterion("item_state not between", value1, value2, "itemState");
             return (Criteria) this;
         }
+
+        public Criteria andItemStockIsNull() {
+            addCriterion("item_stock is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemStockIsNotNull() {
+            addCriterion("item_stock is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemStockEqualTo(Integer value) {
+            addCriterion("item_stock =", value, "itemStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemStockNotEqualTo(Integer value) {
+            addCriterion("item_stock <>", value, "itemStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemStockGreaterThan(Integer value) {
+            addCriterion("item_stock >", value, "itemStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemStockGreaterThanOrEqualTo(Integer value) {
+            addCriterion("item_stock >=", value, "itemStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemStockLessThan(Integer value) {
+            addCriterion("item_stock <", value, "itemStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemStockLessThanOrEqualTo(Integer value) {
+            addCriterion("item_stock <=", value, "itemStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemStockIn(List<Integer> values) {
+            addCriterion("item_stock in", values, "itemStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemStockNotIn(List<Integer> values) {
+            addCriterion("item_stock not in", values, "itemStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemStockBetween(Integer value1, Integer value2) {
+            addCriterion("item_stock between", value1, value2, "itemStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemStockNotBetween(Integer value1, Integer value2) {
+            addCriterion("item_stock not between", value1, value2, "itemStock");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

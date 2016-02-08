@@ -16,6 +16,8 @@ public class Item implements UploadUtils {
 
     private String itemState;
 
+    private Integer itemStock;
+
     private String itemDetail;
 
     public Integer getId() {
@@ -66,6 +68,14 @@ public class Item implements UploadUtils {
         this.itemState = itemState == null ? null : itemState.trim();
     }
 
+    public Integer getItemStock() {
+        return itemStock;
+    }
+
+    public void setItemStock(Integer itemStock) {
+        this.itemStock = itemStock;
+    }
+
     public String getItemDetail() {
         return itemDetail;
     }
@@ -73,8 +83,8 @@ public class Item implements UploadUtils {
     public void setItemDetail(String itemDetail) {
         this.itemDetail = itemDetail == null ? null : itemDetail.trim();
     }
-
-	@Override
+    
+    @Override
 	public String getFullUploadURL() throws Exception {
 		return Constants.UPLOAD_IMAGE_URL + itemImage;
 	}

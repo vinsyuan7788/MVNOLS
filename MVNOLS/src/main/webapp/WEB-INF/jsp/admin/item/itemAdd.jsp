@@ -77,6 +77,10 @@ $().ready(function() {
 				required: true,
 				number: true,
 			},
+			itemStock: {
+				required: true,
+				digits: true,
+			},
 			itemPlaceOfManufacture: {
 				required: true,
 				maxlength: 50
@@ -92,6 +96,10 @@ $().ready(function() {
 			itemPrice: {
 				required: "Please enter a item price",
 				number: "Please enter the number correctly"
+			},
+			itemStock: {
+				required: "Please enter a item stock",
+				digits: "Please enter the number correctly",
 			},
 			itemPlaceOfManufacture: {
 				required: "Please provide a manufacture place",
@@ -123,6 +131,10 @@ $().ready(function() {
    		   	<tr>
    				<td>Item Price<font color="red">*</font></td>
    				<td><input type = "text" id = "itemPrice" name = "itemPrice"></td>
+   			</tr>
+   			<tr>
+   				<td>Item Stock<font color="red">*</font></td>
+   				<td><input type = "text" id = "itemStock" name = "itemStock"></td>
    			</tr>
    			<tr>
    				<td>Manufacture place<font color="red">*</font></td>
