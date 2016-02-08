@@ -15,7 +15,8 @@ Cookie: data sent from a website|server-side and stored in the user's browser|br
 Web Servlet|Filter|Listener: refer to the classes under "javaweb.testclass.web" package
 Servlet: 
 -- Servlet is instantiated by server when servlet is first time accessed or server is started (depends on the "loadOnStartup" configuration in "web.xml")
-   -- Singleton: since server only instantiates one object for one servlet (even there are multiple servlets)
+   -- Singleton-like: since server only instantiates one object for one servlet (even there are multiple servlets) 
+      -- Why not singleton: servlet is neither typically instantiated through singleton pattern nor specified as singleton as in frameworks like Spring
 -- Servlet is destroyed by servler container when server container is shut down or restarted
 -- 3 life-cycle methods: (5 methods in total)
    -- init(): executed once when servlet is created
@@ -25,8 +26,9 @@ Servlet:
 -- Servlet chaining: multiple servlets serving the request in chain.
    -- Achieved by: "httpServletRequest.getRequestDispatcher().forward()|include()"
 Filter: 
--- Filter is instantiated by server when server is started
-   -- Singleton: since server only instantiates one object for one filter (even there are multiple filters)
+-- Filter is instantiated by server when server is started (since filters do not have "loadOnStartup" for more options of instantiation)
+   -- Singleton-like: since server only instantiates one object for one filter (even there are multiple filters)
+      -- Why not singleton: servlet is neither typically instantiated through singleton pattern nor specified as singleton as in frameworks like Spring
 -- Filter is destroyed by server when server is shut down or restarted
 -- 3 life-cycle methods: (3 methods in total)
    -- init(): executed once when filter is instantiated 
@@ -37,18 +39,27 @@ Filter:
       -- Intercept request|forward|include to a specific servlet
       -- Intercept a specific servlet to error page 
 Listener:
+-- The instantiation & destruction of Listener is the same as Filter in principle
 -- 8 kinds of listeners:
-   -- For application scope: life-cycle change & attribute change
-   -- For session scope: life-cycle change & attribute change
-   -- For request scope: life-cycle change & attribute change
-   -- For JavaBean: session binding & session passivation
-      Serialization & Passivation: refer to "javaweb.testclass.bean.Person.java"
-	  -- Serialization: store the state of an object in a file or other medium
-		 -- Used for file storage or tranmission: in the environment with distributed cache
-		 -- Deserialization is the reverse process of serialization
-	  -- Passivation: store the state of an ServletSession (which has implemented Serializable) object in a file or other medium
-		 -- If other objects (e.g, JavaBean objects) want to go with session, they MUST implement Serializble interface as well
-		 -- Activation is the reverse process of passivation
+   -- For application scope: 
+      -- ServletContextListener: observe life-cycle change
+      -- ServletContextAttributeListener: observe the attribute change
+   -- For session scope: 
+      -- HttpSessionListener: observe the life-cycle change
+      -- HttpSessionAttributeListener: observe the attribute change
+   -- For request scope: 
+      -- ServletRequestListener: observe the life-cycle change 
+      -- ServletRequestAttributeListener: observe the attribute change
+   -- For JavaBean: 
+      -- HttpSessionBindingListener: observe the session binding 
+      -- HttpSessionActivationListener: observe the session passivation
+         -- Serialization & Passivation: refer to "javaweb.testclass.bean.Person.java"
+	        -- Serialization: store the state of an object in a file or other medium
+		       -- Used for file storage or tranmission: in the environment with distributed cache
+		       -- Deserialization is the reverse process of serialization
+	        -- Passivation: store the state of an ServletSession (which has implemented Serializable) object in a file or other medium
+		       -- If other objects (e.g, JavaBean objects) want to go with session, they MUST implement Serializble interface as well
+		       -- Activation is the reverse process of passivation
 -- Configuration: in "web.xml" file: <listener> (except the 2 listeners for JavaBean)
 
 3 Scopes:
