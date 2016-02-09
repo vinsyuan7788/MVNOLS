@@ -9,6 +9,7 @@ package cn.itcast.global.upload.utils;
  *     	  1. Make sure relevant beans implements this interface & override the method (which is very strait-forward)
  *           -- E.g. refer to "/MVNOLS/src/main/java/cn/itcast/item/bean/Item.java"
  *        2. Change the relevant configuration|business constant 
+ * @author Vince Xu Yuan        
  */
 public interface UploadUtils {
 

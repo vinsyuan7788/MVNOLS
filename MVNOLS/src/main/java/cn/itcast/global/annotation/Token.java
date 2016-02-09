@@ -14,6 +14,8 @@ import java.lang.annotation.Target;
  *     -- (4) In (JSP) view, add <input type = "hidden" name = "token" value = "${token}">
  *  2. In this case, this method is adopted.
  *     -- other methods refers to "cn.itcast.global.interceptor.TokenValidator.java"
+ *     
+ * @author Vince Xu Yuan
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

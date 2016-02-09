@@ -12,6 +12,7 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
  * 	1. SimpleTagSupport has implemented SimpleTag
  * 	2. SessionProvider DI is not allowed in tag implementation since it is out of JSP range
  *     -- Here using sessionProvider will lead to a failure of parsing JSP view
+ * @author Vince Xu Yuan
  */
 public class TokenTag extends SimpleTagSupport {
 	

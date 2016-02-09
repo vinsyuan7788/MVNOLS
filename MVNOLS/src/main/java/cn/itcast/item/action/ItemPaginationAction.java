@@ -20,15 +20,13 @@ import cn.itcast.item.service.ItemService;
  */
 @Controller
 @RequestMapping("/itemPagination")
-public class ItemPaginationAction {
+public class ItemPaginationAction extends PageItemBeanUtils {
 
 	/*	IOP: IOC & DI	*/
 	@Resource
 	SessionProvider sessionProvider;
 	@Resource
 	private ItemService itemService;
-	@Resource
-	private PageItemBeanUtils pageItemBeanUtils;
 	
 	/**
 	 * 	This is an action for paging comprehensive query of items
@@ -45,10 +43,10 @@ public class ItemPaginationAction {
 	public String queryItemListByCriteria (PageItemBean pageItemBean, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		/*	Process the criteria & set the currentPageCode	*/
-		pageItemBeanUtils.ProcessFieldsForQuery(pageItemBean);
+		this.ProcessFieldsForQuery(pageItemBean);
 		
 		/* 	Set the PageSize, MaximumDisplayPages, OffSetPosition	*/
-		pageItemBeanUtils.ProcessFieldsForDisplay(pageItemBean);
+		this.ProcessFieldsForDisplay(pageItemBean);
 		
 		/*	Set the number of total records	 */
 		int total = itemService.queryTotalItemsByCriteria(pageItemBean);
@@ -67,10 +65,10 @@ public class ItemPaginationAction {
 	public String queryItemListByAdminCriteria (PageItemBean pageItemBean, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		/*	Process the criteria & set the currentPageCode	*/
-		pageItemBeanUtils.ProcessFieldsForAdminQuery(pageItemBean);
+		this.ProcessFieldsForAdminQuery(pageItemBean);
 		
 		/* 	Set the PageSize, MaximumDisplayPages, OffSetPosition	*/
-		pageItemBeanUtils.ProcessFieldsForAdminDisplay(pageItemBean);
+		this.ProcessFieldsForAdminDisplay(pageItemBean);
 		
 		/*	Set the number of total records	 */
 		int total = itemService.queryTotalItemsByCriteria(pageItemBean);

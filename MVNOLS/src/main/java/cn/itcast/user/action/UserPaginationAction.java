@@ -19,15 +19,13 @@ import cn.itcast.user.service.UserService;
  */
 @Controller
 @RequestMapping("/userPagination")
-public class UserPaginationAction {
+public class UserPaginationAction extends PageUserBeanUtils {
 	
 	/*	IOP: IOC & DI	*/
 	@Resource
 	private SessionProvider sessionProvider;
 	@Resource
 	private UserService userService;
-	@Resource
-	private PageUserBeanUtils pageUserBeanUtils;
 	
 	/**
 	 * 	This is an action for paging comprehensive query of users
@@ -44,10 +42,10 @@ public class UserPaginationAction {
 	public String queryUserListByAdminCriteria (PageUserBean pageUserBean, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		/*	Process the criteria & set the currentPageCode	*/
-		pageUserBeanUtils.ProcessFieldsForAdminQuery(pageUserBean);
+		this.ProcessFieldsForAdminQuery(pageUserBean);
 		
 		/* 	Set the PageSize, MaximumDisplayPages, OffSetPosition	*/
-		pageUserBeanUtils.ProcessFieldsForAdminDisplay(pageUserBean);
+		this.ProcessFieldsForAdminDisplay(pageUserBean);
 		
 		/*	Set the number of total records	 */
 		int total = userService.queryTotalUsersByCriteria(pageUserBean);

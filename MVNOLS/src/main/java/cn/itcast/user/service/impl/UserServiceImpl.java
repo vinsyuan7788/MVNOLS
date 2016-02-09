@@ -4,7 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Resource;
-import cn.itcast.global.exception.CustomException;
+
+import cn.itcast.global.exception.bean.CustomException;
 import cn.itcast.global.pagination.bean.PageBean;
 import cn.itcast.user.bean.User;
 import cn.itcast.user.bean.UserExample;

@@ -9,13 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.itcast.global.utils.DateUtils;
-
 /**
  * 	This is an interceptor that can process the comparison between 2 dates for user birthday
  * 	1. Interceptor is executed before converter
+ * @author Vince Xu Yuan
  */
-public class BirtydateValidator implements HandlerInterceptor {
+public class BirthdayValidator implements HandlerInterceptor {
 	
 	/**
 	 * 	Object handler: This is the H(Handler) found by HM, which only contains 1 target method mapped by request URL
@@ -47,7 +46,7 @@ public class BirtydateValidator implements HandlerInterceptor {
 			try {
 				
 				/*	If the birthday does not exceed current date, release the request	*/
-				if (DateUtils.compareDates(new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("birthday")), new Date()) != 1) {
+				if (new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("birthday")).compareTo(new Date()) <= 0) {
 					return true;
 				
 				/*	Else return to error page with a message	*/

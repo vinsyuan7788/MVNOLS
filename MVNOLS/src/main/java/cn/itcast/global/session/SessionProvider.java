@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
  * 	This is the session provider interface to offer session-scope operation
  *  1. This interface can be added more methods in it, which depends on the requirement during the development
  *  2. These sets of arguments offer more flexibility to perform distributed session caching
+ * @author Vince Xu Yuan
  */
 public interface SessionProvider {
 

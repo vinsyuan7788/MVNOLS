@@ -14,8 +14,7 @@ import cn.itcast.user.bean.User;
 
 /**
  * 	This utility class is to send the email
- * @author Administrator
- *
+ * @author Vince Xu Yuan
  */
 public class SendEmail {
 

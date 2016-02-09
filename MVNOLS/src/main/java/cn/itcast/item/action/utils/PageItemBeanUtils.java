@@ -7,6 +7,7 @@ import cn.itcast.item.bean.wrapper.PageItemBean;
 
 /**
  * 	This is a utility class to set parameters for pagination
+ * @author Vince Xu Yuan
  */
 public class PageItemBeanUtils extends PageBeanFieldSetter<PageItemBean> implements PageBeanFieldProcessor<PageItemBean> {	
 	

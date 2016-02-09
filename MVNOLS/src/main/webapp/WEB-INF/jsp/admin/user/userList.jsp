@@ -117,7 +117,7 @@ $().ready(function() {
     <h4 align = "center">Hello ${sessionScope.user.username} administrator. This is the user list. <a href = "javascript:void(0)" id = "homeLink">Home</a> <a href = "javascript:void(0)" id = "searchLink">Set search conditions</a></h4>
     <form id = "userListForm" enctype="application/x-www-form-urlencoded">
     <ctm:token/>
-    <table border="1" cellspacing="0" bordercolor="pink" width = "50%" align="center">
+    <table border="1" cellspacing="0" bordercolor="pink" width = "70%" align="center">
     	<tr align = "center">
     	<c:if test="${sessionScope.buttonFlag eq 'disabled' or sessionScope.buttonFlag eq 'enabled'}">	
     		<td>

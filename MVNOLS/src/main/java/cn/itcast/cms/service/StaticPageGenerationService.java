@@ -6,6 +6,7 @@ import cn.itcast.item.bean.Item;
 
 /**
  * 	This interface is to offer method for static page generation
+ * @author Vince Xu Yuan
  */
 public interface StaticPageGenerationService {
 

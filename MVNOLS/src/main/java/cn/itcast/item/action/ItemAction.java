@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.itcast.cms.service.StaticPageGenerationService;
-import cn.itcast.global.exception.CustomException;
+import cn.itcast.global.exception.bean.CustomException;
 import cn.itcast.item.bean.Item;
 import cn.itcast.item.service.ItemService;
 

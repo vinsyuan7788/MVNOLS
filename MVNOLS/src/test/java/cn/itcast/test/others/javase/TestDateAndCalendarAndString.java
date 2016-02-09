@@ -6,7 +6,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import cn.itcast.global.utils.DateUtils;
+import cn.itcast.test.others.javase.testclass.date.DateUtils;
 
 /**
  * 	This class is to perform testing regarding date, calendar, string

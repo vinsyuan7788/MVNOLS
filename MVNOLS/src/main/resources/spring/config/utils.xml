@@ -15,15 +15,14 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
-	
-	<!-- Pagination utility bean configuration -->
-	<bean id = "pageUserBeanUtils" class = "cn.itcast.user.action.utils.PageUserBeanUtils"></bean>
-	<bean id = "pageItemBeanUtils" class = "cn.itcast.item.action.utils.PageItemBeanUtils"></bean>
 		
 	<!-- Session provider configuration for sharing session -->
 	<bean id = "sessionProvider" class = "cn.itcast.global.session.impl.HttpSessionProvider"></bean>
 	
 	<!-- EncryptionUtils configuration -->
 	<bean id = "encryptionUtils" class = "cn.itcast.global.utils.EncryptionUtils"></bean>
+	
+	<!-- FileUtils configuration -->
+	<bean id = "fileUtils" class = "cn.itcast.global.utils.FileUtils"></bean>
 	
 </beans>

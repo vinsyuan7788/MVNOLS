@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.itcast.global.annotation.utils.TokenUtils;
 import cn.itcast.global.configuration.Constants;
-import cn.itcast.global.exception.CustomException;
+import cn.itcast.global.exception.bean.CustomException;
 import cn.itcast.global.session.SessionProvider;
 
 /**
@@ -24,7 +24,7 @@ import cn.itcast.global.session.SessionProvider;
  *     -- (3) If the method is annotated to save token, then save a token to session scope
  *     -- (4) If the method is annotated to validate token, then validate the token for duplicate submission check 
  *     -- (5) The rest of URLs & situations will be released
- *  1. The 2nd way: only use interceptor: 
+ *  2. The 2nd way: only use interceptor: 
  *     -- (1) Hard-code to save a token in the methods that will return or go to the JSP with forms that needs to perform duplicate submission check
  *        -- Hard-coding here is a big disadvantage, negatively affecting the system flexibility & scalability
  *     -- (2) For those specified URLs (i.e. TOKEN_URL), do the duplicate submission check
@@ -38,6 +38,8 @@ import cn.itcast.global.session.SessionProvider;
  *           -- if no: then go on processing the request
  *     -- (2) This is the most specific way: there is no need to configure an interceptor for duplicate submission avoidance
  *     -- However this method is performance-sensitive. If the request is re-submitted before the server token is saved, then this request will be released, which is not desirable
+ *     
+ * @author Vince Xu Yuan    
  */
 public class TokenValidator implements HandlerInterceptor {
 	

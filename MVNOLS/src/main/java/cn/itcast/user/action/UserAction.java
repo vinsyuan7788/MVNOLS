@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.itcast.global.annotation.Token;
-import cn.itcast.global.exception.CustomException;
+import cn.itcast.global.exception.bean.CustomException;
 import cn.itcast.global.session.SessionProvider;
 import cn.itcast.user.action.utils.SendEmail;
 import cn.itcast.user.bean.User;

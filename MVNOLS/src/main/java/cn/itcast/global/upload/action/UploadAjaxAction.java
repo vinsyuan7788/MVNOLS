@@ -20,6 +20,7 @@ import cn.itcast.global.utils.AjaxResponseUtils;
 
 /**
  * 	This is the action class to process AJAX request for upload files
+ * @author Vince Xu Yuan
  */
 @Controller
 @RequestMapping("/uploadAjax")

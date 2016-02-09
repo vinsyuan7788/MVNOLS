@@ -74,7 +74,7 @@
 	</bean>
 	
 	<!-- Global exception resolver configuration -->
-	<bean class = "cn.itcast.global.exception.CustomExceptionResolver"></bean>
+	<bean class = "cn.itcast.global.exception.GlobalExceptionResolver"></bean>
 	
 	<!-- Interceptor Configuration: assigned by HM to H -->
 	<mvc:interceptors>
@@ -93,7 +93,7 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/user/updateUser.action"/>
 			<mvc:mapping path="/user/userRegister.action"/>
-			<bean class = "cn.itcast.global.interceptor.BirtydateValidator"></bean>
+			<bean class = "cn.itcast.global.interceptor.BirthdayValidator"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 

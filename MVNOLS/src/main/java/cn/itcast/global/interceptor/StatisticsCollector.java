@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
  * 	1. Record the total of requests
  * 	2. Collect the information of IPs that send the request
  * 	3. etc.
+ * @author Vince Xu Yuan
  */
 public class StatisticsCollector implements HandlerInterceptor {
 

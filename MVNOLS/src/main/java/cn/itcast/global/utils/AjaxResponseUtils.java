@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
  *  1. JSON format
  *  2. XML format
  *  3. Text format
+ * @author Vince Xu Yuan
  */
 public class AjaxResponseUtils {
 	

@@ -17,6 +17,8 @@ import cn.itcast.item.bean.wrapper.PageItemBean;
  * 	1. Test URL: refers to "UserAction.java"
  * 	2. For convenient modification of view redirection: 
  *     -- Collect the paths of redirection view in an action class, instead of being dispersed in each JSP view
+ *     
+ * @author Vince Xu Yuan
  */
 @Controller
 @RequestMapping("/redirection")

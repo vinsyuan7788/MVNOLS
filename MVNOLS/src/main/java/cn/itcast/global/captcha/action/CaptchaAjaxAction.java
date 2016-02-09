@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.itcast.global.session.SessionProvider;
 
+/**
+ * 	This is the class to process AJAX request
+ * @author Vince Xu Yuan
+ */
 @Controller
 @RequestMapping("/captchaAjax")
 public class CaptchaAjaxAction {

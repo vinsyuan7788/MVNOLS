@@ -6,6 +6,7 @@ import org.apache.commons.codec.binary.Hex;
 /**
  * 	This class is used to encrypt any necessary string
  * 	1. For password encryption
+ * @author Vince Xu Yuan
  */
 public class EncryptionUtils {
 

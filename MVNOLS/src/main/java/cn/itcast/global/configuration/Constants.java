@@ -2,6 +2,7 @@ package cn.itcast.global.configuration;
 
 /**
  * 	This is a class to store the system & business constants
+ * @author Vince Xu Yuan
  */
 public interface Constants {
 

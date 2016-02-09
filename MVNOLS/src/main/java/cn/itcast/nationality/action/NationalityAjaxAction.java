@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.itcast.nationality.service.NationalityService;
 
+/**
+ * 	This is the class to process AJAX request
+ * @author Vince Xu Yuan
+ */
 @Controller
 @RequestMapping("/nationalityAjax")
 public class NationalityAjaxAction {

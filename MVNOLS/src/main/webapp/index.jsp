@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     URL for accessing this project: <br/>
     http://localhost:8080/mvnols/home.jsp <br/>
  	URL for login validation test: <br/>
-    1. http://localhost:8080/mvnols/user/queryUser.action?id=1 <br/>
-    2. http://localhost:8080/mvnols/exception/returnException.action <br/>
+    1. http://localhost:8080/mvnols/test/queryUser.action?id=1 <br/>
+    2. http://localhost:8080/mvnols/test/returnException.action <br/>
   </body>
 </html>

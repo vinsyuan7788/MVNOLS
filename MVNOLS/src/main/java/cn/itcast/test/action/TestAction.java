@@ -169,13 +169,15 @@ public class TestAction implements WebBindingInitializer {
 	
 	/**
 	 * 	This is an action method to test if the error page works
-	 * @throws Exception
+	 * @throws Exception 
 	 */
 	@RequestMapping("/returnException")
-	public void returnException () throws Exception {
+	public void returnException () throws Exception  {
 		
+		/*	Do the calculation	*/
 		int computationResult = 1 / 0;
 		System.out.println("The computation result is: " + computationResult);
+
 	}
 	
 	/**

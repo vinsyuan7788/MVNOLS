@@ -4,10 +4,9 @@ import java.lang.reflect.Method;
 
 import cn.itcast.global.annotation.Token;
 
-
-
 /**
  * 	This is an utility class to parse the Token annotation
+ * @author Vince Xu Yuan
  */
 public class TokenUtils {
 

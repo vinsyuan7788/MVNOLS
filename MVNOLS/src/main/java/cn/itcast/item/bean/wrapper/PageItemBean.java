@@ -7,6 +7,7 @@ import cn.itcast.item.bean.Item;
 
 /**
  * 	This is a JavaBean for comprehensive query of items
+ * @author Vince Xu Yuan
  */
 public class PageItemBean extends PageBean<Item> implements Serializable {
 	

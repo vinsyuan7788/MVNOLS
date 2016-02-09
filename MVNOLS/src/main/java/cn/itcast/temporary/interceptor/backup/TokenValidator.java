@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.itcast.global.annotation.Token;
 import cn.itcast.global.configuration.Constants;
-import cn.itcast.global.exception.CustomException;
+import cn.itcast.global.exception.bean.CustomException;
 import cn.itcast.global.session.SessionProvider;
 
 /**

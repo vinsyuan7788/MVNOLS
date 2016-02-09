@@ -11,6 +11,7 @@ import org.springframework.core.convert.converter.Converter;
  *  1. ANY String that are received in Date type will go through this converter
  * 	2. Needs to implement Converter interface
  *	3. Must be configured in "springmvc.xml"
+ * @author Vince Xu Yuan
  */
 public class DateConverter implements Converter<String, Date> {
 

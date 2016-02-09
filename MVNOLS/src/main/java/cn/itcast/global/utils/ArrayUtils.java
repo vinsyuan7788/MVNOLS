@@ -2,6 +2,7 @@ package cn.itcast.global.utils;
 
 /**
  * 	This is an utility class to process Array data
+ * @author Vince Xu Yuan
  */
 public class ArrayUtils {
 

@@ -19,6 +19,8 @@ import cn.itcast.global.configuration.Constants;
  *     -- Hence this URL is naturally public, not intercepted by SpringMVC interceptors
  * 	3. Since JSP is servlet as well, this program can be written in JSP (e.g "xxx.jsp")
  *     -- In JSP view: <img src="<c:url value = '/.../.../xxx.jsp'/>"
+ *     
+ * @author Vince Xu Yuan
  */
 public class CaptchaServlet extends HttpServlet {
 	

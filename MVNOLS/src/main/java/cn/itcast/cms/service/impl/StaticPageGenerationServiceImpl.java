@@ -16,7 +16,9 @@ import freemarker.template.Template;
  * 	1. Notice that "StaticPageGenerationUtils" is no need to configure in Spring
  *     -- Only "StaticPageGenerationUtils" is compiled by JVM to ".class" file, it can be extended
  *     -- Spring is only responsible for instantiation in IOP (i.e. IOC & DI), not compilation
- *        -- This is why if JVM fails to compile to ".class" files, Spring will always report errors regarding "ClassIsNotFound", refers to "cn.itcast.global.about_regular_problems"
+ *        -- This is why if JVM fails to compile to ".class" files, Spring will always report errors regarding "ClassIsNotFound", refers to "about_regular_problems"
+ *        
+ * @author Vince Xu Yuan       
  */
 public class StaticPageGenerationServiceImpl extends StaticPageGenerationUtils implements StaticPageGenerationService {
 

@@ -7,7 +7,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.itcast.global.configuration.Constants;
-import cn.itcast.global.exception.CustomException;
+import cn.itcast.global.exception.bean.CustomException;
 import cn.itcast.user.bean.User;
 
 /**
@@ -15,6 +15,7 @@ import cn.itcast.user.bean.User;
  * 	1. ALL requests are intercepted by LoginValidator
  *  2. For those public URL: release
  *  3. For those private URL: if user is logged in, release
+ * @author Vince Xu Yuan
  */
 public class LoginValidator implements HandlerInterceptor {
 	

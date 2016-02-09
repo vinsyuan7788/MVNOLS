@@ -1,0 +1,3 @@
+For public URL: 
+-- Usually they need to be maintained in particular by some staff, especially when the system scale is large
+-- Can put the public URL into a configuration file & read the public URL by loading the file once when the server is started

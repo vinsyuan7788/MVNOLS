@@ -10,6 +10,7 @@ import cn.itcast.global.session.SessionProvider;
 
 /**
  * 	This is an implementation class of SessionProvider interface
+ * @author Vince Xu Yuan
  */
 public class HttpSessionProvider implements SessionProvider {
 

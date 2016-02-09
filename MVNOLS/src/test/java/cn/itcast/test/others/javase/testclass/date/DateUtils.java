@@ -1,9 +1,10 @@
-package cn.itcast.global.utils;
+package cn.itcast.test.others.javase.testclass.date;
 
 import java.util.Date;
 
 /**
  * 	This is an utility class to compare 2 Dates
+ * @author Vince Xu Yuan
  */
 public class DateUtils {
 
