@@ -9,6 +9,7 @@ import cn.itcast.user.bean.wrapper.PageUserBean;
 
 /**
  * 	This is the service interface
+ * @author Vince Xu Yuan
  */
 public interface UserService {
 

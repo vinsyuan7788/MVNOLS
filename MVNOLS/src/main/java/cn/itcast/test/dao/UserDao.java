@@ -3,8 +3,8 @@ package cn.itcast.test.dao;
 import cn.itcast.user.bean.User;
 
 /**
- * 	The regular way for DAO development:
- *	This is the DAO interface
+ * 	The regular way for DAO development: this is the DAO interface
+ * @author Vince Xu Yuan
  */
 public interface UserDao {
 

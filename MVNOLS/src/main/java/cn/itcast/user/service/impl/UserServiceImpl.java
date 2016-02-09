@@ -17,6 +17,7 @@ import cn.itcast.user.service.UserService;
 
 /**
  * 	This is the implementation of service interface
+ * @author Vince Xu Yuan
  */
 public class UserServiceImpl implements UserService {
 

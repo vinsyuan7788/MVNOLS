@@ -9,6 +9,10 @@ import cn.itcast.nationality.bean.Nationality;
 import cn.itcast.nationality.dao.mapper.NationalityMapper;
 import cn.itcast.nationality.service.NationalityService;
 
+/**
+ * 	This is the implementation of service interface
+ * @author Vince Xu Yuan
+ */
 public class NationalityServiceImpl implements NationalityService {
 
 	/*	IOP: IOC & DI	*/

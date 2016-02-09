@@ -7,6 +7,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
  * 	This is an aspect class for performance monitoring
  * 	1. AOP configuration in Spring is necessary to make the aspect class work
  *     -- In this project the configuration is in "spring/aop.xml"
+ * @author Vince Xu Yuan
  */
 public class PerformanceMonitoring {
 

@@ -6,6 +6,7 @@ import org.aspectj.lang.JoinPoint;
  * 	This is an aspect class for logging
  * 	1. AOP configuration in Spring is necessary to make the aspect class work
  *     -- In this project the configuration is in "spring/aop.xml"
+ * @author Vince Xu Yuan
  */
 public class Logging {
 

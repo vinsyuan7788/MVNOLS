@@ -17,8 +17,6 @@ import cn.itcast.test.dao.mapper.CityMapper;
 import cn.itcast.test.dao.mapper.CountryMapper;
 import cn.itcast.test.dao.mapper.StateMapper;
 import cn.itcast.test.service.TestService;
-import cn.itcast.user.bean.User;
-import cn.itcast.user.dao.mapper.UserMapper;
 
 /**
  * 	This is the service class to implement TestService interface

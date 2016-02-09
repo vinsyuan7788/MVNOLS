@@ -10,6 +10,10 @@ import cn.itcast.item.bean.wrapper.PageItemBean;
 import cn.itcast.item.dao.mapper.ItemMapper;
 import cn.itcast.item.service.ItemService;
 
+/**
+ * 	This is the implementation of service interface
+ * @author Vince Xu Yuan
+ */
 public class ItemServiceImpl implements ItemService {
 
 	/*	IOP: IOC & DI	*/

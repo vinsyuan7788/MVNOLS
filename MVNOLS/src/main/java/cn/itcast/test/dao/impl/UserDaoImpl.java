@@ -11,6 +11,7 @@ import cn.itcast.user.bean.User;
  *     -- Similar as Hibernate: extends HibernateDaoSupport
  *  2. The Session creation, commit, close will be done in SqlSessionDaoSupport
  *     -- Similar as HibernateDaoSupport
+ * @author Vince Xu Yuan
  */
 public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 	

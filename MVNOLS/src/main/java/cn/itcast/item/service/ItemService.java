@@ -5,6 +5,10 @@ import java.util.List;
 import cn.itcast.item.bean.Item;
 import cn.itcast.item.bean.wrapper.PageItemBean;
 
+/**
+ * 	This is the service interface
+ * @author Vince Xu Yuan
+ */
 public interface ItemService {
 
 	public int queryTotalItemsByCriteria(PageItemBean pageItemBean) throws Exception;
