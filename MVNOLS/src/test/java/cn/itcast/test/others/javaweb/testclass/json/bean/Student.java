@@ -1,4 +1,4 @@
-package cn.itcast.test.others.javaweb.testclass.bean;
+package cn.itcast.test.others.javaweb.testclass.json.bean;
 
 /**
  * 	This is the JavaBean class for testing of conversion from Java object to JSON object

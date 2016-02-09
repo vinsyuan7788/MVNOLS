@@ -1,4 +1,4 @@
-package cn.itcast.test.others.javaweb.testclass.bean;
+package cn.itcast.test.others.javaweb.testclass.web.bean;
 
 import java.io.Serializable;
 

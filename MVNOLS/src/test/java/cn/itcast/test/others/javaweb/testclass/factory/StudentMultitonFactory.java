@@ -2,8 +2,8 @@ package cn.itcast.test.others.javaweb.testclass.factory;
 
 import java.util.Random;
 
-import cn.itcast.test.others.javaweb.testclass.bean.Student;
-import cn.itcast.test.others.javaweb.testclass.bean.Student.Gender;
+import cn.itcast.test.others.javaweb.testclass.json.bean.Student;
+import cn.itcast.test.others.javaweb.testclass.json.bean.Student.Gender;
 
 /**
  * 	This is a multiton factory to randomly generate a student instance
