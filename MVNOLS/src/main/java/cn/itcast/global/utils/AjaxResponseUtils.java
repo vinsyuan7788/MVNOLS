@@ -16,22 +16,24 @@ public class AjaxResponseUtils {
 	 * @param response
 	 * @param contentType
 	 * @param responseContent
-	 * @throws Exception 
-	 * @throws Exception
 	 */
-	private static void ajaxResponse (HttpServletResponse response, String contentType, String responseContent) throws Exception {
+	private static void ajaxResponse (HttpServletResponse response, String contentType, String responseContent) {
 		
-		response.setContentType(contentType);
-		response.getWriter().write(responseContent);
+		try {
+			response.setContentType(contentType);
+			response.getWriter().write(responseContent);
+		} catch (Exception e) {
+			new RuntimeException("Excetpion raised by \"response.getWriter()\"", e);
+		}
+		
 	}
 
 	/**
 	 * 	This is a static method to provide AJAX response with JSON
 	 * @param response
 	 * @param responseContent
-	 * @throws Exception
 	 */
-	public static void responseWithJson (HttpServletResponse response,String responseContent) throws Exception {
+	public static void responseWithJson (HttpServletResponse response,String responseContent) {
 		
 		ajaxResponse(response, "application/json;charset=UTF-8", responseContent);
 	}
@@ -40,9 +42,8 @@ public class AjaxResponseUtils {
 	 * 	This is a static method to provide AJAX response with XML
 	 * @param response
 	 * @param responseContent
-	 * @throws Exception
 	 */
-	public static void responseWithXml(HttpServletResponse response,String responseContent) throws Exception {
+	public static void responseWithXml(HttpServletResponse response,String responseContent) {
 		
 		ajaxResponse(response, "text/xml;charset=UTF-8", responseContent);
 	}
@@ -51,9 +52,8 @@ public class AjaxResponseUtils {
 	 * 	This is a static method to provide AJAX Response with text
 	 * @param response
 	 * @param responseContent
-	 * @throws Exception
 	 */
-	public static void responseWithText(HttpServletResponse response,String responseContent) throws Exception {
+	public static void responseWithText(HttpServletResponse response,String responseContent) {
 		
 		ajaxResponse(response, "text/plain;charset=UTF-8", responseContent);
 	}

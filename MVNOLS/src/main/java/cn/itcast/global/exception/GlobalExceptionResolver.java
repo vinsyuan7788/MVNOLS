@@ -59,5 +59,4 @@ public class GlobalExceptionResolver extends ExceptionUtils implements HandlerEx
 		modelAndView.setViewName("error");				// return to prefix+"error"+suffix view	
 		return modelAndView;
 	}
-
 }

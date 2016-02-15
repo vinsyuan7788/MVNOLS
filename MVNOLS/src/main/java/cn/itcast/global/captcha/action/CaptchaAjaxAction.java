@@ -26,12 +26,12 @@ public class CaptchaAjaxAction {
 	 * 	1. If the captcha is matched, then return "true" (i.e. no error message)
 	 *  2. If the captcha is not matched, then return "false" (i.e. pop out error message)
 	 * @param captcha
-	 * @param httpSession
+	 * @param request
+	 * @param response
 	 * @return
-	 * @throws Exception
 	 */
 	@RequestMapping("/captchaValidation")
-	public @ResponseBody String captchaValidation (String captcha, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public @ResponseBody String captchaValidation (String captcha, HttpServletRequest request, HttpServletResponse response) {
 		
 		String existingCaptcha = (String) sessionProvider.getAttribute("captcha", request, response);
 		if (captcha.equalsIgnoreCase(existingCaptcha)) {

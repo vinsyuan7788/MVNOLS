@@ -10,10 +10,10 @@ import cn.itcast.global.pagination.bean.PageBean;
 public interface PageBeanFieldProcessor<T extends PageBean> {
 	
 	/*	This method is used to process the fields for service pagination query & display	*/
-	public void ProcessFieldsForQuery (T pageBean) throws Exception;
-	public void ProcessFieldsForDisplay (T pageBean) throws Exception;
+	public void ProcessFieldsForQuery (T pageBean);
+	public void ProcessFieldsForDisplay (T pageBean);
 	
 	/*	This method is used to process the fields for administration pagination query & display	*/
-	public void ProcessFieldsForAdminQuery (T pageBean) throws Exception;	
-	public void ProcessFieldsForAdminDisplay (T pageBean) throws Exception;
+	public void ProcessFieldsForAdminQuery (T pageBean);	
+	public void ProcessFieldsForAdminDisplay (T pageBean);
 }

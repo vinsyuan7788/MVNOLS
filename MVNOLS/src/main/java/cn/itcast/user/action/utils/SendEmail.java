@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.Properties;
 
-import javax.mail.MessagingException;
 import javax.mail.Session;
 
 import cn.itcast.mail.Mail;
@@ -35,27 +34,29 @@ public class SendEmail {
 	/**
 	 * 	This is a static method to send the email to a user
 	 * @param user
-	 * @throws Exception
 	 */
-	public static void sendEmail (User user) throws Exception {
+	public static void sendEmail (User user) {
 		
-		/*	Get the initiation parameters	*/
-		String host = properties.getProperty("host");
-		String uname = properties.getProperty("uname");
-		String pwd = properties.getProperty("pwd");
-		String sender = properties.getProperty("sender");
-		String receiver = user.getEmail();
-		String subject = properties.getProperty("subject");
-		String content = properties.getProperty("content");
-		content = MessageFormat.format(content, user.getActivationuuid());	// use format() to replace the placeholder {0}
-		
-		/*	Send email	*/
 		try {
+			/*	Get the initiation parameters	*/
+			String host = properties.getProperty("host");
+			String uname = properties.getProperty("uname");
+			String pwd = properties.getProperty("pwd");
+			String sender = properties.getProperty("sender");
+			String receiver = user.getEmail();
+			String subject = properties.getProperty("subject");
+			String content = properties.getProperty("content");
+			content = MessageFormat.format(content, user.getActivationuuid());	// use format() to replace the placeholder {0}
+		
+			/*	Send email	*/
 			Session session = MailUtils.createSessionUsingSSL(host, "465", uname, pwd);
 			Mail mail = new Mail(sender, receiver, subject, content);
 			MailUtils.send(session, mail);
-		} catch (MessagingException e) {
-		/*	Can invoke a method to process re-sending email if sending email fails	*/
+			
+		/*	If catch any non-runtime exception, re-send the email	*/
+		} catch (Exception e) {
+			/*	 process re-sending email if sending email fails	*/
+			// ...
 		}
 	}
 }

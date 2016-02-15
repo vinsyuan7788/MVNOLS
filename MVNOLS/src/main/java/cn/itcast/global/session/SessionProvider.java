@@ -14,17 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 public interface SessionProvider {
 
 	/*	Set attribute into session scope	*/
-	public void setAttribute(String attributeName, Serializable value, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public void setAttribute(String attributeName, Serializable value, HttpServletRequest request, HttpServletResponse response);
 	
 	/*	Get attribute from session scope	*/
-	public Serializable getAttribute(String attributeName, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public Serializable getAttribute(String attributeName, HttpServletRequest request, HttpServletResponse response);
 	
 	/*	Session invalidation	*/
-	public void invalidate (HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public void invalidate (HttpServletRequest request, HttpServletResponse response);
 	
 	/*	Get session ID	 */
-	public String getSessionId (HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public String getSessionId (HttpServletRequest request, HttpServletResponse response);
 
 	/*	Remove attribute from session scope	 */
-	public void removeAttribute(String attributeName, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public void removeAttribute(String attributeName, HttpServletRequest request, HttpServletResponse response);
 }

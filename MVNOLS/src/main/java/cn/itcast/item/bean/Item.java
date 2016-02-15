@@ -85,7 +85,7 @@ public class Item implements UploadUtils {
     }
     
     @Override
-	public String getFullUploadURL() throws Exception {
+	public String getFullUploadURL() {
 		return Constants.UPLOAD_IMAGE_URL + itemImage;
 	}
 }

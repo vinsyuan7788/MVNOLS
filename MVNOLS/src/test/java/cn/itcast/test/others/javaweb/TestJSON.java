@@ -8,10 +8,10 @@ import net.sf.json.JSONObject;
 
 import org.junit.Test;
 
-import cn.itcast.test.others.javaweb.testclass.factory.StudentMultitonFactory;
 import cn.itcast.test.others.javaweb.testclass.json.JSONToJava;
 import cn.itcast.test.others.javaweb.testclass.json.JavaToJSON;
 import cn.itcast.test.others.javaweb.testclass.json.bean.Student;
+import cn.itcast.test.others.javaweb.testclass.json.factory.StudentMultitonFactory;
 
 /**
  * 	This class is to perform testing regarding conversion between Java object and JSON object 

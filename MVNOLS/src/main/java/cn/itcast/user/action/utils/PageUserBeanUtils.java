@@ -12,17 +12,17 @@ import cn.itcast.user.bean.wrapper.PageUserBean;
 public class PageUserBeanUtils extends PageBeanFieldSetter<PageUserBean> implements PageBeanFieldProcessor<PageUserBean>{
 
 	@Override
-	public void ProcessFieldsForQuery(PageUserBean pageBean) throws Exception {}
+	public void ProcessFieldsForQuery(PageUserBean pageBean) {}
 
 	@Override
-	public void ProcessFieldsForDisplay(PageUserBean pageBean) throws Exception {}
+	public void ProcessFieldsForDisplay(PageUserBean pageBean) {}
 	
 	/**
 	 * 	This is a static method to process the criteria & set the current page code for pagination query
 	 * @param pageUserBean
 	 */
 	@Override
-	public void ProcessFieldsForAdminQuery (PageUserBean pageUserBean) throws Exception {
+	public void ProcessFieldsForAdminQuery (PageUserBean pageUserBean) {
 		
 		/*
 		 * 	Process the criteria
@@ -53,7 +53,7 @@ public class PageUserBeanUtils extends PageBeanFieldSetter<PageUserBean> impleme
 	 * @param pageUserBean
 	 */
 	@Override
-	public void ProcessFieldsForAdminDisplay (PageUserBean pageUserBean) throws Exception {
+	public void ProcessFieldsForAdminDisplay (PageUserBean pageUserBean) {
 		
 		/* 	Set the page size, maximum display pages, offset position	*/
 		super.setParametersForDisplay(pageUserBean, Constants.USER_PAGE_SIZE, Constants.USER_MAXIMUM_DISPLAY_PAGES, Constants.USER_OFFSET_POSITION);

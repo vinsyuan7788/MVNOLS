@@ -13,5 +13,5 @@ package cn.itcast.global.upload.utils;
  */
 public interface UploadUtils {
 
-	public String getFullUploadURL() throws Exception;
+	public String getFullUploadURL();
 }

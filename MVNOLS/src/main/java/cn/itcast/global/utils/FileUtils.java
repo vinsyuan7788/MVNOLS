@@ -16,27 +16,25 @@ public class FileUtils implements ServletContextAware {
 	/*	This part is to obtain the ServletCotnext object from ServletContextAware	*/
 	private ServletContext servletContext;
 	@Override
-	public final void setServletContext(ServletContext servletContext) {
+	public void setServletContext(ServletContext servletContext) {
 		this.servletContext = servletContext;
 	}
 	
 	/**
-	 * 	This is the method to get the real path of the directory in a web project
+	 * 	This is an instance method to get the real path of the directory in a web project
 	 * @param directory
 	 * @return
-	 * @throws Exception
 	 */
-	public final String getRealPath (String directory) throws Exception {
-		return this.servletContext.getRealPath(directory);
+	public final String getRealPath (String directory) {
+		return servletContext.getRealPath(directory);
 	}
 	
 	/**
-	 * 	This is the method to create the parent directory of a file if the parent directory does not exist
+	 * 	This is a static method to create the parent directory of a file if the parent directory does not exist
 	 * @param realPath
 	 * @return
-	 * @throws Exception
 	 */
-	public final void createParentDirectory (File file) throws Exception {
+	public static final void createParentDirectory (File file) {
 		
 		/*	Create parent directory if the parent directory does not exist	*/
 		if (!file.getParentFile().exists()) {

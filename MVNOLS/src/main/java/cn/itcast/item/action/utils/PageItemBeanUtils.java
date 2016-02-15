@@ -16,7 +16,7 @@ public class PageItemBeanUtils extends PageBeanFieldSetter<PageItemBean> impleme
 	 * @param pageItemBean
 	 */
 	@Override
-	public void ProcessFieldsForQuery (PageItemBean pageItemBean) throws Exception {
+	public void ProcessFieldsForQuery (PageItemBean pageItemBean) {
 		
 		/*	Process the criteria	*/
 		if (pageItemBean.getItemName() == null || pageItemBean.getItemName().equalsIgnoreCase("null") || pageItemBean.getItemName().trim().length() == 0) {
@@ -42,7 +42,7 @@ public class PageItemBeanUtils extends PageBeanFieldSetter<PageItemBean> impleme
 	 * @param pageUserBean
 	 */
 	@Override
-	public void ProcessFieldsForDisplay (PageItemBean pageItemBean) throws Exception {
+	public void ProcessFieldsForDisplay (PageItemBean pageItemBean) {
 		
 		/* 	Set the page size, maximum display pages, offset position	*/
 		super.setParametersForDisplay(pageItemBean, Constants.ITEM_PAGE_SIZE, Constants.ITEM_MAXIMUM_DISPLAY_PAGES, Constants.ITEM_OFFSET_POSITION);
@@ -53,7 +53,7 @@ public class PageItemBeanUtils extends PageBeanFieldSetter<PageItemBean> impleme
 	 * @param pageItemBean
 	 */
 	@Override
-	public void ProcessFieldsForAdminQuery(PageItemBean pageItemBean) throws Exception {
+	public void ProcessFieldsForAdminQuery(PageItemBean pageItemBean) {
 		
 		/*	Process the criteria	*/
 		if (pageItemBean.getItemName() == null || pageItemBean.getItemName().equalsIgnoreCase("null") || pageItemBean.getItemName().trim().length() == 0) {
@@ -78,7 +78,7 @@ public class PageItemBeanUtils extends PageBeanFieldSetter<PageItemBean> impleme
 	 * @param pageUserBean
 	 */
 	@Override
-	public void ProcessFieldsForAdminDisplay(PageItemBean pageItemBean) throws Exception {
+	public void ProcessFieldsForAdminDisplay(PageItemBean pageItemBean) {
 		
 		/* 	Set the page size, maximum display pages, offset position	*/
 		super.setParametersForDisplay(pageItemBean, Constants.ADMIN_ITEM_PAGE_SIZE, Constants.ADMIN_ITEM_MAXIMUM_DISPLAY_PAGES, Constants.ADMIN_ITEM_OFFSET_POSITION);

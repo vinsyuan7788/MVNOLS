@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import cn.itcast.global.utils.FileUtils;
 
+
 /**
  * 	This is the utility class for exception processing
  * @author Vince Xu Yuan
@@ -36,7 +37,7 @@ public class ExceptionUtils {
 			File logFile = new File(fileUtils.getRealPath("/log/" + LOG_FILE_NAME));
 			
 			/*	Generate the parent directory if it does not exist	 */
-			fileUtils.createParentDirectory(logFile);
+			FileUtils.createParentDirectory(logFile);
 			
 			/*	Get the PrintStream instance	*/
 			PrintStream printStream = new PrintStream(new FileOutputStream(logFile, true));
@@ -46,7 +47,7 @@ public class ExceptionUtils {
 		
 		/*	If fail, throw a runtime exception with the cause: this should not happen	*/
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			e.printStackTrace();
 		}
 	}
 }

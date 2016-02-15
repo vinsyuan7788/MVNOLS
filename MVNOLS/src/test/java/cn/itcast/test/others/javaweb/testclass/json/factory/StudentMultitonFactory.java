@@ -1,4 +1,4 @@
-package cn.itcast.test.others.javaweb.testclass.factory;
+package cn.itcast.test.others.javaweb.testclass.json.factory;
 
 import java.util.Random;
 

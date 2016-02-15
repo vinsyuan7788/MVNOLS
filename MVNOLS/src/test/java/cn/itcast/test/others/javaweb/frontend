@@ -10,9 +10,10 @@ How to represent space (i.e., " "), "<", ">", etc.?
 ---------------------------------------------------------------------------------------------
 CSS (Cascading Style Sheets): to describe the presentation of a document written in a markup language (e.g, HTML, XML)
 -- CSS is an SSL (Style Sheet Language)
+-- "DIV+CSS" is a popular idea for the page design
 
 ----------------------------------------------------------------------------------------------
-XML (eXtesive Markup Language): to describe data & its metadata
+XML (eXtensive Markup Language): to describe data & its metadata
 -- XML is an ML (Markup Language)
 -- Constraints:
    -- DTD (Document Type Definition): a standard to verify if the data received from outside world is valid & parsible 
@@ -37,14 +38,16 @@ JS (JavaScript): to dynamically operate the HTML document content & improve the 
    -- Callback: passed as an argument in another function & invoked and executed during the running of that function
    -- "This: represent whoever invokes current function
    -- Others:
-      -- JS function does not support overload (meaning if 2 methods have the same name, the latter one replace the previous one)
+      -- JS function does not support overload 
+         -- If 2 methods have the same name, the latter one replace the previous one
+         -- but the overload can simulated using built-in object "arguments"
       -- Function object & JSON object are not necessarily relevant: what is return from function object (e.g., string, number, JSON object) may be converted to JSON object 
 -- Closure: an inner function that has access to the outer function’s variable
    -- When the outer function is invoked, it can return whatever is returned from the inner function
 -- Event: whatever happens to the HTML elements
    -- Can add a stacked event for existing element: e.g, $("div").click(function () {...})
    -- Can add an unstacked event for existing element: e.g, $("div").unbind("click"); $("div").bind("click", function () {...})
-   -- Can add a stackaed event for incoming element: e.g., $("body").delegate("div", "click", function () {...})
+   -- Can add a stacked event for incoming element: e.g., $("body").delegate("div", "click", function () {...})
    -- 3 Basics to customize an event: event name, binding element, trigger conditions 
 
 JSON (JavasSript Object Notation):

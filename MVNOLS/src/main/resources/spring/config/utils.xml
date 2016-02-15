@@ -19,9 +19,6 @@
 	<!-- Session provider configuration for sharing session -->
 	<bean id = "sessionProvider" class = "cn.itcast.global.session.impl.HttpSessionProvider"></bean>
 	
-	<!-- EncryptionUtils configuration -->
-	<bean id = "encryptionUtils" class = "cn.itcast.global.utils.EncryptionUtils"></bean>
-	
 	<!-- FileUtils configuration -->
 	<bean id = "fileUtils" class = "cn.itcast.global.utils.FileUtils"></bean>
 	

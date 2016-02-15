@@ -25,15 +25,21 @@ public class StaticPageGenerationUtils {
 	 * @return
 	 * @throws Exception
 	 */
-	public final Writer getWriter (String filePath, String encoding) throws Exception {
+	public final Writer getWriter (String filePath, String encoding) {
 		
-		/*	Get the File instance from the real path	*/
-		File file = new File(fileUtils.getRealPath(filePath));
+		try {
+			/*	Get the File instance from the real path	*/
+			File file = new File(fileUtils.getRealPath(filePath));
+			
+			/*	Create the parent directory  */
+			FileUtils.createParentDirectory(file);
+			
+			/*	Get the Writer object with the real path & return	*/
+			return new OutputStreamWriter(new FileOutputStream(file), encoding);
 		
-		/*	Create the parent directory  */
-		fileUtils.createParentDirectory(file);
-		
-		/*	Get the Writer object with the real path & return	*/
-		return new OutputStreamWriter(new FileOutputStream(file), encoding);
+		/*	If catch any checked exception, throw it out using RuntimeException  */
+		} catch (Exception e) {
+			throw new RuntimeException("Exception raised by \"OutputStreamWriter()\" or \"FileOutputStream()\"", e);
+		}
 	}
 }

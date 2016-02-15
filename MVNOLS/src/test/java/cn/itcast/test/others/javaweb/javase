@@ -1,13 +1,19 @@
---------------------------------------------------------------------------------------------------------
 JVM Memory:
 -- Stack: to store variables
-   -- FILO 
+   -- FILO (First In, Last Out) 
    -- Automatically-assigned by JVM|OS
 -- Heap: to store objects|instances
-   -- FIFO 
-   -- Manually-assiend by programmer
+   -- The unused memory that can be allocated by JVM & collected by GC (Garbage Collection)
+   -- Manually-assiend by programmer (with "new")
 -- Method Area: to store compiled java files
    -- Refer to "javase.testReflection.java"
+
+--------------------------------------------------------------------------------------------------------
+GC (Garbage Collection)
+-- GC is not controllable by Java codes
+   -- Can be affected by command line: e.g., "java -Xms100M -Xmx200M HelloWorld"
+-- GC algorithms: LRU (Least Recently Used) is most commonly used
+   -- Can be set by configuration
 
 --------------------------------------------------------------------------------------------------------
 OOP (Object-Oriented Programming): refer to "javase.TestOOP.java"

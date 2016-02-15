@@ -19,7 +19,7 @@ public class HttpSessionProvider implements SessionProvider {
 	 */
 	@Override
 	public void setAttribute(String attributeName, Serializable value,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
+			HttpServletRequest request, HttpServletResponse response) {
 		
 		/*	Get a session, if find no session according to JSESSIONID, create a new one	*/
 		HttpSession session = request.getSession();
@@ -32,7 +32,7 @@ public class HttpSessionProvider implements SessionProvider {
 	 * 	Get attribute from original session scope
 	 */
 	@Override
-	public Serializable getAttribute(String attributeName, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public Serializable getAttribute(String attributeName, HttpServletRequest request, HttpServletResponse response) {
 		
 		/*	Get the original session  */
 		HttpSession session = request.getSession(false);
@@ -50,7 +50,7 @@ public class HttpSessionProvider implements SessionProvider {
 	 * 	Invalidate session
 	 */
 	@Override
-	public void invalidate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void invalidate(HttpServletRequest request, HttpServletResponse response) {
 		
 		/*	Get the original session  */
 		HttpSession session = request.getSession(false);
@@ -66,7 +66,7 @@ public class HttpSessionProvider implements SessionProvider {
 	 * 	If original session is not found, create a new session & corresponding JSESSIONID
 	 */
 	@Override
-	public String getSessionId(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String getSessionId(HttpServletRequest request, HttpServletResponse response) {
 		
 		return request.getSession().getId();
 	}
@@ -76,7 +76,7 @@ public class HttpSessionProvider implements SessionProvider {
 	 */
 	@Override
 	public void removeAttribute(String attributeName,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
+			HttpServletRequest request, HttpServletResponse response) {
 		
 		/*	Get the original session  */
 		HttpSession session = request.getSession(false);

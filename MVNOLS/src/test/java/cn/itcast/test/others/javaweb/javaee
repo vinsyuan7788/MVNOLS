@@ -6,9 +6,9 @@ URL (Uniform Resource Location): a representation of HTTP address
 
 ----------------------------------------------------------------------------------------------
 Cookie & Session: 
-Cookie: data sent from a website|server-side and stored in the user's browser|browser-side
+Cookie: data sent from server-side and stored in the client-side
 -- Functions: user authenticaion; session identification, etc.
-   -- Cookies realize the functions on browser-side; Server realize the functions on server-side
+   -- Cookies realize the functions on browser-side; Session realize the functions on server-side
 -- Cookie stores text information; session stores text information & objects
 
 ----------------------------------------------------------------------------------------------
@@ -114,15 +114,15 @@ EL default|implicit search|query order from scope:
 ----------------------------------------------------------------------------------------------
 JDBC:
 C3P0 & DBCP: C3P0 is better
--- C3P0 supports multiple databse connections
--- C3P0 supports re-connection when the connection is off
+-- C3P0 supports multiple database connections
+-- C3P0 supports re-connection when the connection is cut off
 
-The step of JDBC executing SQL:
+The steps of JDBC executing SQL:
 -- 1. Get the connection 
--- 2. Write SQL to PreparedStatement for execution 
--- 3. Process the result
--- 4. Catch the exception if there is any
--- 5. Close the resource
+-- 2. Prepare the SQL statement
+-- 3. Execute the SQL statement (& if there is a return result, process it)
+-- 4. Catch the exception & process it
+-- 5. Close the resources
 
 ----------------------------------------------------------------------------------------------
 Server:
