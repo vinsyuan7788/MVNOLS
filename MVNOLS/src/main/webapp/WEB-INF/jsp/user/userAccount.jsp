@@ -41,6 +41,7 @@ $().ready(function() {
 	$.ajax ({
 		url: "<c:url value = '/nationalityAjax/queryNationality.action'/>",
 		type: "get",
+//		data: "",
 		success: function (data) {
 			for (var i = 0; i < data.length; i++) {
 				var optionElement = $("<option/>");
@@ -48,6 +49,7 @@ $().ready(function() {
 				$("#nationality").append(optionElement);
 			}
 		}
+//		error: function (data) {}		
 	});
 	
 	/*	This is a AJAX request to submit the upload file & display back	 */

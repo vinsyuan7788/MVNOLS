@@ -3,7 +3,8 @@ Normalization & Normal form
 Normalization: the process of minimizing redundancy and dependency by organizing fields and table
 
 What are the normalization or normal form?
--- First Normal Form:
+-- First Normal Form: each attribute contains single value
+   -- the value of the attribute in different cases can be the same or not
 -- Second Normal Form:
 -- Third Normal Form:
 
@@ -25,7 +26,7 @@ What is SQL (Structured Query Language)?
 
 ------------------------------------------------------------------------------------------------------------------
 Data Type:
--- String: char, varchar, etc. 
+-- String: char, varchar(2), etc. 
 -- Number: int, float, double, long, etc.
 -- Date 
 -- Large objects: blob, clob, text, image, etc.

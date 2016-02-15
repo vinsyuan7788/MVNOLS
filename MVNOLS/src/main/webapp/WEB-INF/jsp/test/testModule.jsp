@@ -36,6 +36,7 @@ $().ready(function () {
 	$.ajax ({
 		url: "<c:url value = '/testAjax/queryTotalUsers.action'/>",
 		type: "get",
+//		data: "",
 		success: function (data) {
 			for (var i = 1; i <= data; i++) {
 				var optionElement = $("<option/>");
@@ -43,12 +44,14 @@ $().ready(function () {
 				$("#choose_id").append(optionElement);
 			}
 		}
+//		error: function (data) {}
 	});
 	
 	/*	This is the AJAX request to return the province list & generate option elements accordingly  */
 	$.ajax ({
 		url: "<c:url value = '/testAjax/queryCountries.action'/>",
 		type: "get",
+//		data: "",
 		success: function (data) {
 			for (var i = 0; i < data.length; i++) {
 				var optionElement = $("<option/>");
@@ -56,6 +59,7 @@ $().ready(function () {
 				$("#country").append(optionElement);
 			}
 		}
+//		error: function (data) {}
 	});
 	
 	/*	
@@ -64,7 +68,7 @@ $().ready(function () {
      */
 	$("#country").change(function () {
 		
-		/*	If select the <option>Please select a country</option>: reset & alert & return to the current page (*****)	*/
+		/*	If select the "<option>Please select a country</option>": reset & alert & return to the current page (*****)	*/
 		if ($("#country").val() == "") {
 			$("#state").empty().append($("<option/>").attr("value", "").text("Please select a state"));
 			$("#city").empty().append($("<option/>").attr("value", "").text("Please select a city"));
@@ -76,6 +80,7 @@ $().ready(function () {
 		$.ajax ({
 			url: "<c:url value = '/testAjax/queryStates.action'/>?countryId=" + this.value,	// this.value (*****)
 			type: "get",
+//			data: "",
 			success: function (data) {
 				/*  Remove all the child elements & append the initial <option/> (*****)  */
 				$("#state").empty().append($("<option/>").attr("value","").text("Please select a state"));
@@ -87,6 +92,7 @@ $().ready(function () {
 					$("#state").append(optionElement);
 				}
 			}
+//			error: function (data) {}
 		});
 	});
 	
@@ -96,7 +102,7 @@ $().ready(function () {
 	 */
 	$("#state").change(function () {
 		
-		/*	If select the <option>Please select a state</option>: reset & alert & return to the current page (*****)	*/
+		/*	If select the "<option>Please select a state</option>": reset & alert & return to the current page (*****)	*/
 		if ($("#state").val() == "") {
 			$("#city").empty().append($("<option/>").attr("value","").text("Please select a city"));
 			alert("Please select a state");
@@ -107,6 +113,7 @@ $().ready(function () {
 		$.ajax ({
 			url: "<c:url value = '/testAjax/queryCities.action'/>?stateId=" + this.value,	// this.value (*****)
 			type: "get",
+//			data: "",
 			success: function (data) {
 				/*	Remove all the child elements & append the inital <option/>	(*****) */ 
 				$("#city").empty().append($("<option/>").attr("value","").text("Please select a city"));
@@ -116,7 +123,8 @@ $().ready(function () {
 					optionElement.attr("value", data[i].id).text(data[i].cityName);
 					$("#city").append(optionElement);
 				}
-			}		
+			}
+//			error: function (data) {}
 		});
 	});
 	
@@ -128,12 +136,12 @@ $().ready(function () {
 		editable: true
 	});
 	 
-	/*	This is checkbox all-select and all-unselect operation	*/
+	/*	This is checkbox all-select and all-unselect operation: here "this" is "#checkAll"	*/
 	$("#checkAll").click(function () {
 		$(":checkbox[name='hobby']").attr("checked", $(this).attr("checked"));
 	});
 	
-	/*	This is checkbox reverse-select operation	*/
+	/*	This is checkbox reverse-select operation: here "this" is ":checkbox[name='hobby']"	*/
 	$("#checkReverse").click(function () {
 		$(":checkbox[name='hobby']").each(function(){
 			$(this).attr("checked", !$(this).attr("checked"));

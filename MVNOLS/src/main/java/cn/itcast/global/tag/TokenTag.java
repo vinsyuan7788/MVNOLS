@@ -9,6 +9,8 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 /**
  * 	This class is to customize a JSP tag for the token of duplicate submission avoidance
+ * 	1. This class must be configured in tld (tag library definiction) before use
+ *     -- Refer to "WEB-INF/tld/custom-tags.tld"
  * 	1. SimpleTagSupport has implemented SimpleTag
  * 	2. SessionProvider DI is not allowed in tag implementation since it is out of JSP range
  *     -- Here using sessionProvider will lead to a failure of parsing JSP view

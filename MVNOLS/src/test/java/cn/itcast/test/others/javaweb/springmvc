@@ -27,7 +27,7 @@ How to manage the error messages in web application:
 
 Thread-safety:
 Thread-sharable instance (non-static) variables in conroller, service, DAO classes (except those DI by spring) will raise thread-safety problem
--- Because: conroller, service, DAO in springMVC are all singleton by defaul
+-- Because: conroller, service, DAO in springMVC are all singleton by default
 -- To resolve this: 
    -- Avoid using thread-sharable instance (non-static) variables (except those DI by spring)
    -- Using ThreadLocal<> class
