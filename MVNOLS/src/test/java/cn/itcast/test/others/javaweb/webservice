@@ -9,6 +9,7 @@ What is WS (Web Service):
       -- 3 Elements: SOAP, WSDL, UDDI
 -- HTTP-based specification: JAX-RS 
    -- JAX-RS (Java API for RESTful Web Service): use HTTP for data transmission & more lighter
+-- Pros: the interface or functionality published by WS can be re-used by different system
 
 Comparison between WS and socket:
 -- WS:
@@ -43,9 +44,12 @@ WS non-application scenario:
 SOAP-based WS:
 What is SOAP (Simple Object Access Protocol)?
 -- A protocol based on HTTP (which exchanges data based on socket)
+-- Comparison between SOAP 1.1 & 1.2
+   -- Content-type & namespace are different
+   -- SOAP 1.1 server can be invoked by SOAP 1.1 client; while SOAP 1.2 server can be invoked by SOAP 1.1 and 1.2
 
 What is WSDL (Web Service Definition Language)?
--- A XML-based langauge to describe the functionality offered by WS
+-- A XML-based langauge to describe the WS functionality
 
 What is UDDI (Universal Description, Discovery and Integration)?
 -- A service to publish & search web service
@@ -53,13 +57,13 @@ What is UDDI (Universal Description, Discovery and Integration)?
 
 -----------------------------------------------------------------------------------------------------------------
 HTTP-based|RESTful WS:
-What is REST?
--- A software architecture style that typically reflects on resource location & operation
+What is REST (REpresentational State Transfer)?
+-- A architectural style for web service, which is a layered architecture & convenient for resource location & operation
 -- Resource location: use layered structure to reppresent or locate an URL, instead of using question mark
    -- URL style comparison between SOAP-based & RESTful:
       -- SOAP-based: http://ip:port/queryUser.action?userType=XXX&studentId=001&...
-      -- RESTful: http://ip:port/user/student/001/...
--- Resource operation: use "GET|POST|PUT|DELETE" method for database query|create|update(create)|delete
+      -- RESTful: http://ip:port/user/student/001/..., assuming a RESTful WS is published to query a student with a specific id from all users
+-- Resource operation: use "GET|POST|PUT|DELETE" method to represent database query|create|update(create)|delete
 -- System|Framework that conforms to the constraints|style of REST is called "RESTful"
 
 What is RESTful WS?
@@ -75,3 +79,6 @@ What is SSO (Single Sign On)?
 -- In multi-system environment, if one user logged on in a system, the user does no need to log on in other systems
 
 Examples of WS framework: CXF, Jersey, etc.
+
+Development techniques between server side and client side can be different:
+-- E.g., client side can adopt jaxws technique while server side adopts CXF framework

@@ -40,7 +40,7 @@ import cn.itcast.test.others.javase.testclass.template.CustomClass;
  *     -- Inheritance: to enhance (method(s) of) a specific class with hard-coded content by another class
  *     -- Decorator: to enhance (method(s) of) decorated|decorator classes with hard-coded content by another class
  * 	   -- Proxy: to enhance (method(s) of) any class with custom-coded content by another class
- *  4. Concurrency pattern: to deal tih multi-threaded programming paradigm
+ *  4. Concurrency pattern: to deal with multi-threaded programming paradigm
  *     -- Double-checked locking: to reduce the overhead of acquiring a lock (refer to "javase.testclass.singleton.LazySingleton.java")
  *     -- Thread-local: to have (global) resource local to each thread
  *  5. Architectural pattern: to solve soft architecture

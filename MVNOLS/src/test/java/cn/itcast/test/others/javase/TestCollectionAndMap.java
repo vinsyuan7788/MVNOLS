@@ -217,18 +217,19 @@ public class TestCollectionAndMap {
 		 * 	1. if o1 < o2: return -1
 		 * 	2. if o1 > o2: return 1
 		 * 	3. if o1 == o2: return 0
-		 * 	Hence for sorting in descending order, just flip over the return result
+		 *  or 
+		 *  "return o1.compareTo(o2)"
+		 *  
+		 * 	Hence for sorting in descending order, just flip over the return result, namely
+		 *  1. if o1 < o2: return 1
+		 * 	2. if o1 > o2: return -1
+		 * 	3. if o1 == o2: return 0
+		 *  or 
+		 *  "return o2.compareTo(o1)"
 		 */
 		@Override
 		public int compare(Integer o1, Integer o2) {
-			
-			if (o1 < o2) { 
-				return 1;
-	        } else if(o1 > o2) {
-	        	return -1;
-	        } else {
-	        	return 0;
-			}
+			return o2.compareTo(o1);
 		}
 	}
 }

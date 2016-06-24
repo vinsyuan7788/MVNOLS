@@ -3,10 +3,11 @@ Normalization & Normal form
 Normalization: the process of minimizing redundancy and dependency by organizing fields and table
 
 What are the normalization or normal form?
--- First Normal Form: each attribute contains single value
-   -- the value of the attribute in different cases can be the same or not
--- Second Normal Form:
+-- Data orginaztion regulation to minimize the data redundancy
 -- Third Normal Form:
+   -- Each column is automatic
+   -- Unique primary key
+   -- The rest of columns are independent
 
 ------------------------------------------------------------------------------------------------------------------
 DBMS & RDBMS & SQL:
@@ -19,10 +20,12 @@ What is RDBMS (Relationsl DBMS)?
 What is SQL (Structured Query Language)?
 -- A language to perform interaction with DB, e.g., data insertion, updation, deletion, retrieval
 -- Consist of: DDL, DML & DQL, DCL, TCL
-   -- DDL (Data Definition Language): CREATE, ALTER, DROP, DECLARE, etc.
-   -- DML & DQL (Data Manipulation Language & Data Query Language): INSERT, UPDATE, DELETE & SELECT
-   -- DCL: Data Control Language: GRANT, REVOKE, etc.
+   -- DDL (Data Definition Language): CREATE, REPLACE, ALTER, DROP, DECLARE, etc.
+   -- DQL (Data Query Language): SELECT
+   -- DML (Data Manipulation Language): INSERT, UPDATE, DELETE
+      -- Usually cooperated with TCL
    -- TCL: Transaction Control Language: COMMIT, ROLLBACK, etc.
+   -- DCL: Data Control Language: GRANT, REVOKE, etc.
 
 ------------------------------------------------------------------------------------------------------------------
 Data Type:

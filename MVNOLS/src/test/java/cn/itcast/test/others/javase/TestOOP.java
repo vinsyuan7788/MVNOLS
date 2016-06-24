@@ -19,13 +19,16 @@ package cn.itcast.test.others.javase;
  *     	  -- If a method in a class does not have method body, then it should be described as "abstract".
  *        -- If there is an abstract method, then corresponding class must be abstract.
  *        -- All classes that extends the abstract class must override the abstract methods.
- * 	3. Inheritance: subclass can gain the ability of superclass & enhance the abliity of themselves
+ * 	3. Inheritance: subclass can gain the ability of superclass & enhance the abliity by themselves
  *     -- "extends", "implements", "super" 
+ *     -- Gain the ability of superclass: may override the method
+ *     -- Enhance the abliity by themselves: may overload the method
  * 	4. Polymorphism: superclass can refer to the object of any subclass
  *     -- "extends", "implements", "super", "instanceof"
  *        -- Come from inheritance; improves the code scalability
  *        -- "instanceof": for the conversion from parent type to child type 
  *     -- Reference|Argument type -- superclass; Return obejct -- subclass
+ *     -- E.g.: in IOP (Interface-Oriented Programming): interface can refer to different implementation subclasses according to different situation, so the codes can be decoupled
  */
 public class TestOOP {
 

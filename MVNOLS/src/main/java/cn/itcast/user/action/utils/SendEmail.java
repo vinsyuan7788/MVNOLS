@@ -22,10 +22,10 @@ public class SendEmail {
 	 */
 	private static Properties properties;
 	static {
-		InputStream tokenURL = SendEmail.class.getClassLoader().getResourceAsStream("email_template.properties");
+		InputStream inputStream = SendEmail.class.getClassLoader().getResourceAsStream("email_template.properties");
 		properties = new Properties();
 		try {
-			properties.load(tokenURL);
+			properties.load(inputStream);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

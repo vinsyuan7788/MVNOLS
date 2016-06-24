@@ -46,6 +46,11 @@ public class TestArray {
 		/*	Convert the array to list	*/
 		List<String> hobbyList = Arrays.asList(hobbyArray);
 		System.out.println("The hobby list: " + hobbyList);
+		
+		/*	Notice that if the data type is premitive, then cannot directly output the converted list	*/
+		int[] integers = {1, 2, 3, 4, 5};
+		List<int[]> integerList = Arrays.asList(integers);
+		System.out.println("The integers: " + integerList);
 	}
 	
 	/**
@@ -60,7 +65,6 @@ public class TestArray {
 //		Integer[] integerArray = {(int) (Math.random()*90+10), new Random().nextInt(90)+10, (int) (Math.random()*90+10), new Random().nextInt(90)+10, (int) (Math.random()*90+10)};
 		System.out.println("The original integer array: " + Arrays.toString(integerArray));
 		int elementForIndex = integerArray[1];
-		System.out.println("The element for index: " + elementForIndex);
 		
 		/*	Reverse the integer elements: by Collections class	*/
 		List<Integer> integerList = Arrays.asList(integerArray);
@@ -72,9 +76,10 @@ public class TestArray {
 		System.out.println("The ascending integer array: " + Arrays.toString(integerArray));
 		
 		/*	Binary search the integer array: array must be sorted in ASCENDING order	*/
-		int indexInAscOrder = Arrays.binarySearch(integerArray, elementForIndex);
+		System.out.println("The element for index in ascending array: " + 50);
+		int indexInAscOrder = Arrays.binarySearch(integerArray, 50);
 		if (indexInAscOrder < 0) {
-			System.out.println("The element does not exist.");
+			System.out.println("The element does not exist. If this element needs to inserted into the array, then its index is: " + (-indexInAscOrder-1));
 		} else {
 			System.out.println("The index of the element in ascending order after binary search: " + indexInAscOrder);
 		}
@@ -84,9 +89,10 @@ public class TestArray {
 		System.out.println("The descending integer array: " + Arrays.toString(integerArray));
 		
 		/*	Binary search the integer array: array must be sorted in DESCENDING order	*/
+		System.out.println("The element for index in descending array: " + elementForIndex);
 		int indexInDescOrder = Arrays.binarySearch(integerArray, elementForIndex, new DescComparator());
 		if (indexInDescOrder < 0) {
-			System.out.println("The element does not exist.");
+			System.out.println("The element does not exist. If this element needs to inserted into the array, then its index is: " + (-indexInDescOrder-1));
 		} else {
 			System.out.println("The index of the element in descending order after binary search: " + indexInDescOrder);
 		}

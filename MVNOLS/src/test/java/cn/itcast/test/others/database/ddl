@@ -8,7 +8,7 @@ Table & Field & Records:
 Primary|Unique|Foreign Key:
 -- Primary key: the field (or the combination of fields) that uniquely specifies a row
    -- One table can have ONLY one primary key constraint
-   -- Primary key must be  NOT NULL
+   -- Primary key must be NOT NULL
 -- Unique key: same as primary key
    -- One table can have multiple unique key constraints
    -- Unique key can be NULL

@@ -1,6 +1,79 @@
 /*	Here are the queries that need to be executed on "mvnols" database in MySQL	 */
+/*	Query: (the codes) to get information from database		*/
+
+
+
+/*			Single-table Query			*/
 /*
-	Query: (the codes) to get information from database
+	GROUP BY & HAVING: 
+	1. To get the results correpsonding to some categories with some conditions
+	
+	Requirement:
+	1. Find the sales information of each item_id repsectively
+*/
+SELECT od.`item_id`,
+       SUM(od.`item_num`) total_sales,
+       MAX(od.`item_num`) highest_sales, 
+       MIN(od.`item_num`) lowest_sales, 
+       AVG(od.`item_num`) average_sales,
+       COUNT(od.`id`) 
+FROM orderdetail od GROUP BY od.`item_id`
+	HAVING total_sales > 30;
+
+/*
+	Pattern Matching Operator: LIKE
+	
+	Requirement:
+	1. Find the information of the user whose name contains "v" or "V" from user table
+	2. Find the information of the user whose name starts with "v" or "V from user table
+	3. Fine the information of the user whose name ends with "v" or "V from user table
+*/
+SELECT u.* FROM `user` u WHERE u.`username` LIKE '%V%';
+SELECT u.* FROM `user` u WHERE u.`username` LIKE 'V%';
+SELECT u.* FROM `user` u WHERE u.`username` LIKE '%V';
+
+/*	
+	Aggreate Function: can evaluate the values in a column and return a value
+				
+	Requirement:
+	1. Select the item sales statistics from orderdetail table
+	2. Get the distinct item id and corresponding information from orderdetail table
+	   -- When contradictory DESC & ASC appears simultaneously, the left-most one works
+	3. Fetch the first 3 string of the username in user table
+	   -- AS is ignorable
+*/
+/*	Select the item sales statistics from orderdetail table		*/
+SELECT SUM(od.`item_num`) total_sales,
+       MAX(od.`item_num`) highest_sales, 
+       MIN(od.`item_num`) lowest_sales, 
+       AVG(od.`item_num`) average_sales,
+       COUNT(od.`id`) 
+FROM orderdetail od;
+
+/*	Get the distinct item price from orderdetail table: the left-most (i.e., DESC) works	*/
+SELECT DISTINCT(od.`item_id`), od.`item_price` FROM orderdetail od
+	ORDER BY od.`item_price` DESC, od.`item_id` ASC;
+	
+/*	Fetch the first 5 string of the username in user table: AS is ignorable		*/
+SELECT SUBSTRING(u.`username`, 1, 3) AS sub_username, 
+       u.* 
+FROM `user` u;
+SELECT RIGHT(u.`username`, 3) AS sub_username, 
+       u.* 
+FROM `user` u;
+
+/*	
+	Scalar function: evaluate a single input & reutrn a value	
+	
+	Requirement:
+	1. Get the absolute value of -12
+*/
+SELECT ABS(-12) FROM DUAL;
+
+
+
+/*			Multiple-table Query			*/
+/*
 	Subquery: a query within another query
 	-- Correlated query: refer to "Correlated query"
 	-- Non-correlated query: refer to "Non-correlated query"
@@ -47,18 +120,6 @@ SELECT ur.* FROM (
 SELECT ur.* FROM (
 	SELECT u.*, (@rowNum:=@rowNum+1) AS rowno FROM `user` u, (SELECT (@rowNum:=0)) r
 ) ur WHERE MOD(ur.`rowno`, 2) = 1;
-
-/*
-	Pattern Matching Operator: LIKE
-	
-	Requirement:
-	1. Find the information of the user whose name contains "v" or "V" from user table
-	2. Find the information of the user whose name starts with "v" or "V from user table
-	3. Fine the information of the user whose name ends with "v" or "V from user table
-*/
-SELECT u.* FROM `user` u WHERE u.`username` LIKE '%V%';
-SELECT u.* FROM `user` u WHERE u.`username` LIKE 'V%';
-SELECT u.* FROM `user` u WHERE u.`username` LIKE '%V';
 
 /*
 	Join: query data from more tables based on the relationship between the fields of tables
@@ -110,58 +171,3 @@ SELECT Full_join.* FROM (
 	4. INTERSECT: return the rows returned by both queries
 	   -- e.g., to fetch the common results from two tables
 */
-
-/*
-	GROUP BY & HAVING: 
-	1. To get the results correpsonding to some categories with some conditions
-	
-	Requirement:
-	1. Find the sales information of each item_id repsectively
-*/
-SELECT od.`item_id`,
-       SUM(od.`item_num`) total_sales,
-       MAX(od.`item_num`) highest_sales, 
-       MIN(od.`item_num`) lowest_sales, 
-       AVG(od.`item_num`) average_sales,
-       COUNT(od.`id`) 
-FROM orderdetail od GROUP BY od.`item_id`
-	HAVING total_sales > 30;
-
-
-/*	
-	Aggreate Function: can evaluate the values in a column and return a value
-				
-	Requirement:
-	1. Select the item sales statistics from orderdetail table
-	2. Get the distinct item id and corresponding information from orderdetail table
-	   -- When contradictory DESC & ASC appears simultaneously, the left-most one works
-	3. Fetch the first 3 string of the username in user table
-	   -- AS is ignorable
-*/
-/*	Select the item sales statistics from orderdetail table		*/
-SELECT SUM(od.`item_num`) total_sales,
-       MAX(od.`item_num`) highest_sales, 
-       MIN(od.`item_num`) lowest_sales, 
-       AVG(od.`item_num`) average_sales,
-       COUNT(od.`id`) 
-FROM orderdetail od;
-
-/*	Get the distinct item price from orderdetail table: the left-most (i.e., DESC) works	*/
-SELECT DISTINCT(od.`item_id`), od.`item_price` FROM orderdetail od
-	ORDER BY od.`item_price` DESC, od.`item_id` ASC;
-	
-/*	Fetch the first 5 string of the username in user table: AS is ignorable		*/
-SELECT SUBSTRING(u.`username`, 1, 3) AS sub_username, 
-       u.* 
-FROM `user` u;
-SELECT RIGHT(u.`username`, 3) AS sub_username, 
-       u.* 
-FROM `user` u;
-
-/*	
-	Scalar function: evaluate a single input & reutrn a value	
-	
-	Requirement:
-	1. Get the absolute value of -12
-*/
-SELECT ABS(-12) FROM DUAL;

@@ -2,7 +2,6 @@ package cn.itcast.test.others.javaweb.testclass.webservice.jaxrs.server;
 
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
 
-import cn.itcast.test.others.javaweb.testclass.webservice.jaxrs.bean.City;
 import cn.itcast.test.others.javaweb.testclass.webservice.jaxrs.server.impl.CityServiceImpl;
 
 /**

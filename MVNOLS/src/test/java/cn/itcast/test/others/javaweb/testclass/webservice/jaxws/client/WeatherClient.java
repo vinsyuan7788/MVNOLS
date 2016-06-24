@@ -5,13 +5,14 @@ import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import cn.itcast.test.others.javaweb.testclass.webservice.jaxws.client.server.Weather;
 
 /**
- * 	This is the client class to invoke the SOAP web service
+ * 	This is the client class to invoke the SOAP web service using CXF
+ *  -- CXF can be merged with Spring
  */
 public class WeatherClient {
 	
 	/**
 	 * 	This is the main function to invoke the SOAP web service class method
-	 * 	1. This code demonstrates the order of invoking web service using CXF through programming
+	 * 	1. This code demonstrates the steps of invoking web service using CXF through programming
 	 *     -- This client is not runnable, while the server is runnable, since the client should be separated into another project
 	 * @param args
 	 * @throws Exception

@@ -6,13 +6,13 @@ import cn.itcast.test.others.javaweb.testclass.webservice.jaxws.server.impl.Weat
 import cn.itcast.test.others.javaweb.testclass.webservice.jaxws.server.interfaces.Weather;
 
 /**
- * 	This is a server class to publish SOAP web service
+ * 	This is a server class to publish SOAP web service using CXF
  */
 public class WeatherServer {
 
 	/**
 	 * 	This is a main function to publish the SOAP web service class
-	 * 	1. This code demonstrates the order of publishing web service using CXF through programming
+	 * 	1. This code demonstrates the steps of publishing web service using CXF through programming
 	 *     -- This server is runnable, while the corresponding client is not, since the client should be separated into another project
 	 * @param args
 	 */
